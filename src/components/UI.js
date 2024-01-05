@@ -12,12 +12,7 @@ export const UI = () => {
       ${currentPage === "home" ? "" : "opacity-0"}`}
       >
         <div className="h-[66%]"></div>
-        <button
-            onClick={() => setCurrentPage("store")}
-            className=" custom-button"
-            >
-            ENTER
-        </button>
+       
 
       </section>
     </div>
