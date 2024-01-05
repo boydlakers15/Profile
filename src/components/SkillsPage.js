@@ -61,28 +61,31 @@ const SkillsPage = () => {
         {/* Header */}
         <MDBRow>
         <MDBCol className='fa-lg2'>
-          <center>
+        
             <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'white', backgroundColor: '#0d6efd' }}>
               <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
                 <i className={`bi bi-house-down-fill  ${isSidebarOpen ? '' : ''}`}></i> Menu
               </button>
             </a>
            
-          </center>
+      
         </MDBCol>
-
+       
+      
         </MDBRow>
         <br />
-        <MDBCard className="mb-4"></MDBCard>
+        <MDBCard className="mb-4">
+              
+        </MDBCard>
         <MDBRow>
           {isSidebarOpen && (
-            <MDBCol lg="4" className="d-none d-lg-block">
-              {/* Sidebar content */}
-              <div className="bg-light p-3">
-                <h5>Menu</h5>
-                <Navbar />
-              </div>
-            </MDBCol>
+            <MDBCol lg="2" className={`d-none d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
+            {/* Sidebar content */}
+            <div >
+              <br />
+              <Navbar  />
+            </div>
+          </MDBCol>
           )}
           <MDBCol lg={isSidebarOpen ? '8' : '12'}>
             {/* Main content */}
@@ -90,11 +93,7 @@ const SkillsPage = () => {
             <MDBCarousel>
               <MDBCarouselItem itemId={1}>
                 <div className="d-flex justify-content-center align-items-center" style={{ height: '600px' }}>
-                  {/* Video Background */}
-                  <video autoPlay muted loop className="video-background">
-                    <source src={Vid1} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                 
                 </div>
                 <div className="centered-content-container">
                   <MDBCarouselCaption>

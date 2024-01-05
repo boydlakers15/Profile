@@ -17,7 +17,7 @@ root{
 }
 
 .main{
-  box-shadow: -4px 5px 5px rgb(255, 255, 255);
+  
 }
 
 .main2{
@@ -97,11 +97,11 @@ a:hover{
 }
 
 .fa-lg1:hover{
-  transform: scale(1.2);
+  transform: scale(1);
   
 }
 .fa-lg2:hover{
-  transform: scale(1.2);
+  transform: scale(1);
   
 }
 .fa-lg1.card1left:hover:after {

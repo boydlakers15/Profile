@@ -118,14 +118,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
       <MDBContainer className="py-2">
         <MDBRow>
         <MDBCol className='fa-lg2'>
-          <center>
+      
             <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'white', backgroundColor: '#0d6efd' }}>
               <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
                 <i className={`bi bi-house-down-fill  ${isSidebarOpen ? '' : ''}`}></i> Menu
               </button>
             </a>
            
-          </center>
+         
         </MDBCol>
        
       
@@ -150,7 +150,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
               <MDBCarouselItem  itemId={1}>
                 <div className="d-flex justify-content-center align-items-center image-card " >
                   {/* Center the image and make it square */}
-                  <img src={img3} className='main square-image ' alt='...' />
+                  
                 </div>
                 <div className="centered-content-container">
                   <MDBCarouselCaption>
