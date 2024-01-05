@@ -13,7 +13,7 @@ const App = () => {
       <Router>
         <Routes>
           {/* Use the "element" prop instead of "component" */}
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/Home" element={<LandingPage />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Skills" element={<SkillsPage />} />
         </Routes>
