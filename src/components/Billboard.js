@@ -31,7 +31,7 @@ export const OverlayItem = ({
             transform
             distanceFactor={1}
             center
-            className={`w-48 rounded-md overflow-hidden ${currentPage === "store" ? "" : "opacity-0"
+            className={`w-48 rounded-md overflow-hidden ${currentPage === "home" ? "" : "opacity-0"
                 } transition-opacity duration-1000 ${className}`}
             {...props}
         >
