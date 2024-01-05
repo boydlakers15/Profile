@@ -7,9 +7,9 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="vertical-menu">
-        <li ><a href="/home">Home</a></li>
-        <li ><a href="/profile">Profile</a></li>
-        <li ><a href="#about">About Me</a></li>
+        <li ><Link to={'/home'}>Home</Link></li>
+        <li ><Link to={'/profile'}>Profile</Link></li>
+        <li ><Link to={'/about'}>About Me</Link></li>
         <li ><Link to="/skills">Skills</Link></li>
         <li><a href="https://github.com/boydlakers15/certificates-jared">Certificates</a></li>
         {/* Add more creative elements to your menu, like icons or animations */}
