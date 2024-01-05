@@ -62,11 +62,12 @@ const SkillsPage = () => {
         <MDBRow>
         <MDBCol className='fa-lg2'>
           <center>
-            <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'blue' }}>
-              <button  className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd'}}>
+            <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'white', backgroundColor: '#0d6efd' }}>
+              <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
                 <i className={`bi bi-house-down-fill  ${isSidebarOpen ? '' : ''}`}></i> Menu
               </button>
             </a>
+           
           </center>
         </MDBCol>
 
