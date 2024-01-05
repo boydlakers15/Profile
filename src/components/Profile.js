@@ -179,7 +179,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                               </div>
                               <Modal show={showResumeModal} onHide={handleCloseResumeModal} size="xl">
                                 <Modal.Header closeButton>
-                                  <Modal.Title>Resume</Modal.Title>
+                                  <Modal.Title>Résumé</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
                                   <embed src={PDFFile} type="application/pdf" width="100%" height="700px" />
