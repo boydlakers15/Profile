@@ -12,12 +12,12 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          <HashRouter>
+        
             {/* Use the "element" prop instead of "component" */}
-            <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="/Profile" element={<LandingPage />} />
             <Route path="/Home" element={<Profile />} />
             <Route path="/Skills" element={<SkillsPage />} />
-          </HashRouter>
+          
         </Routes>
       </Router>
     </>

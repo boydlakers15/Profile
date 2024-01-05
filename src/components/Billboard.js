@@ -52,12 +52,12 @@ export const OverlayItem = ({
 };
 
 export function Model(props) {
-    const { nodes, materials } = useGLTF('/models/Billboard.glb')
+    const { nodes, materials } = useGLTF('./models/Billboard.glb')
     return (
         <group {...props} dispose={null}>
             <group>
                 <group {...props} dispose={null}>
-
+                <group name="Billboard_2">
                     <group position={[1.122, 0.154, -0.288]}>
                         <mesh name="Billboard_2_1002" geometry={nodes.Billboard_2_1002.geometry} material={materials['lambert3SG.002']} />
                         {Html && (
@@ -73,16 +73,16 @@ export function Model(props) {
                                 className={"transition delay-1000"}
                             />
                         )}
-        <group name="Billboard_2">
-          <mesh name="Billboard_2_1002" geometry={nodes.Billboard_2_1002.geometry} material={materials['lambert3SG.002']} />
-          <mesh name="Billboard_2_1002_1" geometry={nodes.Billboard_2_1002_1.geometry} material={materials['Material.006']} />
-          <mesh name="Billboard_2_1002_2" geometry={nodes.Billboard_2_1002_2.geometry} material={materials['Material.001']} />
-          <mesh name="Billboard_2_1002_3" geometry={nodes.Billboard_2_1002_3.geometry} material={materials['Material.002']} />
-          <mesh name="Billboard_2_1002_4" geometry={nodes.Billboard_2_1002_4.geometry} material={materials['Material.004']} />
-          <mesh name="Billboard_2_1002_5" geometry={nodes.Billboard_2_1002_5.geometry} material={materials['Material.005']} />
-          <mesh name="Billboard_2_1002_6" geometry={nodes.Billboard_2_1002_6.geometry} material={materials['Material.003']} />
-          <mesh name="Billboard_2_1002_7" geometry={nodes.Billboard_2_1002_7.geometry} material={materials['Material.007']} />
-          </group>
+                `` 
+                            <mesh name="Billboard_2_1002" geometry={nodes.Billboard_2_1002.geometry} material={materials['lambert3SG.002']} />
+                            <mesh name="Billboard_2_1002_1" geometry={nodes.Billboard_2_1002_1.geometry} material={materials['Material.006']} />
+                            <mesh name="Billboard_2_1002_2" geometry={nodes.Billboard_2_1002_2.geometry} material={materials['Material.001']} />
+                            <mesh name="Billboard_2_1002_3" geometry={nodes.Billboard_2_1002_3.geometry} material={materials['Material.002']} />
+                            <mesh name="Billboard_2_1002_4" geometry={nodes.Billboard_2_1002_4.geometry} material={materials['Material.004']} />
+                            <mesh name="Billboard_2_1002_5" geometry={nodes.Billboard_2_1002_5.geometry} material={materials['Material.005']} />
+                            <mesh name="Billboard_2_1002_6" geometry={nodes.Billboard_2_1002_6.geometry} material={materials['Material.003']} />
+                            <mesh name="Billboard_2_1002_7" geometry={nodes.Billboard_2_1002_7.geometry} material={materials['Material.007']} />
+                    </group>``
                     </group>
                     </group>
                 </group>
