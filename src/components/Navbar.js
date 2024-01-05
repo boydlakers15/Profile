@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
     const handleEnterButtonClick = () => {
 
-        navigate("/Home");
+        navigate("/Profile");
     };
 
   return (
