@@ -15,7 +15,7 @@ const App = () => {
           <HashRouter>
             {/* Use the "element" prop instead of "component" */}
             <Route path="/" element={<LandingPage />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/Home" element={<Profile />} />
             <Route path="/Skills" element={<SkillsPage />} />
           </HashRouter>
         </Routes>
