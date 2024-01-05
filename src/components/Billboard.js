@@ -23,7 +23,7 @@ export const OverlayItem = ({
     const navigate = useNavigate();
     const handleEnterButtonClick = () => {
 
-        navigate("/Profile");
+        navigate("/Home");
     };
 
     return (
