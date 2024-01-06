@@ -35,16 +35,13 @@ export const OverlayItem = ({
                 } transition-opacity duration-1000 ${className}`}
             {...props}
         >
-            <div className="bg-white bg-opacity-50 backdrop-blur-lg text-xs p-2 w-full">
-                <h2 className="font-bold">{title}</h2>
-                <p>{description}</p>
-            </div>
+           
             <button
                 onClick={handleEnterButtonClick}
 
                 className=" custom-button"
             >
-                OPEN
+                OPEN TO DISCOVER
             </button>
 
         </Html>

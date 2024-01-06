@@ -94,7 +94,7 @@ export const Experience = () => {
                 scale={1.2}
                 rotation-y={-degToRad(17.5)}
                 position-x={1.23} // Adjust the X position to move it to the right
-                position-y={0.67}
+                position-y={0.61}
                 position-z={1.967}
               />
            
