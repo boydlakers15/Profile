@@ -7,11 +7,11 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="vertical-menu">
-      <li ><Link to={'/Profile'}>Home</Link></li>
-        <li ><Link to={'/home'}>Profile</Link></li>
-        <li ><Link to={'/about'}>About Me</Link></li>
-        <li ><Link to="/skills">Skills</Link></li>
-        <li><a href="https://github.com/boydlakers15/certificates-jared">Certificates</a></li>
+        <li className='home'><Link  to={'/Profile'}>Home</Link></li>
+        <li ><Link className='profile' to={'/home'}>Profile</Link></li>
+        <li ><Link className='about' to={'/about'}>About Me</Link></li>
+        <li ><Link className='skills' to="/skills">Skills</Link></li>
+        <li><a className='github' href="https://github.com/boydlakers15/certificates-jared">Certificates</a></li>
         {/* Add more creative elements to your menu, like icons or animations */}
         <div className="cursor"></div>
       </ul>

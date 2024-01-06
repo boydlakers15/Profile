@@ -1,3 +1,28 @@
+.home{
+  text-align: center;
+  
+}
+
+.profile{
+  text-align: center;
+  
+}
+
+.about{
+  text-align: center;
+  
+}
+
+.skills{
+  text-align: center;
+  
+}
+
+.github{
+  text-align: center;
+  
+}
+
 nav {
     display: flex;
     justify-content: center;
@@ -14,6 +39,7 @@ nav {
     margin: 0 20px;
     position: relative;
     list-style: none;
+    
   }
   
   a {
@@ -31,6 +57,7 @@ nav {
     height: 2px;
     background-color: white;
     bottom: -5px;
+    
   }
   
   .cursor {
@@ -72,12 +99,21 @@ nav {
     text-decoration: none;
     display: block;
     padding: 10px;
-    color: #030303
+    color: white;
+    box-shadow:  2px 4px 5px rgb(255, 255, 255);
+    background: linear-gradient(45deg,#0000FF80, #000080);
   }
   
   .vertical-menu a:hover {
-    background-color: #00BBCD; /* Add a background color on hover for better visual feedback */
-    color: white;
+    background: linear-gradient(45deg, #FFA500, #ff4500); /* Add a background color on hover for better visual feedback */
+    color: transparent; /* Make the text transparent */
+    background-clip: text; /* Apply the background gradient to the text */
+    -webkit-background-clip: text; /* For older versions of WebKit browsers */
+    transition: color 0.3s ease; /* Smooth transition for text color change */
+  }
+  
+  .vertical-menu a:hover:hover {
+    color: linear-gradient(45deg, #FF4500, #FF0000); /* Apply the linear gradient to the text color on hover */
   }
 
   

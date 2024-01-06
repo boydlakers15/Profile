@@ -112,6 +112,61 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
     setShowResumeModal(false);
   };
 
+  const openFacebookLinkInPopup = (url) => {
+    const width = 1000;
+    const height = 600;
+
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+
+    window.open(
+      url,
+      'Facebook Popup',
+      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+    );
+  };
+
+  const openLinkedInLinkInPopup = (url) => {
+    const width = 1000;
+    const height = 600;
+
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+
+    window.open(
+      url,
+      'LinkedIn Popup',
+      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+    );
+  };
+
+  const openGithubLinkInPopup = (url) => {
+    const width = 1000;
+    const height = 600;
+
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+
+    window.open(
+      url,
+      'Github Popup',
+      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+    );
+  };
+
+  const openInstagramLinkInPopup = (url) => {
+    const width = 1000;
+    const height = 600;
+
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+
+    window.open(
+      url,
+      'Instagram Popup',
+      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+    );
+  };
   
   return (
     <section className={`profile-container ${isVisible ? 'visible' : ''}`} >
@@ -119,9 +174,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
         <MDBRow>
         <MDBCol className='fa-lg2'>
       
-            <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'white', backgroundColor: '#0d6efd' }}>
-              <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
-                <i className={`bi bi-house-down-fill  ${isSidebarOpen ? '' : ''}`}></i> Menu
+            <a className={`menu ${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} >
+              <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ color: 'white', fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
+                <i className={`bi bi-house-down-fill ${isSidebarOpen ? '' : ''}`}></i> Menu
               </button>
             </a>
            
@@ -131,9 +186,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
       
         </MDBRow>
         <br />
-        <MDBCard className="mb-4">
-              
-        </MDBCard>
+       <hr />
         <MDBRow>
           {isSidebarOpen && (
             <MDBCol lg="2" className={`d-none d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
@@ -166,15 +219,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                           />
                           <MDBCard className="mb-4 " style={{
                             transform: 'perspective(1000px) rotateY(10deg) translateZ(50px)',
-                            background: 'rgba(255, 255, 255, 0.9)',  // Adjust alpha value for transparency
+                             // Adjust alpha value for transparency
                             boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',  // Add box shadow for a subtle fade
                           }}>
                             <MDBCardBody className="text-center main2">
                               <h4 className="text-muted mb-1">Full Stack Developer</h4>
                               <p className="text-muted">Baden-Baden, Baden Württemberg, DE</p>
                               <div className="d-flex justify-content-center">
-                                <MDBBtn onClick={handleResumeClick} className="mt-1 fa-lg2 main ">
-                                  Resume
+                                <MDBBtn onClick={handleResumeClick} className="mt-1 fa-lg2  resume-button">
+                                  Résumé
                                 </MDBBtn>
                               </div>
                               <Modal show={showResumeModal} onHide={handleCloseResumeModal} size="xl">
@@ -232,34 +285,38 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                             </MDBCardBody>
                           </MDBCard>
                          
-                            <MDBCardBody className="p-3 rounded-3 ">
-                              <MDBListGroup flush className="rounded-4 ">
-                                <MDBListGroupItem  className="rounded-3 d-flex justify-content-between align-items-center  mb-1 p-3 card-with-fade-right card1" >
+                          <MDBCardBody className="p-3 rounded-3 ">
+                            <MDBListGroup flush className="rounded-4 ">
+                               <MDBListGroupItem  className="rounded-3 d-flex justify-content-between align-items-center  mb-1 p-3 card-with-fade-right card1" >
                                   <a href='#' onClick={handleFacebookIconClick} className='me-4 text-reset'>
                                   <MDBIcon fab icon="facebook fa-lg card1" style={{ color: '#3b5998' }} />
                                   </a>
-                                  <MDBCardText><a className=" facebook fa-lg1 card1left" href='https://www.facebook.com/jared.boyd.10' >Facebook</a></MDBCardText>
+                                  <MDBCardText><a className=" facebook fa-lg1 card1left" href='javascript:void(0);'
+                                    onClick={() => openFacebookLinkInPopup('https://www.facebook.com/jared.boyd.10')} >Facebook</a></MDBCardText>
                                 </MDBListGroupItem> 
                                 
                                 <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center mb-1 p-3 card-with-fade-right card2">
                                   <a href='#' onClick={handleGithubIconClick} className='me-4 text-reset'>
                                   <MDBIcon fab icon="github fa-lg card2" style={{ color: '#333333' }} />
                                   </a>
-                                  <MDBCardText><a href='https://github.com/boydlakers15'>Github</a></MDBCardText>
+                                  <MDBCardText><a className=" github fa-lg1 card1left" href='javascript:void(0);'
+                                    onClick={() => openGithubLinkInPopup('https://github.com/boydlakers15')}>Github</a></MDBCardText>
                                 </MDBListGroupItem>
                                
                                 <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center mb-1 p-3 card-with-fade-right card3">
                                   <a href='#'  onClick={handleLinkedInIconClick} className='me-4 text-reset'>
                                   <MDBIcon fab icon="linkedin fa-lg card3" style={{ color: '#55acee' }} />
                                   </a>
-                                  <MDBCardText><a href='https://www.linkedin.com/in/jared-boyd-89963b266/'>LinkedIn</a></MDBCardText>
+                                  <MDBCardText><a className=" linkedin fa-lg1 card1left" href='javascript:void(0);'
+                                    onClick={() => openLinkedInLinkInPopup('https://www.linkedin.com/in/jared-boyd-89963b266/')}>LinkedIn</a></MDBCardText>
                                 </MDBListGroupItem>
                              
                                 <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center p-3 card-with-fade-right card4">
                                 <a href='#' onClick={handleInstagramIconClick} className='me-4 text-reset'>
                                   <MDBIcon fab icon="instagram fa-lg card4" style={{ color: '#ac2bac' }} />
                                   </a>
-                                  <MDBCardText><a href='https://www.instagram.com/jared.boyd.10/'>Instagram</a></MDBCardText>
+                                  <MDBCardText><a className=" instagram fa-lg1 card1left" href='javascript:void(0);'
+                                    onClick={() => openInstagramLinkInPopup('https://www.instagram.com/jared.boyd.10/')}>Instagram</a></MDBCardText>
                                 </MDBListGroupItem>
                                 
                               </MDBListGroup>
@@ -275,23 +332,23 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
           </MDBCol>
         </MDBRow>
         <br />
-        <MDBRow>
-            <MDBCol md="6">
-              <MDBCard className="mb-4 mb-md-0 ">
-                <MDBCardBody>
+        <MDBRow className="skills-card ">
+            <MDBCol  md="6" >
+              <MDBCard className="first " id="skills2" >
+                <MDBCardBody >
                   <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 ">Web Development</span> Skills</MDBCardText>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>HTML</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1 " >HTML</MDBCardText>
                   <MDBProgress className="rounded">
                     <MDBProgressBar width={90} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>CSS</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1" >CSS</MDBCardText>
                   <MDBProgress className="rounded">
                     <MDBProgressBar width={85} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>JavaScript</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1">JavaScript</MDBCardText>
                   <MDBProgress className="rounded">
                     <MDBProgressBar width={80} valuemin={0} valuemax={100} />
                   </MDBProgress>
@@ -302,23 +359,23 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
             </MDBCol>
 
             <MDBCol md="6">
-              <MDBCard className="mb-4 mb-md-0">
-                <MDBCardBody>
+              <MDBCard className="mb-4 mb-md-0 second" id="skills2">
+                <MDBCardBody className="" >
                   <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">App Development</span> Skills</MDBCardText>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>React Native</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1" >React Native</MDBCardText>
                   <MDBProgress className="rounded">
-                    <MDBProgressBar width={85} valuemin={0} valuemax={100} />
+                    <MDBProgressBar className="" width={85} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Swift</MDBCardText>
-                  <MDBProgress className="rounded">
-                    <MDBProgressBar width={75} valuemin={0} valuemax={100} />
+                  <MDBCardText className="mt-4 mb-1">Swift</MDBCardText>
+                  <MDBProgress className="rounded ">
+                    <MDBProgressBar className="" width={75} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
-                  <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Android (Java/Kotlin)</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1" >Android (Java/Kotlin)</MDBCardText>
                   <MDBProgress className="rounded">
-                    <MDBProgressBar width={70} valuemin={0} valuemax={100} />
+                    <MDBProgressBar  width={70} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
                   {/* Add more skills as needed */}

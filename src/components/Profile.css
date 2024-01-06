@@ -11,16 +11,33 @@ body,
   padding: 0;
 }
 
-root{
-  background-color: #333333;
 
+
+/* styles.css */
+.resume-button.btn {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  color: white;
+  box-shadow:  2px 4px 5px rgb(255, 255, 255);
+  background: linear-gradient(45deg,#0000FF80, #000080);
+}
+
+.resume-button.btn:hover {
+  background: linear-gradient(45deg, #FFA500, #ff4500); /* Add a background color on hover for better visual feedback */
+  color: transparent; /* Make the text transparent */
+  background-clip: text; /* Apply the background gradient to the text */
+  -webkit-background-clip: text; /* For older versions of WebKit browsers */
+  transition: color 0.3s ease; /* Smooth transition for text color change */
+  box-shadow: 10px 10px 20px rgba(0, 0, 255, 0.5);
+  
 }
 
 .main{
   
 }
 
-.main2{
+.main2 {
   box-shadow: -4px 5px 5px rgb(0, 0, 0);
 }
 
@@ -29,8 +46,6 @@ root{
   margin: 2rem auto;
   
 }
-
-
 
 body {
   font-family: 'Arial', sans-serif;
@@ -42,7 +57,6 @@ body {
     border: 2px solid black;
    
   }
-
 
 
 .link{
@@ -70,7 +84,25 @@ a:hover{
   color: white;
 }
 
+.facebook {
+  text-decoration: none;
+  color: #3B5998;
+}
 
+.github{
+  text-decoration: none;
+  color: #333333;
+}
+
+.linkedin{
+  text-decoration: none;
+  color: #59ADEC;
+}
+
+.instagram{
+  text-decoration: none;
+  color: #B336AA;
+}
 
 /* Styling when the link is hovered */
 .facebook-link:hover {
@@ -122,10 +154,15 @@ a:hover{
     box-shadow:  2px 4px 5px black;
   }
   
+  .menu{
+    background: linear-gradient(45deg, #FFA500, #FF4500);
+    box-shadow: 10px 10px 20px rgba(255, 69, 0, 0.5);
+  }
   
   /* Sidebar Styles */
   .bg-light {
     background-color: #f8f9fa;
+    
   }
   
   .sidebar {
@@ -137,7 +174,7 @@ a:hover{
     border: 5px;
     border-color: #333;
     box-shadow:  2px 4px 5px black;
-    background-color: rgba(144, 238, 144, 0.2);
+    
   }
   .bg-light{
     transform: translateY(-2px);
@@ -150,6 +187,7 @@ a:hover{
     transform: translateY(-2px);
     box-shadow:  2px 4px 5px rgb(255, 255, 255);
     background-color: rgba(64, 197, 209, 0.2);
+    
     /* Add any other styles you want to apply when the element is raised */
   }
 
@@ -157,30 +195,32 @@ a:hover{
   .raised {
     /* Add styles for the raised button, for example: */
     transform: translateY(0px);
-    box-shadow:  2px 4px 5px rgb(255, 255, 255);
-    background-image: url(./IMG/pexels.jpg);
     background-position: center;
     background-repeat: no-repeat;  
     background-size: cover;
-    
-   
+       
   }
   
   .main-content {
     margin-left: 1rem; /* Adjust the left margin for better responsiveness */
     margin-right: 1rem; /* Adjust the right margin for better responsiveness */
   }
+
+  .first{
+   margin-right: 7px;
+  }
   
   /* Card Styles */
   .card {
     margin-bottom: 1rem;
-    box-shadow:  2px 4px 5px rgb(255, 255, 255);
+    box-shadow:  2px 4px 5px rgb(0, 0, 0);
    
   }
   
   /* Card Body Styles */
   .card-body {
     text-align: center;
+    justify-content: center;
     
   }
 
@@ -211,6 +251,7 @@ a:hover{
   transition: transform 2s ease-out, background-color 0.3s ease-out;
   top: 40px;
   box-shadow:  2px 4px 5px black;
+
 }
 
 .card-with-fade-right:hover {
@@ -240,7 +281,7 @@ a:hover{
 
 .card-with-fade-right.card1:hover {
   background-color: #3C5A96; /* Change to your desired hover background color for card1 */
-  width: 420px;
+ 
 }
 
 .card-with-fade-right.card2:hover {
@@ -286,22 +327,7 @@ a:hover{
   box-shadow:  2px 4px 5px black;
 }
 
-.fa-lgF.card1left::after {
-  content: 'Click Me';
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 10px); /* Adjust the distance from the icon */
-  transform: translateY(-50%);
-  background-color: transparent;
-  color: #3b5998;
-  padding: 2px 5px;
-  border-radius: 3px;
-  font-size: 12px; /* Adjust the font size as needed */
-  white-space: nowrap; /* Prevent the text from wrapping to the next line */
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  box-shadow:  2px 4px 5px black;
-}
+
 
 .fa-lg.card2::after {
   content: 'Click Me';
@@ -458,6 +484,8 @@ footer {
   transform-origin: 50% 50%;
 }
 
+
+
 @keyframes confetti-fall {
   0%, 100% {
     transform: translateY(0) rotate(0);
@@ -476,61 +504,216 @@ footer {
   }
 }
 
-  /* Responsive Styles */
-  @media (max-width: 767px) {
-    /* Styles for small screens (e.g., smartphones) */
-    .sidebar {
-      display: none; /* Hide the sidebar on small screens */
-    }
-  
-    .main-content {
-      margin-left: 0;
-      margin-right: 0; /* Remove margins on small screens for better fit */
-    }
-  
-    .centered-content-container {
-      height: auto; /* Allow the content to take up the available height */
-    }
-  
-    .card-body {
-      padding: 1rem; /* Add some padding to the card body for better readability */
-    }
+
+  /* ... (Your existing styles) ... */
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+
+   /* Adjust padding for smaller screens */
+   .card-body {
+    max-width: 100%;
+    font-size: x-small; /* Adjust the width of the card body on smaller screens */
+    max-height: 70%; /* Adjust the height of the card body on smaller screens */
+    margin: 1rem; /* Adjust the margin for smaller screens */
+    padding: 0rem; /* Adjust the padding for smaller screens */
   }
-  /* Responsive styles for tablets */
+
+  
+
+  /* Adjust max-width for smaller screens */
+  .card {
+    border: none;
+    box-shadow: none;
+    max-width: 100%; /* Adjust the width of the card on smaller screens */
+  }
+
+  #skills2{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important; 
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    
+   }
+
+  
+
+  .MDBCol {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .MDBCardText {
+    font-size: 0.9rem; /* Adjust the font size for text on smaller screens */
+    font-size: x-small;
+  }
+
+  .MDBCardBody {
+    padding: 0.5rem; /* Add padding to the card body for better spacing on smaller screens */
+    font-size: x-small;
+  }
+
+  .custom-progress {
+    --bs-progress-height: 0.5rem; /* Adjust the progress bar height */
+    --bs-progress-font-size: 0.5rem; /* Adjust the progress bar font size */
+    --bs-progress-border-radius: 0.25rem; /* Adjust the progress bar border radius */
+  }
+
+  .skills-card{
+    padding: 2px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+  
+  }
+
+  .rounded .progress-bar  {
+    height: 8px; /* Adjust the height of the progress bar for smaller screens */
+    --bs-progress-height: 0rem !important;
+  }
+
+  .progress,
+  .progress-stacked {
+    --bs-progress-height: 0.5rem !important;
+  }
+
+  .first,
+  .second {
+    margin-right: 90px !important;
+    margin-top: -10px !important;
+    padding-top: 80px !important;
+  }
+
+  .first,
+  .second {
+    font-size: initial !important;
+    height: initial !important;
+    border-radius: initial !important;
+  }
+
+  .container {
+    max-width: 90%;
+    padding: 0 10px;
+    font-size: x-small;
+  }
+
+  .image-card {
+    height: 30px; /* Adjust the height for iPhones */
+    font-size: x-small;
+  }
+
+  .fa-lg1::after,
+  .fa-lg2::after,
+  .fa-lg1.card1left::after {
+    font-size: x-small;
+  }
+
+  .profile-container.visible {
+    top: 50px; /* Adjust the top position for better visibility on iPhones */
+    font-size: x-small;
+  }
+
+  .centered-content-container {
+    top: 50%;
+    font-size: x-small;
+  }
+
+  .sidebar {
+    display: none; /* Hide the sidebar on small screens */
+    font-size: x-small;
+  }
+
+  .carousel-item.active {
+    margin-left: 0;
+    margin-right: 0; /* Remove margins on small screens for better fit */
+    font-size: x-small;
+  }
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for phones */
+  }
+
+  .card-text {
+    font-size: x-small;
+  }
+
+  .card-body {
+    max-width: 70%;
+  }
+
+  .menu {
+    box-shadow: none; /* Remove box shadow on small screens */
+    font-size: 14px; /* Adjust the font size for the menu button */
+    padding: 8px 12px; /* Adjust padding for the menu button */
+    font-size: x-small;
+  }
+
+  .bg-light {
+    transform: translateY(0); /* Adjust the transform on small screens */
+    font-size: x-small;
+  }
+
+  .raised {
+    transform: translateY(0); /* Adjust the transform on small screens */
+    font-size: x-small;
+  }
+
+  .container {
+    max-width: 100%; /* Adjust the max-width for small screens */
+    padding: 0 10px; /* Add some padding for small screens */
+    font-size: x-small;
+  }
+
+  .carousel-item {
+    height: 200px; /* Adjust the height of carousel items for better visibility on phones */
+  }
+
+  .fa-lg.card1::after {
+    font-size: x-small; /* Adjust the font size as needed */
+  }
+}
+
+
+/* Responsive styles for tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .square-image {
-      height: 300px; /* Adjust the height for tablets */
-    }
-  
-    .centered-content-container {
-      padding: 20px; /* Add some padding for tablets */
-    }
-  
-    .rounded-circle {
-      width: 100px; /* Adjust the width for tablets */
-    }
-  
-    .card-body {
-      padding: 20px; /* Add some padding for tablets */
-    }
+  .square-image {
+    height: 300px; /* Adjust the height for tablets */
   }
-  
-  /* Responsive styles for phones */
-  @media (max-width: 767px) {
-    .square-image {
-      height: 200px; /* Adjust the height for phones */
-    }
-  
-    .centered-content-container {
-      padding: 10px; /* Add some padding for phones */
-    }
-  
-    .rounded-circle {
-      width: 80px; /* Adjust the width for phones */
-    }
-  
-    .card-body {
-      padding: 10px; /* Add some padding for phones */
-    }
+
+  .centered-content-container {
+    padding: 20px; /* Add some padding for tablets */
   }
+
+  .rounded-circle {
+    width: 100px; /* Adjust the width for tablets */
+  }
+
+  .card-body {
+    padding: 20px; /* Add some padding for tablets */
+  }
+}
+
+/* Responsive styles for phones */
+@media (max-width: 767px) {
+  .square-image {
+    height: 200px; /* Adjust the height for phones */
+  }
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for phones */
+  }
+
+  .rounded-circle {
+    width: 80px; /* Adjust the width for phones */
+  }
+
+  .card-body {
+    padding: 10px; /* Add some padding for phones */
+  }
+}
   
