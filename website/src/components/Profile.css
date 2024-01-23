@@ -1,0 +1,1207 @@
+
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+}
+
+#menu-button{
+  color: 'white';
+  font-Size: '2rem';
+  padding: '10px 20px';
+  border: '1px solid #ddd';
+  text-shadow: '2px 2px 4px #000';
+}
+
+/* styles.css */
+.resume-button.btn {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  color: white;
+  box-shadow:  2px 4px 5px rgb(255, 255, 255);
+  background: linear-gradient(45deg,#0000FF80, #000080);
+}
+
+.resume-button.btn:hover {
+  background: linear-gradient(45deg, #FFA500, #ff4500); /* Add a background color on hover for better visual feedback */
+  color: transparent; /* Make the text transparent */
+  background-clip: text; /* Apply the background gradient to the text */
+  -webkit-background-clip: text; /* For older versions of WebKit browsers */
+  transition: color 0.3s ease; /* Smooth transition for text color change */
+  box-shadow: 10px 10px 20px rgba(0, 0, 255, 0.5);
+  
+}
+
+.main2 {
+  box-shadow: -4px 5px 5px rgb(0, 0, 0);
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+  .button {
+    border: 2px solid black;
+   
+  }
+
+
+.link{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #3B5998; /* Initial color for the link */
+ 
+}
+
+.image-card{
+  height: 600px;
+  
+}
+
+.link:hover{
+  background-color: transparent;
+  text-decoration: none;
+  color: transparent;
+
+}
+
+
+a:hover{
+  color: white;
+}
+
+.facebook {
+  text-decoration: none;
+  color: #3B5998;
+}
+
+
+.github{
+  text-decoration: none;
+  color: #333333;
+}
+
+
+.linkedin{
+  text-decoration: none;
+  color: #59ADEC;
+}
+
+.instagram{
+  text-decoration: none;
+  color: #B336AA;
+}
+
+
+
+.fa-lg{
+  font-size: 2em;
+  margin-left: 6px;
+}
+
+.fa-lg1:hover{
+  transform: scale(1);
+  
+}
+.fa-lg2:hover{
+  transform: scale(1);
+  
+}
+.fa-lg1.card1left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: 4px;
+    top: calc(100% + 23px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    background-color: #3B5998;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card2left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: -2px;
+    top: calc(100% + 22px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card3left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: 0px;
+    top: calc(100% + 26px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #59ADEC;
+    color: rgb(255, 255, 255);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card4left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: 6px;
+    top: calc(100% + 26px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #B336AA;
+    color: rgb(255, 255, 255);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+  
+  .menu{
+    background: linear-gradient(45deg, #FFA500, #FF4500);
+    box-shadow: 10px 10px 20px rgba(255, 69, 0, 0.5);
+  }
+  
+  /* Sidebar Styles */
+  .bg-light {
+    background-color: #f8f9fa;
+    
+  }
+  
+  .sidebar {
+    padding: 1rem;
+    
+  }
+
+  .sidebar-open {
+    border: 1px;
+    border-color: #333;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  .bg-light{
+    transform: translateY(-2px);
+    box-shadow:  2px 4px 5px black;
+    background-color: rgba(94, 234, 94, 0.2);
+  }
+
+  .raised1 {
+    /* Add styles for the raised effect, for example: */
+    transform: translateY(-2px);
+    box-shadow:  2px 4px 5px rgb(255, 255, 255);
+    background-color: rgba(64, 197, 209, 0.2);
+    
+    /* Add any other styles you want to apply when the element is raised */
+  }
+
+  
+  .raised {
+    /* Add styles for the raised button, for example: */
+    transform: translateY(0px);
+    background-position: center;
+    background-repeat: no-repeat;  
+    background-size: cover;
+       
+  }
+  
+  .main-content {
+    margin-left: 1rem; /* Adjust the left margin for better responsiveness */
+    margin-right: 1rem; /* Adjust the right margin for better responsiveness */
+  }
+
+  .first{
+   margin-right: 7px;
+  }
+  
+  /* Card Styles */
+  .card {
+    margin-bottom: 1rem;
+    box-shadow:  2px 4px 5px rgb(0, 0, 0);
+   
+  }
+  
+  /* Card Body Styles */
+  .card-body {
+    text-align: center;
+    justify-content: center;
+    
+  }
+
+  /* Add these styles to your CSS file */
+
+
+  .card-with-fade-links {
+    transform: perspective(120px) rotateY(-20deg) translateZ(0px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 20px;
+    left: 10px;
+    
+  }
+
+.card-with-fade {
+  transform: perspective(500px) rotateY(-15deg) translateZ(0px);
+  background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+  box-shadow:  2px 4px 5px black;
+  top: 20px;
+  left: 10px;
+  
+}
+
+ #social-links{
+  display: flex;
+  flex-direction: row;
+  padding-left: 40px;
+  
+}
+
+/* Add these styles to your CSS file */
+
+.card-with-fade-right {
+  position: relative;
+ 
+  margin-left: 2px;
+  top: 40px;
+  box-shadow: 2px 4px 5px black;
+
+
+}
+
+.card-with-fade-right:hover {
+  transform: translateX(20px);
+  transform: translateY(20px);
+   transition: transform 2s ease-out
+}
+
+.card-with-fade-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.card-with-fade-right:hover::before {
+  transform-origin: bottom;
+  transform: scaleX(80%);
+  
+}
+
+.card1 hr {
+  color: #3B5998;
+}
+
+.card2 hr {
+  color: #333333;
+  
+}
+
+.card3 hr {
+  color: #59ADEC;
+}
+
+.card4 hr {
+  color: #B336AA;
+ 
+}
+
+
+
+.card-with-fade-right.card1:hover {
+  background: linear-gradient(180deg,  #ffffff,  #3B5998, #ffffff00); /* Change to your desired hover background color for card1 */
+ font-weight: bold;
+}
+
+#card2:hover {
+  background: linear-gradient(180deg,  #ffffff,  #333333, #ffffff71); /* Change to your desired hover background color for card2 */
+  color: white;
+  font-weight: bold;
+}
+
+.card-with-fade-right.card3:hover {
+  background: linear-gradient(180deg,  #ffffff,  #59ADEC, #ffffff00); /* Change to your desired hover background color for card3 */
+  font-weight: bold;
+  color: #59ADEC;
+}
+
+.card-with-fade-right.card4:hover {
+  background: linear-gradient(180deg,  #ffffff,  #B336AA, #ffffff00); /* Change to your desired hover background color for card3 */
+  font-weight: bold;
+  color: #B336AA;
+}
+
+.card-with-fade .card-image {
+  margin-bottom: 15px; /* Add margin-bottom for space between image and text */
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px; /* Adjust margin to your preference */
+}
+
+.fa-lg:hover{
+  transform: scale(1);
+  margin-left: 6px;
+}
+
+.fa-lgF:hover{
+  transform: scale(1.2);
+  
+}
+.fa-lg.card1::after {
+  content: 'Click Me';
+  position: absolute;
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
+  background-color: transparent;
+  color: white;
+  background: #3B5998;
+  padding-right: 2px;
+  margin-left: -1px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-size: 22px; /* Adjust the font size as needed */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-shadow: 2px 4px 5px black;
+}
+
+
+
+.fa-lg.card2::after {
+  content: 'Click Me';
+  position: absolute;
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
+  background-color: transparent;
+  color: white;
+  background: #333333;
+  padding-right: 2px;
+  margin-left: -1px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-size: 22px; /* Adjust the font size as needed */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-shadow: 2px 4px 5px black;
+}
+
+.fa-lg.card3::after {
+   content: 'Click Me';
+  position: absolute;
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
+  background-color: transparent;
+  color: white;
+  background: #55aecc;
+  padding-right: 2px;
+  margin-left: 5px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-size: 22px; /* Adjust the font size as needed */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-shadow: 2px 4px 5px black;
+}
+
+.fa-lg.card4::after {
+  content: 'Click Me';
+  position: absolute;
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
+  background-color: transparent;
+  color: white;
+  background-color: #ac2bac;
+  padding-right: 2px;
+  margin-left: 3px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-size: 22px; /* Adjust the font size as needed */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-shadow: 2px 4px 5px black;
+}
+
+
+.fa-lg:hover::after {
+  opacity: 1;
+}
+
+
+
+.profile-container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background-image: url('https://w.forfun.com/fetch/9f/9f2d0e3840ab815c6807d791aa58eb68.jpeg');
+  background-position: center;
+    background-repeat: no-repeat;  
+    background-size: cover;
+  
+}
+
+.profile-container.visible {
+  opacity: 1;
+}
+
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  
+}
+
+nav ul li {
+  margin-right: 1rem;
+  
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  box-shadow:  2px 4px 5px black;
+}
+
+/* Add the following styles to highlight the active menu item */
+nav a.active {
+  border-bottom: 2px solid white;
+  
+}
+
+
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  
+  bottom: 0;
+  width: 100%;
+}
+
+/* Add this to your existing styles or create a new stylesheet */
+.square-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  
+}
+
+.square{
+  position: relative;
+  display: inline-block;
+  /* Make it square by setting equal width and height */
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+
+}
+
+.centered-content-container {
+  position: inherit;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+/* Add this to your CSS file */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffcc00; /* Confetti color */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: confetti-fall 6s ease-out;
+  transform-origin: 50% 50%;
+}
+
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.skills-card{
+  padding: 2px 14px;
+  flex: 0;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 65.5px;
+}
+
+
+@keyframes confetti-fall {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  25% {
+    transform: translateY(-20vh) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(0) rotate(0);
+  }
+
+  75% {
+    transform: translateY(-20vh) rotate(-45deg);
+  }
+}
+
+
+  /* ... (Your existing styles) ... */
+
+/* Your existing styles outside media query */
+
+/* Responsive Styles */
+@media (min-width: 350px) and (max-width: 767px) {
+ 
+  .main {
+    position: relative;
+    right: 0%;
+    bottom: 0rem;
+    left: 0%;
+    padding: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .main2{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 100%;
+    overflow: hidden;
+  }
+
+ 
+  .row {
+    --bs-gutter-x: 0.75rem;
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 10%;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+
+ 
+
+  .square-image {
+    width: 10%;
+    padding-top: 30px;
+  }
+
+  .image-card {
+    height: 500px;
+    margin-top: 0px;
+    font-size: medium;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  
+  .text-muted{
+    font-weight: bold;
+    
+  }
+
+
+  #skills2 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+
+
+  .custom-progress {
+    --bs-progress-height: 0.5rem;
+    --bs-progress-font-size: 0.5rem;
+    --bs-progress-border-radius: 0.25rem;
+  }
+
+  .skills-card {
+    padding: 2px 0px;
+    flex: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 12.25px;
+  }
+
+  .fa-lg1::after,
+  .fa-lg2::after,
+  .fa-lg1.card1left::after {
+    font-size: x-small;
+  }
+
+
+  .rounded .progress-bar {
+    height: 8px;
+    --bs-progress-height: 0rem !important;
+  }
+
+  .progress,
+  .progress-stacked {
+    --bs-progress-height: 0.5rem !important;
+  }
+
+  .first,
+  .second {
+    margin-right: 20px !important;
+    margin-top: -10px !important;
+    padding-top: 80px !important;
+  }
+
+  .first,
+  .second {
+    font-size: initial !important;
+    height: initial !important;
+    border-radius: initial !important;
+  }
+
+
+  .container {
+    max-width: 100%; /* Adjust the max-width for small screens */
+    padding: 0 5px; /* Add some padding for small screens */
+    font-size: 12px;
+    --bs-gutter-x: 1rem;
+  }
+
+  .info-card {
+    font-size: 12px;
+    width: fit-content;
+  }
+
+  .new{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    z-index: 1;
+    
+  }
+
+  .profile-container.visible {
+    top: 50px;
+    font-size: x-small;
+  }
+
+  .centered-content-container {
+    top: 50%;
+    font-size: x-small;
+  }
+
+  .sidebar {
+   
+    font-size: x-small;
+  }
+
+  .carousel-item {
+    height: auto; /* Adjust the height of carousel items for better visibility on phones */
+    
+  }
+
+  .carousel-item.active {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: x-small;
+  }
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for phones */
+  }
+
+  .card-text {
+    font-size: x-small;
+    
+  }
+
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+
+  .card-with-fade {
+    transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .menu {
+    box-shadow: none; /* Remove box shadow on small screens */
+    font-size: 0px; /* Adjust the font size for the menu button */
+    padding: 0px 0px; /* Adjust padding for the menu button */
+    font-size: 12px;
+  }
+
+  .bg-light {
+    transform: translateY(0); /* Adjust the transform on small screens */
+    font-size: x-small;
+  
+  }
+
+  .raised {
+    transform: translateY(0);
+    font-size: x-small;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+    font-size: x-small;
+  }
+
+ 
+  .fa-lg.card1::after {
+    font-size: x-small;
+  }
+
+  .list-group{
+    max-width: 100%;
+    max-height: 80%;
+  }
+    
+}
+
+
+/* Responsive styles for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+ 
+.list-group{
+  max-width: 100%;
+  max-height: 80%;
+}
+  
+.new{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+  z-index: 1;
+  
+}
+
+
+  .carousel-item.active {
+    margin-left: 0;
+    margin-right: 0; /* Remove margins on small screens for better fit */
+    font-size: x-small;
+  }
+
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for phones */
+  }
+
+  
+  
+  .bg-light {
+    transform: translateY(0); /* Adjust the transform on small screens */
+    font-size: x-small;
+  
+  }
+
+ 
+  .carousel-item {
+    height: max-content; /* Adjust the height of carousel items for better visibility on phones */
+    
+  }
+
+  .container {
+    max-width: 100%; /* Adjust the max-width for small screens */
+    padding: 0 10px; /* Add some padding for small screens */
+    font-size: 12px;
+
+  }
+
+
+  .menu {
+    box-shadow: none; /* Remove box shadow on small screens */
+    font-size: 0px; /* Adjust the font size for the menu button */
+    padding: 0px 0px; /* Adjust padding for the menu button */
+    font-size: x-small;
+  }
+ 
+
+  .main2{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+  
+  .card-with-fade {
+    transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .text-muted{
+    font-weight: bold;
+    
+  }
+  
+  .fa-lg1::after,
+  .fa-lg2::after,
+  .fa-lg1.card1left::after {
+    font-size: x-small;
+  }
+
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for tablets */
+  }
+
+  .rounded-circle {
+    width: 100px; /* Adjust the width for tablets */
+  }
+
+.info-card h4{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 22px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+  .info-card{
+    font-size: 12px;
+    width: fit-content;
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 60%;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+
+ 
+
+  .square-image {
+    width: 100%;
+ 
+  }
+  .image-card {
+    height: 500px;
+    margin-top: 0px;
+    font-size: medium;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  
+  
+}
+
+/* Responsive styles for phones */
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+  .list-group{
+    max-width: 100%;
+    max-height: 80%;
+  }
+
+  .square-image {
+    width: 100%;
+ 
+  }
+
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 90%;
+    overflow: hidden;
+  
+  }
+
+  .image-card {
+    height: 600px;
+    margin-top: 60px;
+    font-size: medium;
+    background-color: #f5f5f5;
+  }
+  
+.main2{
+  position: relative;
+  display: inline-block;
+  /* Make it square by setting equal width and height */
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-with-fade {
+  transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+  background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+  box-shadow:  2px 4px 5px black;
+  top: 10px;
+  left: 60px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.info-card h4{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 22px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.info-card{
+  font-size: 16px;
+  width: fit-content;
+}
+
+
+.new{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+  z-index: 1;
+
+}
+
+  
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for tablets */
+  }
+
+  .rounded-circle {
+    width: 100px; /* Adjust the width for tablets */
+  }
+
+  .card-body {
+    padding: 20px; /* Add some padding for tablets */
+  }
+
+  .links-card{
+    margin-top: 30px;
+    
+  }
+}
+  
