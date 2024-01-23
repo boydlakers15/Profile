@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "homepage": "https://boydlakers15.github.io/Profile/",
+  "homepage": "https://boydlakers15.github.io/Profile",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -59,12 +59,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "npm run dev"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -88,8 +87,6 @@
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.0"
-  },
-  "resolve": {
-    "extensions": "['.js', '.jsx']"
   }
+
 }
