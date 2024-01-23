@@ -27,7 +27,8 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+   
+    
   }
   
   ul {
@@ -83,7 +84,7 @@ nav {
   .vertical-menu {
     flex-direction: column;
     list-style: none;
-    padding: 0;
+    padding: 10px;
   }
   
   .vertical-menu li {
@@ -123,6 +124,7 @@ nav {
   
   /* Responsive styles for tablets and smaller screens */
 @media (max-width: 1024px) {
+  
   li {
     margin: 0 10px; /* Adjust margin for smaller screens */
   }
@@ -134,15 +136,12 @@ nav {
 
 /* Responsive styles for phones */
 @media (max-width: 767px) {
-  ul {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-  }
 
   li {
-    margin: 10px 0; /* Adjust margin for smaller screens */
+    margin: 0 10px; /* Adjust margin for smaller screens */
   }
 
-  .cursor {
-    display: none; /* Hide the cursor on smaller screens */
+  a {
+    font-size: 16px; /* Decrease font size for smaller screens */
   }
 }

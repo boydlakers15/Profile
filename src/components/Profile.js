@@ -39,7 +39,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Bootstrap JS
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 
 
@@ -171,11 +171,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
   return (
     <section className={`profile-container ${isVisible ? 'visible' : ''}`} >
       <MDBContainer className="py-2">
-        <MDBRow>
+        <MDBRow className="new">
         <MDBCol className='fa-lg2'>
       
             <a className={`menu ${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} >
-              <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ color: 'white', fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
+              <button className={`btn menu-button ${isSidebarOpen ? 'raised' : ''}`} style={{ color: 'white', fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
                 <i className={`bi bi-house-down-fill ${isSidebarOpen ? '' : ''}`}></i> Menu
               </button>
             </a>
@@ -187,153 +187,147 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
         </MDBRow>
         <br />
        <hr />
-        <MDBRow>
-          {isSidebarOpen && (
-            <MDBCol lg="2" className={`d-none d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
-            {/* Sidebar content */}
-            <div >
-              <br />
-              <Navbar  />
-            </div>
-          </MDBCol>
-          )}
-          <MDBCol md={isSidebarOpen ? '10' : '12'}>
-            {/* Main content */}
-            <MDBCarousel className='main'>
-              <MDBCarouselItem  itemId={1}>
-                <div className="d-flex justify-content-center align-items-center image-card " >
-                  {/* Center the image and make it square */}
-                  
-                </div>
-                <div className="centered-content-container">
-                  <MDBCarouselCaption>
-                    <MDBContainer className="py-5">
-                      <MDBRow>
-                        <MDBCol md="4" style={{ marginTop: '40px' }}>
-                          <MDBCardImage
-                            src={img2}
-                            alt="avatar"
-                            className="square  mb-1 fa-lg2 "
-                            style={{ width: '180px' }}
-                            fluid
-                          />
-                          <MDBCard className="mb-4 " style={{
-                            transform: 'perspective(1000px) rotateY(10deg) translateZ(50px)',
-                             // Adjust alpha value for transparency
-                            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',  // Add box shadow for a subtle fade
-                          }}>
-                            <MDBCardBody className="text-center main2">
-                              <h4 className="text-muted mb-1">Full Stack Developer</h4>
-                              <p className="text-muted">Baden-Baden, Baden Württemberg, DE</p>
-                              <div className="d-flex justify-content-center">
-                                <MDBBtn onClick={handleResumeClick} className="mt-1 fa-lg2  resume-button">
-                                  Résumé
-                                </MDBBtn>
-                              </div>
-                              <Modal show={showResumeModal} onHide={handleCloseResumeModal} size="xl">
-                                <Modal.Header closeButton>
-                                  <Modal.Title>Résumé</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                  <embed src={PDFFile} type="application/pdf" width="100%" height="700px" />
-                                  <Button variant="secondary" onClick={handleCloseResumeModal}>
-                                    Close
-                                  </Button>
-                                </Modal.Body>
-                              </Modal>
-                            </MDBCardBody>
-                          </MDBCard>
-                        </MDBCol>
-                        <MDBCol md="8" className='p-3' >
-                        <MDBCard className=" card-with-fade" >
-                            <MDBCardBody >
-                              <MDBRow >
-                                <MDBCol sm="3">
-                                  <MDBCardText>Full Name</MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                  <MDBCardText className="text-muted">Jared Boyd</MDBCardText>
-                                </MDBCol>
-                              </MDBRow>
-                              <hr />
-                              <MDBRow>
-                                <MDBCol sm="3">
-                                  <MDBCardText>Email</MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                  <MDBCardText className="text-muted">jboyd115@icloud.com</MDBCardText>
-                                </MDBCol>
-                              </MDBRow>
-                              <hr />
-                              <MDBRow>
-                                <MDBCol sm="3">
-                                  <MDBCardText>Mobile</MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                  <MDBCardText className="text-muted">+491778805055</MDBCardText>
-                                </MDBCol>
-                              </MDBRow>
-                              <hr />
-                              <MDBRow>
-                                <MDBCol sm="3">
-                                  <MDBCardText>Address</MDBCardText>
-                                </MDBCol>
-                                <MDBCol sm="9">
-                                  <MDBCardText className="text-muted">Baden-Baden, Baden Württemberg ,DE</MDBCardText>
-                                </MDBCol>
-                              </MDBRow>
-                            </MDBCardBody>
-                          </MDBCard>
-                         
-                          <MDBCardBody className="p-3 rounded-3 ">
-                            <MDBListGroup flush className="rounded-4 ">
-                               <MDBListGroupItem  className="rounded-3 d-flex justify-content-between align-items-center  mb-1 p-3 card-with-fade-right card1" >
-                                  <a href='#' onClick={handleFacebookIconClick} className='me-4 text-reset'>
-                                  <MDBIcon fab icon="facebook fa-lg card1" style={{ color: '#3b5998' }} />
-                                  </a>
-                                  <MDBCardText><a className=" facebook fa-lg1 card1left" href='javascript:void(0);'
-                                    onClick={() => openFacebookLinkInPopup('https://www.facebook.com/jared.boyd.10')} >Facebook</a></MDBCardText>
-                                </MDBListGroupItem> 
-                                
-                                <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center mb-1 p-3 card-with-fade-right card2">
-                                  <a href='#' onClick={handleGithubIconClick} className='me-4 text-reset'>
-                                  <MDBIcon fab icon="github fa-lg card2" style={{ color: '#333333' }} />
-                                  </a>
-                                  <MDBCardText><a className=" github fa-lg1 card1left" href='javascript:void(0);'
-                                    onClick={() => openGithubLinkInPopup('https://github.com/boydlakers15')}>Github</a></MDBCardText>
-                                </MDBListGroupItem>
-                               
-                                <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center mb-1 p-3 card-with-fade-right card3">
-                                  <a href='#'  onClick={handleLinkedInIconClick} className='me-4 text-reset'>
-                                  <MDBIcon fab icon="linkedin fa-lg card3" style={{ color: '#55acee' }} />
-                                  </a>
-                                  <MDBCardText><a className=" linkedin fa-lg1 card1left" href='javascript:void(0);'
-                                    onClick={() => openLinkedInLinkInPopup('https://www.linkedin.com/in/jared-boyd-89963b266/')}>LinkedIn</a></MDBCardText>
-                                </MDBListGroupItem>
-                             
-                                <MDBListGroupItem className="rounded-3 d-flex justify-content-between align-items-center p-3 card-with-fade-right card4">
-                                <a href='#' onClick={handleInstagramIconClick} className='me-4 text-reset'>
-                                  <MDBIcon fab icon="instagram fa-lg card4" style={{ color: '#ac2bac' }} />
-                                  </a>
-                                  <MDBCardText><a className=" instagram fa-lg1 card1left" href='javascript:void(0);'
-                                    onClick={() => openInstagramLinkInPopup('https://www.instagram.com/jared.boyd.10/')}>Instagram</a></MDBCardText>
-                                </MDBListGroupItem>
-                                
-                              </MDBListGroup>
-                            </MDBCardBody>
-                          
-                        </MDBCol>
-                      </MDBRow>
-                    </MDBContainer>
-                  </MDBCarouselCaption>
-                </div>
-            </MDBCarouselItem> 
-          </MDBCarousel>
-          </MDBCol>
-        </MDBRow>
+       <MDBRow>
+  {isSidebarOpen && (
+    <MDBCol lg="2" className={`d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
+      {/* Sidebar content */}
+      <div>
         <br />
-        <MDBRow className="skills-card ">
-            <MDBCol  md="6" >
+        <Navbar />
+      </div>
+    </MDBCol>
+  )}
+  <MDBCol  md={isSidebarOpen ? '10' : '12'} >
+    {/* Main content */}
+    <MDBCarousel className='main'>
+      <MDBCarouselItem itemId={1}>
+        <div className="d-flexbox justify-content-center align-items-center image-card ">
+          {/* Center the image and make it square */}
+        </div>
+        <div className="centered-content-container">
+          <MDBCarouselCaption>
+            <MDBContainer className="py-5">
+              <MDBRow>
+                <MDBCol sm="12" md="5" lg="4" className="mb-3 mb-md-3">
+                  <MDBCardImage
+                    src={img2}
+                    alt="avatar"
+                    className="square mb-1 fa-lg2"
+                    fluid
+                  />
+                  <MDBCard className="mb-4 info-card">
+                    <MDBCardBody className="text-center main2">
+                      <h4 className="text-muted mb-1">Full Stack Developer</h4>
+                      <p className="text-muted">Baden-Baden, Baden Württemberg, DE</p>
+                      <div className="d-flex justify-content-center">
+                        <MDBBtn onClick={handleResumeClick} className="mt-1 fa-lg2 resume-button">
+                          Résumé
+                        </MDBBtn>
+                      </div>
+                      <Modal show={showResumeModal} onHide={handleCloseResumeModal} size="xl">
+                        <Modal.Header closeButton>
+                          <Modal.Title>Résumé</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <embed src={PDFFile} type="application/pdf" width="100%" height="700px" />
+                          <Button onClick={handleCloseResumeModal}>
+                            Close
+                          </Button>
+                        </Modal.Body>
+                      </Modal>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+                <MDBCol sm="12" md="7" lg="8" className='p-1 new'>
+                  <MDBCard  className="card-with-fade ">
+                      <MDBCardBody >
+                        <MDBRow >
+                          <MDBCol>
+                            <MDBCardText>Full Name</MDBCardText>
+                          </MDBCol>
+                          <MDBCol>
+                            <MDBCardText className="text-muted">Jared Boyd</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                        <hr />
+                        <MDBRow>
+                          <MDBCol >
+                            <MDBCardText>Email</MDBCardText>
+                          </MDBCol>
+                          <MDBCol >
+                            <MDBCardText className="text-muted">jboyd115@icloud.com</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                        <hr />
+                        <MDBRow>
+                          <MDBCol >
+                            <MDBCardText>Mobile</MDBCardText>
+                          </MDBCol>
+                          <MDBCol >
+                            <MDBCardText className="text-muted">+491778805055</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                        <hr />
+                        <MDBRow>
+                          <MDBCol >
+                            <MDBCardText>Address</MDBCardText>card1left 
+                          </MDBCol>
+                          <MDBCol >
+                            <MDBCardText className="text-muted">Baden-Baden, Baden Württemberg ,DE</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                      </MDBCardBody>
+                  </MDBCard>
+                              
+                        <MDBCardBody className="p-2  p-md-8 rounded-3 card-list " >
+                          <MDBListGroup flush className="rounded-4 " id="social-links">
+                              <MDBListGroupItem  className="rounded-3  justify-content-between align-items-center  mb-3 p-2 card-with-fade-right card1 card-with-fade-links" >
+                                <a href='#' onClick={handleFacebookIconClick} className='me-2 p-1 me-md-6 text-reset '>
+                                <MDBIcon fab icon="facebook  fa-lg card1" style={{ color: '#3b5998' }} />
+                                </a>
+                                <hr style={{ border: '1px solid ' }}/><MDBCardText ><a style={{top: '5px' }} className=" facebook fa-lg1 card1left " href='javascript:void(0);'
+                                  embed onClick={() => openFacebookLinkInPopup('https://www.facebook.com/jared.boyd.10' )} >Facebook</a></MDBCardText>
+                              </MDBListGroupItem> 
+                             
+                              <MDBListGroupItem id="card2" className="rounded-3  justify-content-between align-items-center  mb-3 p-2 card-with-fade-right card2 card-with-fade-links" >
+                                <a href='#' onClick={handleGithubIconClick} className='me-2 p-1 me-md-6 text-reset ' style={{margin: '2px'}}>
+                                <MDBIcon fab icon="github fa-lg card2" style={{ color: '#333333', right: '12px' }} />
+                                </a>
+                                <hr /><MDBCardText ><a style={{top: '5px' }} className=" github fa-lg1 card2left " href='javascript:void(0);'
+                                  embed onClick={() => openGithubLinkInPopup('https://www.facebook.com/jared.boyd.10' )} >&nbsp;GitHub&nbsp;</a></MDBCardText>
+                              </MDBListGroupItem>
+                              
+                              <MDBListGroupItem className="rounded-3  justify-content-between align-items-center  mb-3 p-2 card-with-fade-right card3 card-with-fade-links">
+                                <a href='#'  onClick={handleLinkedInIconClick} className='me-2 p-1 me-md-6 text-reset '>
+                                <MDBIcon fab icon="linkedin fa-lg card3" style={{ color: '#55acee' }} />
+                                </a>
+                                <hr /><MDBCardText><a style={{top: '5px' }} className=" linkedin fa-lg1 card3left" href='javascript:void(0);'
+                                  onClick={() => openLinkedInLinkInPopup('https://www.linkedin.com/in/jared-boyd-89963b266/')}>LinkedIn</a></MDBCardText>
+                              </MDBListGroupItem>
+                            
+                              <MDBListGroupItem className="rounded-3  justify-content-between align-items-center  mb-3 p-2 card-with-fade-right card4 card-with-fade-links">
+                              <a href='#' onClick={handleInstagramIconClick} className='me-2 p-1 me-md-6 text-reset '>
+                                <MDBIcon fab icon="instagram fa-lg card4" style={{ color: '#ac2bac' }} />
+                                </a>
+                                <hr /><MDBCardText><a  style={{top: '5px' }} className=" instagram fa-lg1 card4left" href='javascript:void(0);'
+                                  onClick={() => openInstagramLinkInPopup('https://www.instagram.com/jared.boyd.10/')}>Instagram</a></MDBCardText>
+                              </MDBListGroupItem>
+                              
+                          </MDBListGroup>
+                        </MDBCardBody>
+                                
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBContainer>
+                </MDBCarouselCaption>
+              </div>
+            </MDBCarouselItem> 
+            </MDBCarousel>
+          </MDBCol>
+      </MDBRow>
+      <br />
+        <MDBCol className="skills-card ">
+            <MDBCol  >
               <MDBCard className="first " id="skills2" >
                 <MDBCardBody >
                   <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 ">Web Development</span> Skills</MDBCardText>
@@ -358,7 +352,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
               </MDBCard>
             </MDBCol>
 
-            <MDBCol md="6">
+            <MDBCol>
               <MDBCard className="mb-4 mb-md-0 second" id="skills2">
                 <MDBCardBody className="" >
                   <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">App Development</span> Skills</MDBCardText>
@@ -373,7 +367,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                     <MDBProgressBar className="" width={75} valuemin={0} valuemax={100} />
                   </MDBProgress>
 
-                  <MDBCardText className="mt-4 mb-1" >Android (Java/Kotlin)</MDBCardText>
+                  <MDBCardText className="mt-4 mb-1" >NodeJS</MDBCardText>
                   <MDBProgress className="rounded">
                     <MDBProgressBar  width={70} valuemin={0} valuemax={100} />
                   </MDBProgress>
@@ -382,7 +376,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                 </MDBCardBody>
               </MDBCard>
             </MDBCol>
-          </MDBRow>
+          </MDBCol>
       </MDBContainer>
      
       <Modal show={showFacebookModal} onHide={handleCloseFacebookModal}>

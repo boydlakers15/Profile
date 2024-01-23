@@ -4,8 +4,13 @@ import './SkillsPage.css';
 import "./LandingPage.css";
 import './Profile.css';
 import img2 from "./IMG/j.png";
-import Vid1 from "./IMG/Cover.mp4";
+import img3 from "./IMG/pexels.jpg";
+import img4 from "./IMG/jared.boyd.10.png";
+import img5 from "./IMG/facebook.png";
+import img6 from "./IMG/LINKEDIN.png";
+import img7 from "./IMG/Github.png";
 import PDFFile from "./IMG/Jared-Boyd.pdf";
+//import img7 from "../src/components/IMG/facebook.png";
 import Navbar from './Navbar.js';
 import FooterPage from './FooterPage.js';
 import {
@@ -13,21 +18,28 @@ import {
   MDBContainer,
   MDBRow,
   MDBCard,
+  MDBCardText,
   MDBCardBody,
   MDBCardImage,
   MDBBtn,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
   MDBProgress,
+  MDBProgressBar,
+  MDBIcon,
   MDBCarousel,
   MDBCarouselItem,
   MDBCarouselCaption,
-  MDBCardText
+  MDBFooter,
+  MDBListGroup,
+  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 // Import Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Import Bootstrap JS
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const SkillsPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -55,185 +67,325 @@ const SkillsPage = () => {
   };
 
   return (
-    <section className={`profile-container ${isVisible ? 'visible' : ''}`} style={{ backgroundColor: '#eee' }}>
-    <div className="landing-page">
-      <MDBContainer className="my-5">
-        {/* Header */}
-        <MDBRow>
-        <MDBCol className='fa-lg2'>
-        
-            <a className={`${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} style={{ color: 'white', backgroundColor: '#0d6efd' }}>
-              <button className={`btn ${isSidebarOpen ? 'raised' : ''}`} style={{ fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
-                <i className={`bi bi-house-down-fill  ${isSidebarOpen ? '' : ''}`}></i> Menu
-              </button>
-            </a>
-           
-      
-        </MDBCol>
-       
-      
-        </MDBRow>
-        <br />
-        <MDBCard className="mb-4">
+    <section className={`profile-container ${isVisible ? 'visible' : ''}`} >
+      <MDBContainer className="py-2">
+        <MDBRow className="new">
+            <MDBCol className='fa-lg2'>
+          
+                <a className={`menu ${isSidebarOpen ? 'sidebar-open' : ''}`} href='#' onClick={toggleSidebar} >
+                  <button className={`btn menu-button ${isSidebarOpen ? 'raised' : ''}`} style={{ color: 'white', fontSize: '2rem', padding: '10px 20px', border: '1px solid #ddd', textShadow: '2px 2px 4px #000' }}>
+                    <i className={`bi bi-house-down-fill ${isSidebarOpen ? '' : ''}`}></i> Menu
+                  </button>
+                </a>
               
-        </MDBCard>
-        <MDBRow>
-          {isSidebarOpen && (
-            <MDBCol lg="2" className={`d-none d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
-            {/* Sidebar content */}
-            <div >
+            
+            </MDBCol>
+          
+          
+            </MDBRow>
               <br />
-              <Navbar  />
-            </div>
-          </MDBCol>
-          )}
-          <MDBCol lg={isSidebarOpen ? '8' : '12'}>
-            {/* Main content */}
-            <h1 className="text-center">My Skills</h1>
-            <MDBCarousel>
-              <MDBCarouselItem itemId={1}>
-                <div className="d-flex justify-content-center align-items-center" style={{ height: '600px' }}>
-                 
-                </div>
-                <div className="centered-content-container">
-                  <MDBCarouselCaption>
-                    <MDBContainer className="py-5">
-                        <MDBRow >
-                            
-                                <MDBCol lg="4">
-                                    <MDBCardImage
-                                            src={img2}
-                                            alt="avatar"
-                                            className="square mb-1"
-                                            style={{ width: '180px' }}
-                                            fluid  
-                                    />  
-                                    <MDBCard className="mb-4"  style={{
-                                        transform: 'perspective(1000px) rotateY(10deg) translateZ(50px)',
-                                        background: 'rgba(255, 255, 255, 0.9)',  // Adjust alpha value for transparency
-                                        boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',  // Add box shadow for a subtle fade
-                                    }}>
-                                    <MDBCardBody className="text-center">
-                                    <h4 className="text-muted mb-1">Full Stack Developer</h4>
-                                    <p className="text-muted">Baden-Baden, Baden Württemberg, DE</p>
-                                    <div className="d-flex justify-content-center">
-                                    <MDBBtn onClick={handleResumeClick} className="mt-1">
-                                        Resume
-                                    </MDBBtn>
-                                    </div>
-                                    <Modal show={showResumeModal} onHide={handleCloseResumeModal}size="xl">
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>Resume</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body >
-                                            <embed src={PDFFile} type="application/pdf" width="100%" height="700px" />
-                                            <Button variant="secondary" onClick={handleCloseResumeModal}>
-                                            Close
-                                            </Button>
-                                        </Modal.Body>
-                                        </Modal>
-                                    </MDBCardBody>
+              <hr />
+            <MDBRow>
+              {isSidebarOpen && (
+                <MDBCol lg="2" className={`d-lg-block ${isSidebarOpen ? 'raised' : ''}`}>
+                  {/* Sidebar content */}
+                  <div>
+                    <br />
+                  <Navbar />
+              
+                  </div>
+                </MDBCol>
+                  )}
+                  <MDBCol  md={isSidebarOpen ? '10' : '12'} >
+                    {/* Main content */}
+                    <MDBCarousel className='main'>
+                      <MDBCarouselItem itemId={1}>
+                        <div className="d-flexbox justify-content-center align-items-center image-card ">
+                          {/* Center the image and make it square */}
+                        </div>
+                        <div className="centered-content-container">
+                          <MDBCarouselCaption>
+                            <MDBContainer className="py-5">
+                              <MDBRow>
+                              <h1><MDBCardText className="mb-4"><span className="text-primary font-italic me-1 ">Web Development</span> Skills</MDBCardText></h1>
+                                <MDBCol className="skills-card ">
+                                  <MDBCol  >
+                                      <MDBCard className="first " id="skills2">
+                                          <MDBCardBody >
+                                            <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Frontend Development</strong></span> <hr /></MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}></MDBCardText>
+
+                                            <MDBCardText className="mt-4 mb-1 " >HTML5</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1 " >CSS3</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1 " >Responsive Web Design</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1" >ReactJS</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={85} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1">JavaScript </MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={80} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                          {/* Add more skills as needed */}
+                                        </MDBCardBody>
                                     </MDBCard>
-                                    </MDBCol>
-                                    <MDBCol lg="8">
-                                        <MDBRow className="d-flex justify-content-center ">
-                                            <MDBCol className='card-with-fade'style={{background: 'transparent'}}>
+                                  </MDBCol>
+
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2" >
+                                            <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic "><strong style={{fontSize: '18px'}}>Backend Development</strong></span> <hr /></MDBCardText>
+                                              
+
+                                              <MDBCardText className="mt-4 mb-1 " >NodeJS/ExpressJS</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1 " >APIs (REST, GraphQL)</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              
                                             
-                                            <MDBCard className='card-with-fade'>
-                                                <MDBCardBody>
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
 
-                                                {/* Programming Languages */}
-                                                <div className="mb-4 ">
-                                                    <h2>Programming Languages</h2>
-                                                    <MDBProgress className="mb-3" style={{ height: '20px' }} color="primary" value={90}>
-                                                    JavaScript
-                                                    </MDBProgress>
-                                                    <MDBProgress className="mb-3" style={{ height: '20px' }} color="primary" value={80}>
-                                                    Python
-                                                    </MDBProgress>
-                                                    {/* Add more programming languages as needed */}
-                                                </div>
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                            <br /><br /><br />
-                                            <MDBCard className='card-with-fade'>
-                                                <MDBCardBody >
-                                                {/* Web Development */}
-                                                <div className="mb-4">
-                                                    <h2>Web Development</h2>
-                                                    <MDBProgress className="mb-3" style={{ height: '20px' }} color="success" value={85}>
-                                                    HTML/CSS
-                                                    </MDBProgress>
-                                                    <MDBProgress className="mb-3" style={{ height: '20px' }} color="success" value={75}>
-                                                    React
-                                                    </MDBProgress>
-                                                    {/* Add more web development skills as needed */}
-                                                </div>
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2">
+                                              <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Version Control System</strong></span><hr /></MDBCardText>
+                                              <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}><strong><em></em></strong></MDBCardText>
+                                              <MDBCardText className="mt-4 mb-1 " >Git</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
 
-                                                {/* Add more skill sections as needed */}
-                                                </MDBCardBody>
-                                            </MDBCard>
-                                            </MDBCol>
-                                        </MDBRow>
-                                    </MDBCol>
-                                </MDBRow>
-                                
-                    </MDBContainer>
-                  </MDBCarouselCaption>
-                </div>
-              </MDBCarouselItem>
-            </MDBCarousel>
-          </MDBCol>
-        </MDBRow>
+                                              <MDBCardText className="mt-4 mb-1 " >Github</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
+
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2">
+                                              <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Databases</strong></span><hr /></MDBCardText>
+
+                                              <MDBCardText className="mt-4 mb-1 " >PostgreSQL</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1 " >MySQL</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1" >MongoDB</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={85} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                            
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
+                                      </MDBCol>  
+                                      
+                                    </MDBRow>
+                                    
+                                  </MDBContainer>
+                                  
+                                </MDBCarouselCaption>
+                              </div>
+                            </MDBCarouselItem> 
+                            </MDBCarousel>
+                          </MDBCol>
+                      </MDBRow>
+                      <br />
+                    <MDBRow>
+                      
+                        
+                  </MDBRow>
+                  <MDBCol  md={isSidebarOpen ? '10' : '12'} >
+                    {/* Main content */}
+                    <MDBCarousel className='main'>
+                      <MDBCarouselItem itemId={1}>
+                        <div className="d-flexbox justify-content-center align-items-center image-card ">
+                          {/* Center the image and make it square */}
+                        </div>
+                        <div className="centered-content-container">
+                          <MDBCarouselCaption>
+                            <MDBContainer className="py-5">
+                              <MDBRow>
+                              <h1><MDBCardText className="mb-4"><span className="text-primary font-italic me-1 ">Web Development</span> Skills</MDBCardText></h1>
+                                <MDBCol className="skills-card ">
+                                  <MDBCol  >
+                                      <MDBCard className="first " id="skills2">
+                                          <MDBCardBody >
+                                            <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Frontend Development</strong></span> <hr /></MDBCardText>
+                                            <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}></MDBCardText>
+
+                                            <MDBCardText className="mt-4 mb-1 " >HTML5</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1 " >CSS3</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1 " >Responsive Web Design</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1" >ReactJS</MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={85} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                            <MDBCardText className="mt-4 mb-1">JavaScript </MDBCardText>
+                                            <MDBProgress className="rounded">
+                                              <MDBProgressBar width={80} valuemin={0} valuemax={100} />
+                                            </MDBProgress>
+
+                                          {/* Add more skills as needed */}
+                                        </MDBCardBody>
+                                    </MDBCard>
+                                  </MDBCol>
+
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2" >
+                                            <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic "><strong style={{fontSize: '18px'}}>Backend Development</strong></span> <hr /></MDBCardText>
+                                              
+
+                                              <MDBCardText className="mt-4 mb-1 " >NodeJS/ExpressJS</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1 " >APIs (REST, GraphQL)</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              
+                                            
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
+
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2">
+                                              <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Version Control System</strong></span><hr /></MDBCardText>
+                                              <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}><strong><em></em></strong></MDBCardText>
+                                              <MDBCardText className="mt-4 mb-1 " >Git</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1 " >Github</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
+
+                                        <MDBCol>
+                                          <MDBCard className="first " id="skills2">
+                                              <MDBCardBody >
+                                              <MDBCardText className="mb-4"><span className="text-primary font-italic me-1 "><strong style={{fontSize: '18px'}}>Databases</strong></span><hr /></MDBCardText>
+
+                                              <MDBCardText className="mt-4 mb-1 " >PostgreSQL</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1 " >MySQL</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={90} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                              <MDBCardText className="mt-4 mb-1" >MongoDB</MDBCardText>
+                                              <MDBProgress className="rounded">
+                                                <MDBProgressBar width={85} valuemin={0} valuemax={100} />
+                                              </MDBProgress>
+
+                                            
+                                              {/* Add more skills as needed */}
+                                            </MDBCardBody>
+                                          </MDBCard>
+                                        </MDBCol>
+                                      </MDBCol>  
+                                      
+                                    </MDBRow>
+                                    
+                                  </MDBContainer>
+                                  
+                                </MDBCarouselCaption>
+                              </div>
+                            </MDBCarouselItem> 
+                            </MDBCarousel>
+                          </MDBCol>
       </MDBContainer>
-    </div>
-    <MDBRow>
-  <MDBCol md={isSidebarOpen ? '6' : '12'}>
-    <MDBCard className="mb-4 mb-md-0">
-      <MDBCardBody>
-        <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Full-Stack Web and App Developer</span></MDBCardText>
+     
+      
+        <MDBCol md={isSidebarOpen ? '6' : '12'}>
+          <MDBCard className="mb-4 mb-md-0">
+            <MDBCardBody>
+            
+            
+              
 
-        <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>WBS CODING SCHOOL</MDBCardText>
-        <MDBCardText className="text-muted mb-1" style={{ fontSize: '.77rem' }}>Feb 2023 - Jun 2023 · 5 mos</MDBCardText>
-        <MDBCardText className="text-muted mb-1" style={{ fontSize: '.77rem' }}>Berlin, Germany · Remote</MDBCardText>
+              <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Tools:</MDBCardText>
+              <ul>
+                <li>Git, and GitHub</li>
+                <li>Postman</li>
+              </ul>
 
-        <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Frontend:</MDBCardText>
-        <ul>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>Bootstrap</li>
-          <li>Material-UI</li>
-          <li>ReactJS (Fundamentals, Hooks, Router)</li>
-          <li>Vanilla JavaScript (Fundamentals, DOM, OOP)</li>
-        </ul>
-
-        <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend:</MDBCardText>
-        <ul>
-          <li>NodeJS/ExpressJS</li>
-          <li>APIs (REST, GraphQL)</li>
-          <li>Databases: PostgreSQL, MySQL, MongoDB</li>
-        </ul>
-
-        <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Tools:</MDBCardText>
-        <ul>
-          <li>Git, and GitHub</li>
-          <li>Postman</li>
-        </ul>
-
-        <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Best Practices:</MDBCardText>
-        <ul>
-          <li>UX/UI Fundamentals (Figma)</li>
-          <li>Agile Methodologies (SCRUM)</li>
-          <li>SEO</li>
-          <li>Project Management (Trello, JIRA)</li>
-        </ul>
-      </MDBCardBody>
-    </MDBCard>
-  </MDBCol>
-
-  {/* Add more experience sections as needed */}
-</MDBRow>
-    <FooterPage />
+              <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Best Practices:</MDBCardText>
+              <ul>
+                <li>UX/UI Fundamentals (Figma)</li>
+                <li>Agile Methodologies (SCRUM)</li>
+                <li>SEO</li>
+                <li>Project Management (Trello, JIRA)</li>
+              </ul>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+     
+      <FooterPage  />
     </section>
   );
 };

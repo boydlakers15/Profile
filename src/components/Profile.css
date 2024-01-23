@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 html,
 body,
@@ -9,9 +7,16 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #333333;
 }
 
-
+#menu-button{
+  color: 'white';
+  font-Size: '2rem';
+  padding: '10px 20px';
+  border: '1px solid #ddd';
+  text-shadow: '2px 2px 4px #000';
+}
 
 /* styles.css */
 .resume-button.btn {
@@ -30,10 +35,6 @@ body,
   -webkit-background-clip: text; /* For older versions of WebKit browsers */
   transition: color 0.3s ease; /* Smooth transition for text color change */
   box-shadow: 10px 10px 20px rgba(0, 0, 255, 0.5);
-  
-}
-
-.main{
   
 }
 
@@ -89,10 +90,12 @@ a:hover{
   color: #3B5998;
 }
 
+
 .github{
   text-decoration: none;
   color: #333333;
 }
+
 
 .linkedin{
   text-decoration: none;
@@ -104,28 +107,11 @@ a:hover{
   color: #B336AA;
 }
 
-/* Styling when the link is hovered */
-.facebook-link:hover {
-  color: transparent; /* Make the text transparent on hover */
-}
-
-/* Show the logo when the link is hovered */
-.facebook-link:hover .facebook-logo {
-  opacity: 1;
-  color: transparent;
-  width: 20px; /* Adjust the size of the logo */
-  height: 20px; /* Optional: Set the color to transparent when the logo is visible */
-  transition: opacity 1s ease-in-out;
-  
-}
 
 
-.facebook-link {
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  color: transparent; /* Initial color for the link */
- 
+.fa-lg{
+  font-size: 2em;
+  margin-left: 6px;
 }
 
 .fa-lg1:hover{
@@ -139,11 +125,69 @@ a:hover{
 .fa-lg1.card1left:hover:after {
     content: 'Click Me';
     position: absolute;
-    top: 50%;
-    right: calc(100% + 20px); /* Adjust the distance from the icon */
+    top: 10%;
+    left: 4px;
+    top: calc(100% + 23px); /* Adjust the distance from the icon */
     transform: translateY(-50%);
-    background-color: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
+    background-color: #3B5998;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card2left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: -2px;
+    top: calc(100% + 22px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card3left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: 0px;
+    top: calc(100% + 26px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #59ADEC;
+    color: rgb(255, 255, 255);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 16px; /* Adjust the font size as needed */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    font-family: normal;
+    box-shadow:  2px 4px 5px black;
+  }
+
+  .fa-lg1.card4left:hover:after {
+    content: 'Click Me';
+    position: absolute;
+    top: 10%;
+    left: 6px;
+    top: calc(100% + 26px); /* Adjust the distance from the icon */
+    transform: translateY(-50%);
+    background-color: #B336AA;
+    color: rgb(255, 255, 255);
     padding: 2px 5px;
     border-radius: 3px;
     font-size: 16px; /* Adjust the font size as needed */
@@ -171,7 +215,7 @@ a:hover{
   }
 
   .sidebar-open {
-    border: 5px;
+    border: 1px;
     border-color: #333;
     box-shadow:  2px 4px 5px black;
     
@@ -226,20 +270,29 @@ a:hover{
 
   /* Add these styles to your CSS file */
 
-.card-with-fade-left {
-  transform: perspective(1000px) rotateY(10deg) translateZ(50px);
-  background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle fade */
-  
 
-}
+  .card-with-fade-links {
+    transform: perspective(120px) rotateY(-20deg) translateZ(0px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 20px;
+    left: 10px;
+    
+  }
 
 .card-with-fade {
-  transform: perspective(1000px) rotateY(-10deg) translateZ(50px);
+  transform: perspective(500px) rotateY(-15deg) translateZ(0px);
   background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
   box-shadow:  2px 4px 5px black;
-  top: 40px;
-  left: 60px;
+  top: 20px;
+  left: 10px;
+  
+}
+
+ #social-links{
+  display: flex;
+  flex-direction: row;
+  padding-left: 40px;
   
 }
 
@@ -247,15 +300,17 @@ a:hover{
 
 .card-with-fade-right {
   position: relative;
-  overflow: hidden;
-  transition: transform 2s ease-out, background-color 0.3s ease-out;
+ 
+  margin-left: 2px;
   top: 40px;
-  box-shadow:  2px 4px 5px black;
+  box-shadow: 2px 4px 5px black;
+
 
 }
 
 .card-with-fade-right:hover {
   transform: translateX(20px);
+  transform: translateY(20px);
    transition: transform 2s ease-out
 }
 
@@ -266,7 +321,6 @@ a:hover{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
   z-index: -1;
   transform-origin: right;
   transform: scaleX(0);
@@ -274,57 +328,95 @@ a:hover{
 }
 
 .card-with-fade-right:hover::before {
-  transform-origin: left;
-  transform: scaleX(45%);
+  transform-origin: bottom;
+  transform: scaleX(80%);
   
 }
 
-.card-with-fade-right.card1:hover {
-  background-color: #3C5A96; /* Change to your desired hover background color for card1 */
+.card1 hr {
+  color: #3B5998;
+}
+
+.card2 hr {
+  color: #333333;
+  
+}
+
+.card3 hr {
+  color: #59ADEC;
+}
+
+.card4 hr {
+  color: #B336AA;
  
 }
 
-.card-with-fade-right.card2:hover {
-  background-color: #333333; /* Change to your desired hover background color for card2 */
+
+
+.card-with-fade-right.card1:hover {
+  background: linear-gradient(180deg,  #ffffff,  #3B5998, #ffffff00); /* Change to your desired hover background color for card1 */
+ font-weight: bold;
+}
+
+#card2:hover {
+  background: linear-gradient(180deg,  #ffffff,  #333333, #ffffff71); /* Change to your desired hover background color for card2 */
+  color: white;
+  font-weight: bold;
 }
 
 .card-with-fade-right.card3:hover {
-  background-color: #59ADEC; /* Change to your desired hover background color for card3 */
+  background: linear-gradient(180deg,  #ffffff,  #59ADEC, #ffffff00); /* Change to your desired hover background color for card3 */
+  font-weight: bold;
+  color: #59ADEC;
 }
 
 .card-with-fade-right.card4:hover {
-  background-color: #B336AA; /* Change to your desired hover background color for card3 */
+  background: linear-gradient(180deg,  #ffffff,  #B336AA, #ffffff00); /* Change to your desired hover background color for card3 */
+  font-weight: bold;
+  color: #B336AA;
 }
 
 .card-with-fade .card-image {
   margin-bottom: 15px; /* Add margin-bottom for space between image and text */
 }
 
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px; /* Adjust margin to your preference */
+}
+
 .fa-lg:hover{
-  transform: scale(1.8);
-  
+  transform: scale(1);
+  margin-left: 6px;
 }
 
 .fa-lgF:hover{
   transform: scale(1.2);
   
 }
-
 .fa-lg.card1::after {
   content: 'Click Me';
   position: absolute;
-  top: 50%;
-  left: calc(100% + 10px); /* Adjust the distance from the icon */
-  transform: translateY(-50%);
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
   background-color: transparent;
-  color: #3b5998;
-  padding: 2px 5px;
+  color: white;
+  background: #3B5998;
+  padding-right: 2px;
+  margin-left: -1px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
   border-radius: 3px;
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 22px; /* Adjust the font size as needed */
   white-space: nowrap; /* Prevent the text from wrapping to the next line */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  box-shadow:  2px 4px 5px black;
+  box-shadow: 2px 4px 5px black;
 }
 
 
@@ -332,53 +424,73 @@ a:hover{
 .fa-lg.card2::after {
   content: 'Click Me';
   position: absolute;
-  top: 50%;
-  left: calc(100% + 10px); /* Adjust the distance from the icon */
-  transform: translateY(-50%);
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
   background-color: transparent;
-  color: #333333;
-  padding: 2px 5px;
+  color: white;
+  background: #333333;
+  padding-right: 2px;
+  margin-left: -1px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
   border-radius: 3px;
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 22px; /* Adjust the font size as needed */
   white-space: nowrap; /* Prevent the text from wrapping to the next line */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  box-shadow:  2px 4px 5px black;
+  box-shadow: 2px 4px 5px black;
 }
 
 .fa-lg.card3::after {
-  content: 'Click Me';
+   content: 'Click Me';
   position: absolute;
-  top: 50%;
-  left: calc(100% + 10px); /* Adjust the distance from the icon */
-  transform: translateY(-50%);
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
   background-color: transparent;
-  color: #55aecc;
-  padding: 2px 5px;
+  color: white;
+  background: #55aecc;
+  padding-right: 2px;
+  margin-left: 5px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
   border-radius: 3px;
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 22px; /* Adjust the font size as needed */
   white-space: nowrap; /* Prevent the text from wrapping to the next line */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  box-shadow:  2px 4px 5px black;
+  box-shadow: 2px 4px 5px black;
 }
-
 
 .fa-lg.card4::after {
   content: 'Click Me';
   position: absolute;
-  top: 50%;
-  left: calc(100% + 10px); /* Adjust the distance from the icon */
-  transform: translateY(-50%);
+  top: -20px;
+  left: calc(100% + -2px) ; /* Adjust the distance from the icon */
+  transform: translateX(-0%) rotate(-40deg);
+  writing-mode: vertical-rl; /* Set text orientation to vertical */
   background-color: transparent;
-  color: #ac2bac;
-  padding: 2px 5px;
+  color: white;
+  background-color: #ac2bac;
+  padding-right: 2px;
+  margin-left: 3px;
+  margin-top: -35px;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 5px;
   border-radius: 3px;
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 22px; /* Adjust the font size as needed */
   white-space: nowrap; /* Prevent the text from wrapping to the next line */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  box-shadow:  2px 4px 5px black;
+  box-shadow: 2px 4px 5px black;
 }
 
 
@@ -436,6 +548,7 @@ nav a.active {
 }
 
 
+
 footer {
   background-color: #333;
   color: white;
@@ -453,6 +566,16 @@ footer {
   object-fit: cover;
   object-position: center center;
   
+}
+
+.square{
+  position: relative;
+  display: inline-block;
+  /* Make it square by setting equal width and height */
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+
 }
 
 .centered-content-container {
@@ -484,6 +607,24 @@ footer {
   transform-origin: 50% 50%;
 }
 
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.skills-card{
+  padding: 2px 14px;
+  flex: 0;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 65.5px;
+}
 
 
 @keyframes confetti-fall {
@@ -507,73 +648,102 @@ footer {
 
   /* ... (Your existing styles) ... */
 
+/* Your existing styles outside media query */
+
 /* Responsive Styles */
-@media (max-width: 767px) {
-
-   /* Adjust padding for smaller screens */
-   .card-body {
-    max-width: 100%;
-    font-size: x-small; /* Adjust the width of the card body on smaller screens */
-    max-height: 70%; /* Adjust the height of the card body on smaller screens */
-    margin: 1rem; /* Adjust the margin for smaller screens */
-    padding: 0rem; /* Adjust the padding for smaller screens */
+@media (min-width: 350px) and (max-width: 767px) {
+ 
+  .main {
+    position: relative;
+    right: 0%;
+    bottom: 0rem;
+    left: 0%;
+    padding: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+    color: #fff;
+    text-align: center;
   }
 
+  .main2{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 100%;
+    overflow: hidden;
+  }
+
+ 
+  .row {
+    --bs-gutter-x: 0.75rem;
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 10%;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+
+ 
+
+  .square-image {
+    width: 10%;
+    padding-top: 30px;
+  }
+
+  .image-card {
+    height: 500px;
+    margin-top: 0px;
+    font-size: medium;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
   
-
-  /* Adjust max-width for smaller screens */
-  .card {
-    border: none;
-    box-shadow: none;
-    max-width: 100%; /* Adjust the width of the card on smaller screens */
+  .text-muted{
+    font-weight: bold;
+    
   }
 
-  #skills2{
+
+  #skills2 {
     display: flex !important;
     justify-content: center !important;
-    align-items: center !important; 
+    align-items: center !important;
     margin-top: 0px !important;
     padding-top: 0px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
-    
-   }
-
-  
-
-  .MDBCol {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-    margin-right: 0 !important;
   }
 
-  .MDBCardText {
-    font-size: 0.9rem; /* Adjust the font size for text on smaller screens */
-    font-size: x-small;
-  }
 
-  .MDBCardBody {
-    padding: 0.5rem; /* Add padding to the card body for better spacing on smaller screens */
-    font-size: x-small;
-  }
 
   .custom-progress {
-    --bs-progress-height: 0.5rem; /* Adjust the progress bar height */
-    --bs-progress-font-size: 0.5rem; /* Adjust the progress bar font size */
-    --bs-progress-border-radius: 0.25rem; /* Adjust the progress bar border radius */
+    --bs-progress-height: 0.5rem;
+    --bs-progress-font-size: 0.5rem;
+    --bs-progress-border-radius: 0.25rem;
   }
 
-  .skills-card{
-    padding: 2px 14px;
-    flex: 1;
+  .skills-card {
+    padding: 2px 0px;
+    flex: 0;
     display: flex;
-    flex-direction: column;
-
-  
+    flex-direction: row;
+    width: 100%;
+    margin-left: 12.25px;
   }
 
-  .rounded .progress-bar  {
-    height: 8px; /* Adjust the height of the progress bar for smaller screens */
+  .fa-lg1::after,
+  .fa-lg2::after,
+  .fa-lg1.card1left::after {
+    font-size: x-small;
+  }
+
+
+  .rounded .progress-bar {
+    height: 8px;
     --bs-progress-height: 0rem !important;
   }
 
@@ -584,7 +754,7 @@ footer {
 
   .first,
   .second {
-    margin-right: 90px !important;
+    margin-right: 20px !important;
     margin-top: -10px !important;
     padding-top: 80px !important;
   }
@@ -596,25 +766,32 @@ footer {
     border-radius: initial !important;
   }
 
+
   .container {
-    max-width: 90%;
-    padding: 0 10px;
-    font-size: x-small;
+    max-width: 100%; /* Adjust the max-width for small screens */
+    padding: 0 5px; /* Add some padding for small screens */
+    font-size: 12px;
+    --bs-gutter-x: 1rem;
   }
 
-  .image-card {
-    height: 30px; /* Adjust the height for iPhones */
-    font-size: x-small;
+  .info-card {
+    font-size: 12px;
+    width: fit-content;
   }
 
-  .fa-lg1::after,
-  .fa-lg2::after,
-  .fa-lg1.card1left::after {
-    font-size: x-small;
+  .new{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    z-index: 1;
+    
   }
 
   .profile-container.visible {
-    top: 50px; /* Adjust the top position for better visibility on iPhones */
+    top: 50px;
     font-size: x-small;
   }
 
@@ -624,13 +801,18 @@ footer {
   }
 
   .sidebar {
-    display: none; /* Hide the sidebar on small screens */
+   
     font-size: x-small;
+  }
+
+  .carousel-item {
+    height: auto; /* Adjust the height of carousel items for better visibility on phones */
+    
   }
 
   .carousel-item.active {
     margin-left: 0;
-    margin-right: 0; /* Remove margins on small screens for better fit */
+    margin-right: 0;
     font-size: x-small;
   }
 
@@ -640,53 +822,373 @@ footer {
 
   .card-text {
     font-size: x-small;
+    
   }
 
-  .card-body {
-    max-width: 70%;
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+
+  .card-with-fade {
+    transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    font-size: 10px;
+    font-weight: bold;
   }
 
   .menu {
     box-shadow: none; /* Remove box shadow on small screens */
-    font-size: 14px; /* Adjust the font size for the menu button */
-    padding: 8px 12px; /* Adjust padding for the menu button */
-    font-size: x-small;
+    font-size: 0px; /* Adjust the font size for the menu button */
+    padding: 0px 0px; /* Adjust padding for the menu button */
+    font-size: 12px;
   }
 
   .bg-light {
     transform: translateY(0); /* Adjust the transform on small screens */
     font-size: x-small;
+  
   }
 
   .raised {
+    transform: translateY(0);
+    font-size: x-small;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+    font-size: x-small;
+  }
+
+ 
+  .fa-lg.card1::after {
+    font-size: x-small;
+  }
+
+  .list-group{
+    max-width: 100%;
+    max-height: 80%;
+  }
+    
+}
+
+
+/* Responsive styles for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+ 
+.list-group{
+  max-width: 100%;
+  max-height: 80%;
+}
+  
+.new{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+  z-index: 1;
+  
+}
+
+
+  .carousel-item.active {
+    margin-left: 0;
+    margin-right: 0; /* Remove margins on small screens for better fit */
+    font-size: x-small;
+  }
+
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for phones */
+  }
+
+  
+  
+  .bg-light {
     transform: translateY(0); /* Adjust the transform on small screens */
     font-size: x-small;
+  
+  }
+
+ 
+  .carousel-item {
+    height: max-content; /* Adjust the height of carousel items for better visibility on phones */
+    
   }
 
   .container {
     max-width: 100%; /* Adjust the max-width for small screens */
     padding: 0 10px; /* Add some padding for small screens */
+    font-size: 12px;
+
+  }
+
+
+  .menu {
+    box-shadow: none; /* Remove box shadow on small screens */
+    font-size: 0px; /* Adjust the font size for the menu button */
+    padding: 0px 0px; /* Adjust padding for the menu button */
+    font-size: x-small;
+  }
+ 
+
+  .main2{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+  
+  .card-with-fade {
+    transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+    background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    box-shadow:  2px 4px 5px black;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .text-muted{
+    font-weight: bold;
+    
+  }
+  
+  .fa-lg1::after,
+  .fa-lg2::after,
+  .fa-lg1.card1left::after {
     font-size: x-small;
   }
 
-  .carousel-item {
-    height: 200px; /* Adjust the height of carousel items for better visibility on phones */
+
+  .centered-content-container {
+    padding: 10px; /* Add some padding for tablets */
   }
 
-  .fa-lg.card1::after {
-    font-size: x-small; /* Adjust the font size as needed */
+  .rounded-circle {
+    width: 100px; /* Adjust the width for tablets */
   }
+
+.info-card h4{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 22px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+  .info-card{
+    font-size: 12px;
+    width: fit-content;
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 60%;
+    overflow: hidden;
+    padding-top: 40px;
+  }
+
+ 
+
+  .square-image {
+    width: 100%;
+ 
+  }
+  .image-card {
+    height: 500px;
+    margin-top: 0px;
+    font-size: medium;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  
+  
+}
+
+/* Responsive styles for phones */
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+  .list-group{
+    max-width: 100%;
+    max-height: 80%;
+  }
+
+  .square-image {
+    width: 100%;
+ 
+  }
+
+  .card-with-fade-right {
+    position: relative;
+    overflow: hidden;
+    transition: transform 2s ease-out, background-color 0.3s ease-out;
+    top: 40px;
+    box-shadow:  2px 4px 5px black;
+    
+  }
+  
+  .card-with-fade-right:hover {
+    transform: translateX(20px);
+     transition: transform 2s ease-out
+  }
+  
+  .card-with-fade-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card-with-fade-right:hover::before {
+    transform-origin: left;
+    transform: scaleX(45%);
+    
+  }
+
+  .square{
+    position: relative;
+    display: inline-block;
+    /* Make it square by setting equal width and height */
+    width: 90%;
+    overflow: hidden;
+  
+  }
+
+  .image-card {
+    height: 600px;
+    margin-top: 60px;
+    font-size: medium;
+    background-color: #f5f5f5;
+  }
+  
+.main2{
+  position: relative;
+  display: inline-block;
+  /* Make it square by setting equal width and height */
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-with-fade {
+  transform: perspective(1000px) rotateY(-1deg) translateZ(10px);
+  background: rgba(255, 255, 255, 0.9); /* Adjust alpha value for transparency */
+  box-shadow:  2px 4px 5px black;
+  top: 10px;
+  left: 60px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.info-card h4{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 22px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.info-card{
+  font-size: 16px;
+  width: fit-content;
 }
 
 
-/* Responsive styles for tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .square-image {
-    height: 300px; /* Adjust the height for tablets */
-  }
+.new{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+  z-index: 1;
+
+}
+
+  
 
   .centered-content-container {
-    padding: 20px; /* Add some padding for tablets */
+    padding: 10px; /* Add some padding for tablets */
   }
 
   .rounded-circle {
@@ -696,24 +1198,10 @@ footer {
   .card-body {
     padding: 20px; /* Add some padding for tablets */
   }
-}
 
-/* Responsive styles for phones */
-@media (max-width: 767px) {
-  .square-image {
-    height: 200px; /* Adjust the height for phones */
-  }
-
-  .centered-content-container {
-    padding: 10px; /* Add some padding for phones */
-  }
-
-  .rounded-circle {
-    width: 80px; /* Adjust the width for phones */
-  }
-
-  .card-body {
-    padding: 10px; /* Add some padding for phones */
+  .links-card{
+    margin-top: 30px;
+    
   }
 }
   

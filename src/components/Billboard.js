@@ -10,6 +10,10 @@ import { degToRad } from "three/src/math/MathUtils";
 import { currentPageAtom } from "./UI";
 import { useNavigate } from 'react-router-dom';
 import './Billboard.css';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { useThree  } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import { Raycaster, Vector2, Vector3 } from "three"; 
 
 export const OverlayItem = ({
     className = "",
@@ -21,10 +25,27 @@ export const OverlayItem = ({
 }) => {
     const [currentPage] = useAtom(currentPageAtom);
     const navigate = useNavigate();
-    const handleEnterButtonClick = () => {
+    const openModel = useRef();
+    const openLoader = new GLTFLoader();
+    const { scene} = useThree();
 
-        navigate("/Home");
+
+  
+    const handleEnterButtonClick = () => {
+      // Navigate to the profile page when the model is clicked
+      navigate('/Home');
     };
+  
+    
+      openLoader.load('/models/Welcome.glb', (gltf) => {
+        openModel.current = gltf.scene;
+        openModel.current.scale.set(1, 1, 1); // Adjust the scale as needed
+        openModel.current.position.set(-.05, -0.5, 4.1); // Adjust the position as needed
+        openModel.current.rotation.y += 0.525;
+        scene.add(openModel.current);
+        
+    
+      });
 
     return (
         <Html
@@ -35,14 +56,17 @@ export const OverlayItem = ({
                 } transition-opacity duration-1000 ${className}`}
             {...props}
         >
-           
+            {openModel.current && (
+              <primitive object={openModel.current} />
+            )}
             <button
                 onClick={handleEnterButtonClick}
 
                 className=" custom-button"
             >
                 OPEN TO DISCOVER
-            </button>
+            </  button>
+            
 
         </Html>
     );
