@@ -13,16 +13,16 @@ const LandingPage = () => {
     <div className="landing-page">
        
       <Canvas shadows camera={{ position: [0, 0, 2], fov: 42 }}>
-              <color attach="background" args={["#171720"]} />
+          <color attach="background" args={["#171720"]} />
             
-              <Suspense>
-                <Experience />
-              </Suspense>
-              <EffectComposer>
-                <Bloom mipmapBlur intensity={1.2} />
-              </EffectComposer>
-            </Canvas>
-            
+        <Suspense>
+          <Experience />
+        </Suspense>
+        <EffectComposer>
+          <Bloom mipmapBlur intensity={1.2} />
+        </EffectComposer>
+      </Canvas>
+      
                
                  
       {/* Header */}
