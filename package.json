@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "homepage": "https://boydlakers15.github.io/Profile",
+  "homepage": "https://boydlakers15.github.io/Profile/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -88,6 +88,8 @@
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.0"
+  },
+  "resolve": {
+    "extensions": "['.js', '.jsx']"
   }
-
 }
