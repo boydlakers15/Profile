@@ -29,8 +29,6 @@ export function Model(props) {
     handleEnterButtonClick()
   };
 
-
-  
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
@@ -44,7 +42,7 @@ export function Model(props) {
           <mesh name="Billboard_2_1002_6" geometry={nodes.Billboard_2_1002_6.geometry} material={materials['Material.003']} />
           <mesh name="Billboard_2_1002_7" geometry={nodes.Billboard_2_1002_7.geometry} material={materials['Material.007']} />
         </group>
-        <group name="Text" position={[66.964, 0, 59.032]} rotation={[Math.PI / 2, 0, -2.436]} scale={21.51}>
+        <group name="Text" position={[66.964, 0, 59.032]} rotation={[Math.PI / 2, 0, -2.436]} scale={22.71}>
           <mesh name="Text_1" geometry={nodes.Text_1.geometry} material={materials['Material.008']} />
           <mesh name="Text_2" geometry={nodes.Text_2.geometry} material={materials['Material.009']} />
         </group>
@@ -54,7 +52,7 @@ export function Model(props) {
             onPointerOut={handlePointerOut}
             onClick={handleClick}
         >
-          <mesh name="Text002" geometry={nodes.Text002.geometry} material={materials['Material.010']}/>
+          <mesh name="Text002" geometry={nodes.Text002.geometry} material={materials['Material.010']} />
           <mesh name="Text002_1" geometry={nodes.Text002_1.geometry} material={materials['Material.011']} />
         </group>
       </group>
