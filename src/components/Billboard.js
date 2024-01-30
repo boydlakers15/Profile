@@ -12,7 +12,7 @@ import './Billboard.css';
 
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/models/Billboard.glb')
+  const { nodes, materials } = useGLTF("/models/Billboard.glb")
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
