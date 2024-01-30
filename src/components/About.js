@@ -76,11 +76,11 @@ const About = () => {
         </EffectComposer>
       </Canvas>
       
-               
+             <UISkills />  
                  
       {/* Header */}
       <div className="header-container">
-      <UISkills />
+      
        
         
         <h3 className="header-text"></h3>
@@ -116,11 +116,11 @@ function Scene() {
 function Screen({ src }) {
   const [video, setVideo] = useState()
 
-  const width = 120
+  const width = 130
   const height =60.55
 
   const z = 100
-  const position=([-69.803, 16.996, 155.08])
+  const position=([-69.793, 52.406, 153.78])
   const rotation=([ 2.015, -4.71, 4.27])
 
   return (

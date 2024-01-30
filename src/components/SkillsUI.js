@@ -1,5 +1,6 @@
 import { atom, useAtom } from "jotai";
 import './UI.css';
+
 export const currentPageAtom = atom("intro");
 
 export const UISkills = () => {
@@ -8,24 +9,47 @@ export const UISkills = () => {
   return (
     <div className="fixed inset-0 pointer-events-none">
       <section
-        className={`flex w-full h-full flex-col items-center justify-center 
-      duration-500
-      ${currentPage === "home" ? "" : "opacity-0"}`}
+        className={`flex flex-col items-end justify-center h-full
+          duration-500
+          ${currentPage === "home"}`}
       >
-        <div className="h-[60%]"></div>
-        <button
-          onClick={() => setCurrentPage("skills")}
-          className="pointer-events-auto py-4 px-8 bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors duration-500"
-        >
-          Résumé
-        </button>
-        <button
-          onClick={() => setCurrentPage("home")}
-          className="pointer-events-auto py-4 px-8 bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors duration-500"
-        >
-          X
-        </button>
+        <div >
+          <div className="bubble">
+            <button
+              onClick={() => setCurrentPage("skills")}
+              className="custom-button pointer-events-auto bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors "
+            >
+              Resume
+            </button>
+          </div>
+          <div className="bubble">
+            <button
+              onClick={() => setCurrentPage("cert")}
+              className="custom-button pointer-events-auto bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors "
+            >
+              Resume 2
+            </button>
+          </div>
+          <div className="bubble">
+            <button
+              onClick={() => setCurrentPage("home")}
+              className="custom-button pointer-events-auto bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors "
+            >
+              X
+            </button>
+          </div>
 
+          <div className="bubble">
+            <button
+              onClick={() => setCurrentPage("profile")}
+              className="custom-button pointer-events-auto bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors "
+            >
+              Profile
+            </button>
+          </div>
+
+          
+        </div>
       </section>
     </div>
   );

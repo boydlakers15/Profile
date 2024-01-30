@@ -6,7 +6,16 @@ Command: npx gltfjsx@6.2.16 public/models/room.glb -o src/components/Room.js -k 
 import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, useAnimations, Html } from '@react-three/drei';
 import '@react-pdf-viewer/core/lib/styles/index.css';
-import HeroPage from './HeroPage.js'
+import Profile from './Profile';
+import './About.css';
+import * as THREE from 'three'
+import { UISkills } from './SkillsUI';
+import PDFFile from "./IMG/Jared-Boyd.pdf";
+import { degToRad } from "three/src/math/MathUtils";
+import { currentPageAtom } from "./UI";
+import { useAtom } from "jotai";
+
+
 
 export function Room(props) {
   const group = useRef()
@@ -14,8 +23,90 @@ export function Room(props) {
   const { actions, names } = useAnimations(animations, group)
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [showPdfModal, setShowPdfModal] = useState(false);
+  const [popupWindow, setPopupWindow] = useState(null);
+
+// Define the gradient colors
+const gradientColors = [0x53B7ED, 0x71C9E8, 0xAAFC87, 0x96F3FA, 0x7BA1EA, 0x8477FD, 0xB6F8FF, 0x6DC7BF];
+
+// Create a linear gradient texture
+const gradientTexture = new THREE.TextureLoader().load(generateLinearGradientTexture(gradientColors));
+
+// Create the material with the linear gradient texture
+const hoveredMaterial = new THREE.MeshStandardMaterial({
+  map: gradientTexture, // Use the gradient texture as the map
+});
+const hoveredMaterial1 = new THREE.MeshStandardMaterial({
+  color: 0x645655, // Set the color to dark grey
+});
+
+const hoveredMaterial2 = new THREE.MeshStandardMaterial({
+  color: 0xFFFFFF, // Set the color to dark grey
+});
+
+// Function to generate a linear gradient texture
+function generateLinearGradientTexture(colors) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Set canvas size (width, height)
+  canvas.width = 256;
+  canvas.height = 1;
+
+  // Create a linear gradient
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+  // Add color stops
+  colors.forEach((color, index) => {
+    const hexColor = '#' + color.toString(16).padStart(6, '0');
+    const stop = index / (colors.length - 1);
+    gradient.addColorStop(stop, hexColor);
+  });
+
+  // Fill the canvas with the gradient
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  return canvas.toDataURL();
+}
+
+  function ScreenComputer({  }) {
  
+    const width = 10
+    const height =60.55
+    const [hidden, set] = useState()
+    const position=([-0.05249 , 0, 0])
+    const rotation=([ 0, 10.25, 0])
+    return (
+      
+     
+      <mesh  name="Object_290" geometry={nodes.Object_290.geometry} material={new THREE.MeshBasicMaterial({ side: THREE.FrontSide })}>
+        {/* Drei's HTML component can "hide behind" canvas geometry */}
+          <Html
+            material={new THREE.MeshBasicMaterial({ side: THREE.BackSide })}
+            className="content"
+            position={position}
+            scale={0.04}
+            transform
+            occlude
+            onOcclude={set}
+            distanceFactor={5} // Adjust this value based on your needs
+            style={{
+              transition: "0.5s",
+              opacity: hidden ? 0 : 2,
+              transform: `scale(${hidden ? 0 : 1})`,
+            }}
+          >
+            <div className="wrapper">
+              {/* Content of your HTML component */}
+              <Profile />
+              <UISkills />
+            </div>
+        </Html>
+      </mesh>
+     
+  
+    )
+  }
 
   
   useEffect(() => {
@@ -33,13 +124,25 @@ export function Room(props) {
     setIsHovered(false);
   };
 
-  const handleClick = () => {
+  const handleClickPop = () => {
     setIsClicked(!isClicked);
-    setShowPdfModal(true);
+
+    // Open a new popup window with the desired PDF link
+    const newPopupWindow = window.open(PDFFile, 'ResumePopup', 'width=800,height=600');
+    
+    // Set the reference to the opened window in the state
+    setPopupWindow(newPopupWindow);
   };
 
-  const handleClosePdfModal = () => {
-    setShowPdfModal(false);
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+
+    // Open a new popup window with the desired website URL
+    const websiteUrl = "https://github.com/boydlakers15/certificates-jared";
+    const newPopupWindow = window.open(websiteUrl, 'WebsitePopup', 'width=800,height=600');
+
+    // Set the reference to the opened window in the state
+    setPopupWindow(newPopupWindow);
   };
 
   return (
@@ -86,7 +189,11 @@ export function Room(props) {
                 <mesh name="Object_288" geometry={nodes.Object_288.geometry} material={materials['Screen.002']} position={[-0.655, 0, -0.1]} rotation={[0, 0.608, 0]} />
               </group>
               <group name="Monitor_2_127" position={[-10.629, 8.375, 9.101]} rotation={[-Math.PI, 0.175, -Math.PI]} scale={9.341}>
-                <mesh name="Object_290" geometry={nodes.Object_290.geometry} material={materials['Material.024']} position={[-0.626, 0, 0.047]} rotation={[0, 0.231, 0]} />
+           
+
+                <mesh name="Object_290" geometry={nodes.Object_290.geometry} material={materials['Material.024']} position={[-0.626, 0, 0.047]} rotation={[0, 0.231, 0]} >
+                 <ScreenComputer />
+                </mesh>
                 <mesh name="Object_291" geometry={nodes.Object_291.geometry} material={materials['Screen.002']} position={[-0.626, 0, 0.047]} rotation={[0, 0.209, 0]} />
               </group>
               <group name="Mouse_Pad_119" position={[-7.775, 6.012, 7.194]}>
@@ -111,8 +218,8 @@ export function Room(props) {
                 <mesh name="Object_295" geometry={nodes.Object_295.geometry} material={materials.Nikon} />
               </group>
               <group name="WhiteWalls" position={[0, -4.453, 0]} rotation={[Math.PI / 2, 0, 0]}>
-                <mesh name="Object_313" geometry={nodes.Object_313.geometry} material={materials['Material.025']} position={[-0.009, 0.017, -0.001]} />
-                <mesh name="Object_313001" geometry={nodes.Object_313001.geometry} material={materials['Material.025']} position={[-48.057, 5.754, 0.017]} rotation={[0, 0, -1.573]} />
+                <mesh name="Object_313" geometry={nodes.Object_313.geometry} material={materials.Cert} position={[-0.009, 0.017, -0.001]} />
+                <mesh name="Object_313001" geometry={nodes.Object_313001.geometry} material={materials.Cert} position={[-48.057, 5.754, 0.017]} rotation={[0, 0, -1.573]} />
               </group>
               <group name="Window_Left" position={[11.463, 11.163, -1.78]} scale={[0.833, 1, 1]}>
                 <mesh name="Object_311" geometry={nodes.Object_311.geometry} material={materials.material_0} />
@@ -143,15 +250,15 @@ export function Room(props) {
           </group>
         </group>
         <group name="Mouse" position={[-11.911, 6.063, 7.452]} rotation={[Math.PI / 2, 0, -1.945]} scale={0.001}>
-          <group name="Ice_Clawfbx" position={[0.002, 0, -0.001]} rotation={[Math.PI, 0, 0]}>
-            <group name="RootNode001" position={[0.006, 0, 0]}>
-              <group name="Plane001" position={[0.007, 0, -23.176]} rotation={[0, -0.031, Math.PI / 2]} scale={[159.237, 159.237, 170.519]}>
+          <group name="Ice_Clawfbx" position={[0.003, -0.004, 0]} rotation={[-Math.PI, 0, 0]}>
+            <group name="RootNode001" position={[0.007, -0.002, -0.001]}>
+              <group name="Plane001" position={[0.008, -0.001, -23.176]} rotation={[0, -0.031, Math.PI / 2]} scale={[159.237, 159.237, 170.519]}>
                 <mesh name="Plane001_Material002_0" geometry={nodes.Plane001_Material002_0.geometry} material={materials['Material.027']} position={[-32.056, 13.199, 0.379]} />
               </group>
             </group>
           </group>
         </group>
-        <group name="Headphones" position={[-8.543, 5.973, 7.613]} rotation={[0.012, -0.739, -1.563]} scale={[0.096, 0.064, 0.052]}>
+        <group name="Headphones" position={[-10.743, 5.973, 3.225]} rotation={[0.012, -0.739, -1.563]} scale={[0.096, 0.064, 0.052]}>
           <group name="c36ef99cf19e49e38387bd4c9f825655fbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="RootNode002">
               <group name="Headphones001" position={[0, 25.168, 0]} rotation={[-Math.PI / 2, -Math.PI / 2, 0]} scale={100}>
@@ -190,7 +297,7 @@ export function Room(props) {
             <group name="RootNode003">
               <group name="Frame_low1" position={[-39.931, 13.189, -719.901]} scale={5.707}>
                 <mesh name="Frame_low1_Backing1_0" geometry={nodes.Frame_low1_Backing1_0.geometry} material={materials.Backing1} position={[-20.096, 2.803, 115.291]} />
-                <mesh name="Frame_low1_Cushions1_0" geometry={nodes.Frame_low1_Cushions1_0.geometry} material={materials.Cushions1} position={[-17.563, 2.587, 121.818]} />
+                <mesh name="Frame_low1_Cushions1_0" geometry={nodes.Frame_low1_Cushions1_0.geometry} material={materials.Cushions1} position={[-17.563, 2.587, 121.819]} />
                 <mesh name="Frame_low1_Frame1_0" geometry={nodes.Frame_low1_Frame1_0.geometry} material={materials.Frame1} position={[-18.068, 0.302, 129.027]} />
               </group>
               <group name="pPlane2" scale={400.849} />
@@ -200,8 +307,6 @@ export function Room(props) {
         <group name="Picture" position={[9.939, 7.048, 11.033]} rotation={[-Math.PI / 2, 0, 1.575]} scale={[7.299, 3.495, 4.65]}>
           <group name="emapale_enmarcateobjcleanermaterialmergergles">
             <mesh name="Object_2" geometry={nodes.Object_2.geometry} material={materials['Material.032']} />
-            <mesh name="Object_3" geometry={nodes.Object_3.geometry} material={materials['Material.033']} position={[-0.01, 0, 0]} />
-            <mesh name="Object_4002" geometry={nodes.Object_4002.geometry} material={materials['Material.034']} position={[-0.009, 0, 0]} />
             <mesh name="Object_5" geometry={nodes.Object_5.geometry} material={materials['Material.035']} />
           </group>
         </group>
@@ -358,7 +463,7 @@ export function Room(props) {
                   </group>
                   <group name="Side_Screws">
                     <group name="pCylinder103001" position={[12.885, 4.933, -7.761]} rotation={[0, 0, -Math.PI / 2]} scale={[0.222, 0.029, 0.222]}>
-                      <mesh name="pCylinder103_Case_SpacerM_0001" geometry={nodes.pCylinder103_Case_SpacerM_0001.geometry} material={materials.Case_SpacerM} />
+                      <mesh name="pCylinder103_Case_SpacerM_0001" geometry={nodes.pCylinder103_Case_SpacerM_0001.geometry} material={materials.Case_SpacerM} position={[0, 0.001, 0]} />
                     </group>
                     <group name="pCylinder104001" position={[12.868, 4.932, -7.764]} rotation={[0, 0, -Math.PI / 2]} scale={[0.071, 0.266, 0.071]}>
                       <mesh name="pCylinder104_CasePegsM_0001" geometry={nodes.pCylinder104_CasePegsM_0001.geometry} material={materials.CasePegsM} />
@@ -448,7 +553,7 @@ export function Room(props) {
                     <group name="pCube965" position={[1.15, -0.055, 0.67]} rotation={[2.263, 0.175, -2.615]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube965_RGBM_0" geometry={nodes.pCube965_RGBM_0.geometry} material={materials.RGBM} />
                     </group>
-                    <group name="pCube966" position={[0.161, -0.055, 1.345]} rotation={[1.885, 0.648, -1.746]} scale={[1, 1, 0.267]}>
+                    <group name="pCube966" position={[0.161, -0.055, 1.344]} rotation={[1.885, 0.648, -1.746]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube966_RGBM_0" geometry={nodes.pCube966_RGBM_0.geometry} material={materials.RGBM} />
                     </group>
                     <group name="pCube967" position={[-0.895, -0.055, 1.049]} rotation={[1.217, 0.63, -0.692]} scale={[1, 1, 0.267]}>
@@ -485,7 +590,7 @@ export function Room(props) {
                     <group name="pCube963001" position={[0.291, -0.055, -1.319]} rotation={[1.566, -0.71, 1.883]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube963_RGBM_0001" geometry={nodes.pCube963_RGBM_0001.geometry} material={materials.RGBM} />
                     </group>
-                    <group name="pCube964001" position={[1.243, -0.055, -0.468]} rotation={[2.189, -0.376, 2.984]} scale={[1, 1, 0.267]}>
+                    <group name="pCube964001" position={[1.243, -0.055, -0.469]} rotation={[2.189, -0.376, 2.984]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube964_RGBM_0001" geometry={nodes.pCube964_RGBM_0001.geometry} material={materials.RGBM} />
                     </group>
                     <group name="pCube965001" position={[1.15, -0.055, 0.67]} rotation={[2.263, 0.175, -2.615]} scale={[1, 1, 0.267]}>
@@ -611,19 +716,19 @@ export function Room(props) {
                     <mesh name="pCube846_M2_Chip2m_0" geometry={nodes.pCube846_M2_Chip2m_0.geometry} material={materials.M2_Chip2m} />
                   </group>
                   <group name="pCube847" position={[-0.196, -0.128, -7.645]} scale={[0.026, 0.059, 0.007]}>
-                    <mesh name="pCube847_lambert1_0" geometry={nodes.pCube847_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube847_lambert1_0" geometry={nodes.pCube847_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube848" position={[-0.156, -0.128, -7.645]} scale={[0.026, 0.059, 0.007]}>
-                    <mesh name="pCube848_lambert1_0" geometry={nodes.pCube848_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube848_lambert1_0" geometry={nodes.pCube848_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.003]} />
                   </group>
                   <group name="pCube849" position={[-0.334, -0.128, -7.645]} scale={[0.026, 0.059, 0.007]}>
-                    <mesh name="pCube849_lambert1_0" geometry={nodes.pCube849_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.002]} />
+                    <mesh name="pCube849_lambert1_0" geometry={nodes.pCube849_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.003]} />
                   </group>
                   <group name="pCube850" position={[-0.375, -0.128, -7.645]} scale={[0.026, 0.059, 0.007]}>
                     <mesh name="pCube850_lambert1_0" geometry={nodes.pCube850_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube851" position={[-0.633, -0.393, -7.623]} scale={[0.378, 0.31, 0.009]}>
-                    <mesh name="pCube851_M2_StickerM_0" geometry={nodes.pCube851_M2_StickerM_0.geometry} material={materials.M2_StickerM} />
+                    <mesh name="pCube851_M2_StickerM_0" geometry={nodes.pCube851_M2_StickerM_0.geometry} material={materials.M2_StickerM} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube852" position={[0.675, -0.668, -7.639]} scale={[0.055, 0.037, 0.026]}>
                     <mesh name="pCube852_lambert1_0" geometry={nodes.pCube852_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
@@ -632,55 +737,55 @@ export function Room(props) {
                     <mesh name="pCube853_ChipM_0" geometry={nodes.pCube853_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube854" position={[-0.309, -0.654, -7.641]} rotation={[0, 0, Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube854_lambert1_0" geometry={nodes.pCube854_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, -0.001, -0.001]} />
+                    <mesh name="pCube854_lambert1_0" geometry={nodes.pCube854_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.003, -0.001, -0.001]} />
                   </group>
                   <group name="pCube855" position={[-0.309, -0.638, -7.641]} rotation={[0, 0, Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
                     <mesh name="pCube855_lambert1_0" geometry={nodes.pCube855_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, -0.001, -0.001]} />
                   </group>
                   <group name="pCube856" position={[-0.309, -0.623, -7.641]} rotation={[0, 0, Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube856_lambert1_0" geometry={nodes.pCube856_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, -0.001, -0.001]} />
+                    <mesh name="pCube856_lambert1_0" geometry={nodes.pCube856_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, -0.001, -0.001]} />
                   </group>
                   <group name="pCube857" position={[-0.309, -0.607, -7.641]} rotation={[0, 0, Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
                     <mesh name="pCube857_lambert1_0" geometry={nodes.pCube857_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, -0.001, -0.001]} />
                   </group>
                   <group name="pCube858" position={[-0.275, -0.607, -7.641]} rotation={[0, 0, -Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube858_lambert1_0" geometry={nodes.pCube858_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
+                    <mesh name="pCube858_lambert1_0" geometry={nodes.pCube858_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.002]} />
                   </group>
                   <group name="pCube859" position={[-0.275, -0.622, -7.641]} rotation={[0, 0, -Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube859_lambert1_0" geometry={nodes.pCube859_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
+                    <mesh name="pCube859_lambert1_0" geometry={nodes.pCube859_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.002]} />
                   </group>
                   <group name="pCube860" position={[-0.275, -0.639, -7.641]} rotation={[0, 0, -Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube860_lambert1_0" geometry={nodes.pCube860_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube860_lambert1_0" geometry={nodes.pCube860_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.002]} />
                   </group>
                   <group name="pCube861" position={[-0.275, -0.656, -7.641]} rotation={[0, 0, -Math.PI / 2]} scale={[0.007, 0.034, 0.013]}>
-                    <mesh name="pCube861_lambert1_0" geometry={nodes.pCube861_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
+                    <mesh name="pCube861_lambert1_0" geometry={nodes.pCube861_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, -0.002]} />
                   </group>
                   <group name="pCube862" position={[0.097, -0.138, -7.65]} scale={[0.075, 0.05, 0.024]}>
                     <mesh name="pCube862_ChipM_0" geometry={nodes.pCube862_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube863" position={[0.073, -0.153, -7.646]} rotation={[0, 0, Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube863_lambert1_0" geometry={nodes.pCube863_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, 0, 0]} />
+                    <mesh name="pCube863_lambert1_0" geometry={nodes.pCube863_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.003, 0, 0.001]} />
                   </group>
                   <group name="pCube864" position={[0.073, -0.141, -7.646]} rotation={[0, 0, Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube864_lambert1_0" geometry={nodes.pCube864_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube864_lambert1_0" geometry={nodes.pCube864_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.003, 0, 0.001]} />
                   </group>
                   <group name="pCube865" position={[0.073, -0.129, -7.646]} rotation={[0, 0, Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube865_lambert1_0" geometry={nodes.pCube865_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.003, 0, 0]} />
+                    <mesh name="pCube865_lambert1_0" geometry={nodes.pCube865_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.004, 0, 0.001]} />
                   </group>
                   <group name="pCube866" position={[0.073, -0.117, -7.646]} rotation={[0, 0, Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube866_lambert1_0" geometry={nodes.pCube866_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube866_lambert1_0" geometry={nodes.pCube866_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube867" position={[0.121, -0.117, -7.646]} rotation={[0, 0, -Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube867_lambert1_0" geometry={nodes.pCube867_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0.001]} />
+                    <mesh name="pCube867_lambert1_0" geometry={nodes.pCube867_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.003, 0, 0.002]} />
                   </group>
                   <group name="pCube868" position={[0.121, -0.128, -7.646]} rotation={[0, 0, -Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube868_lambert1_0" geometry={nodes.pCube868_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0.001]} />
+                    <mesh name="pCube868_lambert1_0" geometry={nodes.pCube868_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0.002]} />
                   </group>
                   <group name="pCube869" position={[0.121, -0.141, -7.646]} rotation={[0, 0, -Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube869_lambert1_0" geometry={nodes.pCube869_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0.001]} />
+                    <mesh name="pCube869_lambert1_0" geometry={nodes.pCube869_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0.002]} />
                   </group>
                   <group name="pCube870" position={[0.121, -0.154, -7.646]} rotation={[0, 0, -Math.PI / 2]} scale={[0.005, 0.042, 0.013]}>
-                    <mesh name="pCube870_lambert1_0" geometry={nodes.pCube870_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.003, 0, 0.001]} />
+                    <mesh name="pCube870_lambert1_0" geometry={nodes.pCube870_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.004, 0, 0.002]} />
                   </group>
                 </group>
                 <group name="MotherBoard">
@@ -694,19 +799,19 @@ export function Room(props) {
                     <mesh name="pCube101_BasePLasticM_0" geometry={nodes.pCube101_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube102" position={[0.346, -4.575, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube102_Pins2M_0" geometry={nodes.pCube102_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube102_Pins2M_0" geometry={nodes.pCube102_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube103" position={[0.406, -4.575, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube103_Pins2M_0" geometry={nodes.pCube103_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube103_Pins2M_0" geometry={nodes.pCube103_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube104" position={[0.464, -4.575, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube104_Pins2M_0" geometry={nodes.pCube104_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube104_Pins2M_0" geometry={nodes.pCube104_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube105" position={[0.525, -4.575, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube105_Pins2M_0" geometry={nodes.pCube105_Pins2M_0.geometry} material={materials.Pins2M} position={[0.002, 0, 0]} />
+                    <mesh name="pCube105_Pins2M_0" geometry={nodes.pCube105_Pins2M_0.geometry} material={materials.Pins2M} position={[0.002, 0.001, 0]} />
                   </group>
                   <group name="pCube106" position={[0.585, -4.575, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube106_Pins2M_0" geometry={nodes.pCube106_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube106_Pins2M_0" geometry={nodes.pCube106_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube107" position={[3.644, -1.452, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube107_Pins2M_0" geometry={nodes.pCube107_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
@@ -718,7 +823,7 @@ export function Room(props) {
                     <mesh name="pCube109_Pins2M_0" geometry={nodes.pCube109_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube110" position={[3.644, -1.632, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube110_Pins2M_0" geometry={nodes.pCube110_Pins2M_0.geometry} material={materials.Pins2M} position={[0, -0.001, 0]} />
+                    <mesh name="pCube110_Pins2M_0" geometry={nodes.pCube110_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube111" position={[3.644, -1.691, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube111_Pins2M_0" geometry={nodes.pCube111_Pins2M_0.geometry} material={materials.Pins2M} position={[0, -0.001, 0]} />
@@ -727,25 +832,25 @@ export function Room(props) {
                     <mesh name="pCube112_Pins2M_0" geometry={nodes.pCube112_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube113" position={[3.644, -1.812, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube113_Pins2M_0" geometry={nodes.pCube113_Pins2M_0.geometry} material={materials.Pins2M} position={[0, -0.001, 0]} />
+                    <mesh name="pCube113_Pins2M_0" geometry={nodes.pCube113_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube114" position={[3.644, -1.871, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube114_Pins2M_0" geometry={nodes.pCube114_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube115" position={[3.644, -1.932, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube115_Pins2M_0" geometry={nodes.pCube115_Pins2M_0.geometry} material={materials.Pins2M} position={[0, -0.001, 0]} />
+                    <mesh name="pCube115_Pins2M_0" geometry={nodes.pCube115_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
-                  <group name="pCube116" position={[3.644, -1.99, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube116_Pins2M_0" geometry={nodes.pCube116_Pins2M_0.geometry} material={materials.Pins2M} position={[0, -0.001, 0]} />
+                  <group name="pCube116" position={[3.644, -1.991, -7.799]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
+                    <mesh name="pCube116_Pins2M_0" geometry={nodes.pCube116_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, -0.001, 0]} />
                   </group>
                   <group name="pCube117" position={[3.644, -1.932, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube117_Pins2M_0" geometry={nodes.pCube117_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube117_Pins2M_0" geometry={nodes.pCube117_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube118" position={[3.644, -1.871, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube118_Pins2M_0" geometry={nodes.pCube118_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube119" position={[3.644, -1.812, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube119_Pins2M_0" geometry={nodes.pCube119_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube119_Pins2M_0" geometry={nodes.pCube119_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube120" position={[3.644, -1.751, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube120_Pins2M_0" geometry={nodes.pCube120_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
@@ -754,7 +859,7 @@ export function Room(props) {
                     <mesh name="pCube121_Pins2M_0" geometry={nodes.pCube121_Pins2M_0.geometry} material={materials.Pins2M} />
                   </group>
                   <group name="pCube122" position={[3.644, -1.632, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube122_Pins2M_0" geometry={nodes.pCube122_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube122_Pins2M_0" geometry={nodes.pCube122_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube123" position={[3.644, -1.572, -7.86]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube123_Pins2M_0" geometry={nodes.pCube123_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
@@ -781,31 +886,31 @@ export function Room(props) {
                     <mesh name="pCube138_BasePLasticM_0" geometry={nodes.pCube138_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube139" position={[3.473, 3.796, -7.933]} rotation={[0, 0, -Math.PI / 2]} scale={[0.124, 0.071, 0.033]}>
-                    <mesh name="pCube139_ChipM_0" geometry={nodes.pCube139_ChipM_0.geometry} material={materials.ChipM} />
+                    <mesh name="pCube139_ChipM_0" geometry={nodes.pCube139_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, 0]} />
                   </group>
-                  <group name="pCube140" position={[3.54, 3.845, -7.942]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
-                    <mesh name="pCube140_lambert1_0" geometry={nodes.pCube140_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                  <group name="pCube140" position={[3.54, 3.845, -7.941]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
+                    <mesh name="pCube140_lambert1_0" geometry={nodes.pCube140_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.003]} />
                   </group>
                   <group name="pCube141" position={[3.523, 3.845, -7.926]} rotation={[0, -0.171, -Math.PI / 2]} scale={[0.013, 0.044, 0.007]}>
-                    <mesh name="pCube141_lambert1_0" geometry={nodes.pCube141_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube141_lambert1_0" geometry={nodes.pCube141_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube142" position={[3.523, 3.796, -7.926]} rotation={[0, -0.171, -Math.PI / 2]} scale={[0.013, 0.044, 0.007]}>
                     <mesh name="pCube142_lambert1_0" geometry={nodes.pCube142_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
-                  <group name="pCube143" position={[3.54, 3.796, -7.942]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
-                    <mesh name="pCube143_lambert1_0" geometry={nodes.pCube143_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                  <group name="pCube143" position={[3.54, 3.796, -7.941]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
+                    <mesh name="pCube143_lambert1_0" geometry={nodes.pCube143_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.003]} />
                   </group>
                   <group name="pCube144" position={[3.523, 3.749, -7.926]} rotation={[0, -0.171, -Math.PI / 2]} scale={[0.013, 0.044, 0.007]}>
                     <mesh name="pCube144_lambert1_0" geometry={nodes.pCube144_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
-                  <group name="pCube145" position={[3.54, 3.749, -7.942]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
-                    <mesh name="pCube145_lambert1_0" geometry={nodes.pCube145_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                  <group name="pCube145" position={[3.54, 3.749, -7.941]} rotation={[0, 0, -Math.PI / 2]} scale={[0.033, 0.041, 0.009]}>
+                    <mesh name="pCube145_lambert1_0" geometry={nodes.pCube145_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.003]} />
                   </group>
                   <group name="pCube146" position={[3.41, 3.798, -7.942]} rotation={[0, 0, -Math.PI / 2]} scale={[0.082, 0.045, 0.009]}>
                     <mesh name="pCube146_lambert1_0" geometry={nodes.pCube146_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, -0.001, -0.001]} />
                   </group>
                   <group name="pCube147" position={[3.418, 3.799, -7.926]} rotation={[0, 0.171, Math.PI / 2]} scale={[0.064, 0.044, 0.007]}>
-                    <mesh name="pCube147_lambert1_0" geometry={nodes.pCube147_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube147_lambert1_0" geometry={nodes.pCube147_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube148" position={[0.735, -0.083, -7.941]} scale={[0.055, 0.125, 0.015]}>
                     <mesh name="pCube148_lambert1_0" geometry={nodes.pCube148_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -819,7 +924,7 @@ export function Room(props) {
                   <group name="pCube151" position={[1.318, -0.033, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube151_lambert1_0" geometry={nodes.pCube151_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
-                  <group name="pCube152" position={[1.504, 0.504, -0.332]} rotation={[0, 0, Math.PI]} scale={[0.349, 0.821, 0.96]}>
+                  <group name="pCube152" position={[1.504, 0.504, -0.332]} rotation={[0, 0, -Math.PI]} scale={[0.349, 0.821, 0.96]}>
                     <mesh name="pCube152_lambert1_0" geometry={nodes.pCube152_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube153" position={[1.459, 0.227, -7.885]} rotation={[0, 0, Math.PI / 2]} scale={[0.141, 0.138, 0.182]}>
@@ -832,19 +937,19 @@ export function Room(props) {
                     <mesh name="pCube155_lambert1_0" geometry={nodes.pCube155_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube156" position={[1.768, -0.033, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube156_lambert1_0" geometry={nodes.pCube156_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube156_lambert1_0" geometry={nodes.pCube156_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube157" position={[1.718, -0.033, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube157_lambert1_0" geometry={nodes.pCube157_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube157_lambert1_0" geometry={nodes.pCube157_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube158" position={[1.667, -0.033, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube158_lambert1_0" geometry={nodes.pCube158_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube158_lambert1_0" geometry={nodes.pCube158_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube159" position={[1.618, -0.033, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube159_lambert1_0" geometry={nodes.pCube159_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube160" position={[0.129, 0.552, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube160_lambert1_0" geometry={nodes.pCube160_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube160_lambert1_0" geometry={nodes.pCube160_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube161" position={[0.179, 0.552, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube161_lambert1_0" geometry={nodes.pCube161_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
@@ -862,18 +967,18 @@ export function Room(props) {
                     <mesh name="pCube165_lambert1_0" geometry={nodes.pCube165_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube166" position={[0.944, 0.226, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube166_lambert1_0" geometry={nodes.pCube166_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube166_lambert1_0" geometry={nodes.pCube166_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube167" position={[0.892, 0.226, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube167_lambert1_0" geometry={nodes.pCube167_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube167_lambert1_0" geometry={nodes.pCube167_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
-                  <group name="pCube168" position={[0.43, -1.67, -7.941]} scale={[0.042, 0.096, 0.011]}>
+                  <group name="pCube168" position={[0.43, -1.671, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube168_lambert1_0" geometry={nodes.pCube168_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
-                  <group name="pCube169" position={[0.375, -1.67, -7.941]} scale={[0.042, 0.096, 0.011]}>
+                  <group name="pCube169" position={[0.375, -1.671, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube169_lambert1_0" geometry={nodes.pCube169_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
-                  <group name="pCube170" position={[0.324, -1.67, -7.941]} scale={[0.042, 0.096, 0.011]}>
+                  <group name="pCube170" position={[0.324, -1.671, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube170_lambert1_0" geometry={nodes.pCube170_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube171" position={[0.083, -1.959, -7.941]} scale={[0.042, 0.096, 0.011]}>
@@ -883,13 +988,13 @@ export function Room(props) {
                     <mesh name="pCube172_lambert1_0" geometry={nodes.pCube172_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube173" position={[-0.131, -1.645, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube173_lambert1_0" geometry={nodes.pCube173_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube173_lambert1_0" geometry={nodes.pCube173_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube174" position={[-2.72, -3.361, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube174_lambert1_0" geometry={nodes.pCube174_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube174_lambert1_0" geometry={nodes.pCube174_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube175" position={[-2.81, -3.562, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube175_lambert1_0" geometry={nodes.pCube175_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube175_lambert1_0" geometry={nodes.pCube175_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.002]} />
                   </group>
                   <group name="pCube176" position={[-2.907, -1.318, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube176_lambert1_0" geometry={nodes.pCube176_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
@@ -919,7 +1024,7 @@ export function Room(props) {
                     <mesh name="pCube184_WhiteBasePlasticM_0" geometry={nodes.pCube184_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube185" position={[3.008, 4.387, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube185_Pins2M_0" geometry={nodes.pCube185_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
+                    <mesh name="pCube185_Pins2M_0" geometry={nodes.pCube185_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube186" position={[-0.581, 1.893, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube186_lambert1_0" geometry={nodes.pCube186_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
@@ -940,13 +1045,13 @@ export function Room(props) {
                     <mesh name="pCube190_lambert1_0" geometry={nodes.pCube190_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube191" position={[2.877, 4.31, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube191_lambert1_0" geometry={nodes.pCube191_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
+                    <mesh name="pCube191_lambert1_0" geometry={nodes.pCube191_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube192" position={[-1.414, -0.196, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube192_lambert1_0" geometry={nodes.pCube192_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube192_lambert1_0" geometry={nodes.pCube192_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube193" position={[-1.629, -0.072, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube193_lambert1_0" geometry={nodes.pCube193_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube193_lambert1_0" geometry={nodes.pCube193_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube194" position={[3.6, 3.528, -7.903]} rotation={[0, 0, -Math.PI / 2]} scale={[0.288, 0.162, 0.087]}>
                     <mesh name="pCube194_BasePLasticM_0" geometry={nodes.pCube194_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
@@ -976,7 +1081,7 @@ export function Room(props) {
                     <mesh name="pCube205_lambert1_0" geometry={nodes.pCube205_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube206" position={[-1.404, -3.075, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube206_lambert1_0" geometry={nodes.pCube206_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube206_lambert1_0" geometry={nodes.pCube206_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube207" position={[3.018, 3.718, -8.043]} scale={[0.115, 0.115, 0.236]}>
                     <mesh name="pCube207_ChipM_0" geometry={nodes.pCube207_ChipM_0.geometry} material={materials.ChipM} />
@@ -987,7 +1092,7 @@ export function Room(props) {
                   <group name="pCube21" position={[-0.536, -3.342, -7.935]} scale={[0.202, 0.058, 0.024]}>
                     <mesh name="pCube21_lambert1_0" geometry={nodes.pCube21_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
-                  <group name="pCube22" position={[-0.536, -3.517, -7.935]} rotation={[0, 0, -Math.PI]} scale={[0.202, 0.058, 0.024]}>
+                  <group name="pCube22" position={[-0.536, -3.517, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.202, 0.058, 0.024]}>
                     <mesh name="pCube22_lambert1_0" geometry={nodes.pCube22_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube23" position={[-0.626, -3.434, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.202, 0.053, 0.024]}>
@@ -1069,22 +1174,22 @@ export function Room(props) {
                     <mesh name="pCube269_ChipM_0" geometry={nodes.pCube269_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube27" position={[3.02, 3.241, -7.94]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube27_lambert1_0" geometry={nodes.pCube27_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube27_lambert1_0" geometry={nodes.pCube27_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube28" position={[3.02, 3.205, -7.94]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube28_lambert1_0" geometry={nodes.pCube28_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube29" position={[3.02, 3.167, -7.94]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube29_lambert1_0" geometry={nodes.pCube29_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube29_lambert1_0" geometry={nodes.pCube29_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube298" position={[-0.021, 0, 4.029]} scale={[1, 1, 1.51]}>
                     <mesh name="pCube298_BasePLasticM_0" geometry={nodes.pCube298_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
-                  <group name="pCube3" position={[-0.988, -3.031, -7.743]} rotation={[0, 0, Math.PI]} scale={[2.707, 0.037, 0.411]}>
+                  <group name="pCube3" position={[-0.988, -3.031, -7.743]} rotation={[0, 0, -Math.PI]} scale={[2.707, 0.037, 0.411]}>
                     <mesh name="pCube3_Mertal1M_0" geometry={nodes.pCube3_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
                   <group name="pCube30" position={[3.123, 3.277, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube30_lambert1_0" geometry={nodes.pCube30_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube30_lambert1_0" geometry={nodes.pCube30_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, 0, 0]} />
                   </group>
                   <group name="pCube304" position={[0, 0, 0.319]}>
                     <mesh name="pCube304_BoardM2Cover1M_0" geometry={nodes.pCube304_BoardM2Cover1M_0.geometry} material={materials.BoardM2Cover1M} />
@@ -1093,13 +1198,13 @@ export function Room(props) {
                     <mesh name="pCube305_BoardM2CoverM_0" geometry={nodes.pCube305_BoardM2CoverM_0.geometry} material={materials.BoardM2CoverM} />
                   </group>
                   <group name="pCube31" position={[3.24, 3.26, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube31_lambert1_0" geometry={nodes.pCube31_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube31_lambert1_0" geometry={nodes.pCube31_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube315" position={[0, 0, 0.017]}>
                     <mesh name="pCube315_BoardChipsetM_0" geometry={nodes.pCube315_BoardChipsetM_0.geometry} material={materials.BoardChipsetM} />
                   </group>
                   <group name="pCube32" position={[3.278, 3.26, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube32_lambert1_0" geometry={nodes.pCube32_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube32_lambert1_0" geometry={nodes.pCube32_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube328">
                     <mesh name="pCube328_BoardPlate2m_0" geometry={nodes.pCube328_BoardPlate2m_0.geometry} material={materials.BoardPlate2m} />
@@ -1108,7 +1213,7 @@ export function Room(props) {
                     <mesh name="pCube329_CPUBracketM_0" geometry={nodes.pCube329_CPUBracketM_0.geometry} material={materials.CPUBracketM} />
                   </group>
                   <group name="pCube33" position={[3.318, 3.26, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube33_lambert1_0" geometry={nodes.pCube33_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0]} />
+                    <mesh name="pCube33_lambert1_0" geometry={nodes.pCube33_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0.001]} />
                   </group>
                   <group name="pCube34" position={[-2.584, -2.963, -8.043]} scale={0.236}>
                     <mesh name="pCube34_ChipM_0" geometry={nodes.pCube34_ChipM_0.geometry} material={materials.ChipM} />
@@ -1132,7 +1237,7 @@ export function Room(props) {
                     <mesh name="pCube35_ChipM_0" geometry={nodes.pCube35_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube36" position={[0.229, -0.716, -7.937]} scale={[0.28, 0.126, 0.022]}>
-                    <mesh name="pCube36_ChipM_0" geometry={nodes.pCube36_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
+                    <mesh name="pCube36_ChipM_0" geometry={nodes.pCube36_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube362" position={[0, 0.701, 0]} scale={[1, 1.19, 1]}>
                     <mesh name="pCube362_BasePLasticM_0" geometry={nodes.pCube362_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
@@ -1218,70 +1323,70 @@ export function Room(props) {
                     <mesh name="pCube480_lambert1_0" geometry={nodes.pCube480_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube481" position={[0.134, 1.964, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube481_lambert1_0" geometry={nodes.pCube481_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube481_lambert1_0" geometry={nodes.pCube481_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube482" position={[0.185, 1.964, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube482_lambert1_0" geometry={nodes.pCube482_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube482_lambert1_0" geometry={nodes.pCube482_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube483" position={[0.337, 1.964, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube483_lambert1_0" geometry={nodes.pCube483_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube483_lambert1_0" geometry={nodes.pCube483_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube484" position={[0.286, 1.964, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube484_lambert1_0" geometry={nodes.pCube484_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube484_lambert1_0" geometry={nodes.pCube484_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube485" position={[0.235, 1.964, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube485_lambert1_0" geometry={nodes.pCube485_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube486" position={[0.337, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube486_lambert1_0" geometry={nodes.pCube486_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube486_lambert1_0" geometry={nodes.pCube486_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube487" position={[0.286, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube487_lambert1_0" geometry={nodes.pCube487_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube487_lambert1_0" geometry={nodes.pCube487_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube488" position={[0.235, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube488_lambert1_0" geometry={nodes.pCube488_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube489" position={[0.185, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube489_lambert1_0" geometry={nodes.pCube489_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube489_lambert1_0" geometry={nodes.pCube489_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube49" position={[2.245, -4.515, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube49_Pins1M_0" geometry={nodes.pCube49_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube490" position={[0.134, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube490_lambert1_0" geometry={nodes.pCube490_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube490_lambert1_0" geometry={nodes.pCube490_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube491" position={[0.083, 1.855, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube491_lambert1_0" geometry={nodes.pCube491_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0.001]} />
                   </group>
                   <group name="pCube492" position={[0.337, 1.749, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube492_lambert1_0" geometry={nodes.pCube492_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube492_lambert1_0" geometry={nodes.pCube492_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube493" position={[0.286, 1.749, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube493_lambert1_0" geometry={nodes.pCube493_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube493_lambert1_0" geometry={nodes.pCube493_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube494" position={[0.235, 1.749, -7.941]} scale={[0.042, 0.096, 0.011]}>
                     <mesh name="pCube494_lambert1_0" geometry={nodes.pCube494_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube495" position={[0.185, 1.749, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube495_lambert1_0" geometry={nodes.pCube495_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube495_lambert1_0" geometry={nodes.pCube495_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube496" position={[0.134, 1.749, -7.941]} scale={[0.042, 0.096, 0.011]}>
-                    <mesh name="pCube496_lambert1_0" geometry={nodes.pCube496_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube496_lambert1_0" geometry={nodes.pCube496_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube498" position={[0.28, 1.651, -7.941]} scale={[0.039, 0.083, 0.011]}>
                     <mesh name="pCube498_lambert1_0" geometry={nodes.pCube498_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube499" position={[0.229, 1.651, -7.941]} scale={[0.039, 0.083, 0.011]}>
-                    <mesh name="pCube499_lambert1_0" geometry={nodes.pCube499_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube499_lambert1_0" geometry={nodes.pCube499_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube50" position={[2.175, -4.515, -7.852]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube50_Pins1M_0" geometry={nodes.pCube50_Pins1M_0.geometry} material={materials.Pins1M} />
+                    <mesh name="pCube50_Pins1M_0" geometry={nodes.pCube50_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube500" position={[0.179, 1.651, -7.941]} scale={[0.039, 0.083, 0.011]}>
                     <mesh name="pCube500_lambert1_0" geometry={nodes.pCube500_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube501" position={[0.128, 1.651, -7.941]} scale={[0.039, 0.083, 0.011]}>
-                    <mesh name="pCube501_lambert1_0" geometry={nodes.pCube501_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0.001]} />
+                    <mesh name="pCube501_lambert1_0" geometry={nodes.pCube501_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube502" position={[0.105, 2.05, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.039, 0.083, 0.011]}>
                     <mesh name="pCube502_lambert1_0" geometry={nodes.pCube502_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1308,7 +1413,7 @@ export function Room(props) {
                     <mesh name="pCube509_lambert1_0" geometry={nodes.pCube509_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube51" position={[2.175, -4.582, -7.852]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube51_Pins1M_0" geometry={nodes.pCube51_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
+                    <mesh name="pCube51_Pins1M_0" geometry={nodes.pCube51_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube510" position={[0.31, 2.05, -7.941]} rotation={[0, 0, Math.PI / 2]} scale={[0.039, 0.083, 0.011]}>
                     <mesh name="pCube510_lambert1_0" geometry={nodes.pCube510_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1329,7 +1434,7 @@ export function Room(props) {
                     <mesh name="pCube515_lambert1_0" geometry={nodes.pCube515_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube516" position={[3.315, 3.157, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube516_lambert1_0" geometry={nodes.pCube516_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube516_lambert1_0" geometry={nodes.pCube516_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube517" position={[3.27, 3.21, -7.95]} rotation={[0, 0, Math.PI / 2]} scale={[0.16, 0.152, 0.047]}>
                     <mesh name="pCube517_ChipM_0" geometry={nodes.pCube517_ChipM_0.geometry} material={materials.ChipM} />
@@ -1338,7 +1443,7 @@ export function Room(props) {
                     <mesh name="pCube518_lambert1_0" geometry={nodes.pCube518_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube519" position={[0.203, 0.327, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube519_lambert1_0" geometry={nodes.pCube519_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube519_lambert1_0" geometry={nodes.pCube519_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube52" position={[2.245, -4.582, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube52_Pins1M_0" geometry={nodes.pCube52_Pins1M_0.geometry} material={materials.Pins1M} />
@@ -1347,10 +1452,10 @@ export function Room(props) {
                     <mesh name="pCube520_lambert1_0" geometry={nodes.pCube520_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube521" position={[0.129, 0.327, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube521_lambert1_0" geometry={nodes.pCube521_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
+                    <mesh name="pCube521_lambert1_0" geometry={nodes.pCube521_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube522" position={[0.202, 0.224, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube522_lambert1_0" geometry={nodes.pCube522_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube522_lambert1_0" geometry={nodes.pCube522_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube523" position={[0.239, 0.224, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube523_lambert1_0" geometry={nodes.pCube523_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
@@ -1365,22 +1470,22 @@ export function Room(props) {
                     <mesh name="pCube526_lambert1_0" geometry={nodes.pCube526_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube527" position={[1.915, 4.126, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube527_lambert1_0" geometry={nodes.pCube527_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube527_lambert1_0" geometry={nodes.pCube527_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube528" position={[1.915, 4.162, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube528_lambert1_0" geometry={nodes.pCube528_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube528_lambert1_0" geometry={nodes.pCube528_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube529" position={[1.85, 4.162, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube529_lambert1_0" geometry={nodes.pCube529_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube529_lambert1_0" geometry={nodes.pCube529_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube53" position={[2.473, -4.582, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube53_Pins1M_0" geometry={nodes.pCube53_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube530" position={[1.915, 4.049, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube530_lambert1_0" geometry={nodes.pCube530_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube530_lambert1_0" geometry={nodes.pCube530_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube531" position={[1.915, 4.088, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube531_lambert1_0" geometry={nodes.pCube531_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube531_lambert1_0" geometry={nodes.pCube531_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube532" position={[1.85, 4.126, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube532_lambert1_0" geometry={nodes.pCube532_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
@@ -1392,16 +1497,16 @@ export function Room(props) {
                     <mesh name="pCube534_lambert1_0" geometry={nodes.pCube534_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube535" position={[1.883, 4.097, -7.942]} scale={[0.102, 0.152, 0.047]}>
-                    <mesh name="pCube535_ChipM_0" geometry={nodes.pCube535_ChipM_0.geometry} material={materials.ChipM} />
+                    <mesh name="pCube535_ChipM_0" geometry={nodes.pCube535_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube536" position={[1.915, 4.208, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube536_lambert1_0" geometry={nodes.pCube536_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube536_lambert1_0" geometry={nodes.pCube536_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube537" position={[1.915, 4.322, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube537_lambert1_0" geometry={nodes.pCube537_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube537_lambert1_0" geometry={nodes.pCube537_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube538" position={[1.85, 4.322, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube538_lambert1_0" geometry={nodes.pCube538_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube538_lambert1_0" geometry={nodes.pCube538_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube539" position={[1.85, 4.285, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube539_lambert1_0" geometry={nodes.pCube539_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
@@ -1410,31 +1515,31 @@ export function Room(props) {
                     <mesh name="pCube54_Pins1M_0" geometry={nodes.pCube54_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube540" position={[1.915, 4.248, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube540_lambert1_0" geometry={nodes.pCube540_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube540_lambert1_0" geometry={nodes.pCube540_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube541" position={[1.915, 4.286, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube541_lambert1_0" geometry={nodes.pCube541_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube542" position={[1.85, 4.249, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube542_lambert1_0" geometry={nodes.pCube542_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube542_lambert1_0" geometry={nodes.pCube542_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube543" position={[1.85, 4.211, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube543_lambert1_0" geometry={nodes.pCube543_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube543_lambert1_0" geometry={nodes.pCube543_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube544" position={[-1.654, 0.179, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube544_lambert1_0" geometry={nodes.pCube544_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube544_lambert1_0" geometry={nodes.pCube544_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, 0, 0]} />
                   </group>
                   <group name="pCube545" position={[-1.654, 0.217, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube545_lambert1_0" geometry={nodes.pCube545_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube545_lambert1_0" geometry={nodes.pCube545_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube546" position={[1.883, 4.256, -7.942]} scale={[0.102, 0.152, 0.047]}>
-                    <mesh name="pCube546_ChipM_0" geometry={nodes.pCube546_ChipM_0.geometry} material={materials.ChipM} />
+                    <mesh name="pCube546_ChipM_0" geometry={nodes.pCube546_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube547" position={[-1.654, 0.139, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube547_lambert1_0" geometry={nodes.pCube547_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube547_lambert1_0" geometry={nodes.pCube547_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube548" position={[-1.719, 0.18, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube548_lambert1_0" geometry={nodes.pCube548_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube548_lambert1_0" geometry={nodes.pCube548_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube549" position={[-1.719, 0.142, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube549_lambert1_0" geometry={nodes.pCube549_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
@@ -1443,7 +1548,7 @@ export function Room(props) {
                     <mesh name="pCube55_Pins1M_0" geometry={nodes.pCube55_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube550" position={[-1.654, 0.253, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube550_lambert1_0" geometry={nodes.pCube550_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube550_lambert1_0" geometry={nodes.pCube550_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube551" position={[-1.719, 0.253, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube551_lambert1_0" geometry={nodes.pCube551_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
@@ -1470,13 +1575,13 @@ export function Room(props) {
                     <mesh name="pCube558_lambert1_0" geometry={nodes.pCube558_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube559" position={[-2.059, -0.162, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube559_lambert1_0" geometry={nodes.pCube559_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube559_lambert1_0" geometry={nodes.pCube559_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube56" position={[2.107, -0.704, -7.937]} scale={[0.28, 0.126, 0.022]}>
-                    <mesh name="pCube56_ChipM_0" geometry={nodes.pCube56_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
+                    <mesh name="pCube56_ChipM_0" geometry={nodes.pCube56_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube560" position={[-2.059, -0.199, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube560_lambert1_0" geometry={nodes.pCube560_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
+                    <mesh name="pCube560_lambert1_0" geometry={nodes.pCube560_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube561" position={[0.459, -1.813, -7.935]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube561_lambert1_0" geometry={nodes.pCube561_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
@@ -1506,7 +1611,7 @@ export function Room(props) {
                     <mesh name="pCube569_lambert1_0" geometry={nodes.pCube569_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube57" position={[-0.461, -1.591, -7.71]} scale={[0.009, 0.225, 0.124]}>
-                    <mesh name="pCube57_lambert1_0" geometry={nodes.pCube57_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube57_lambert1_0" geometry={nodes.pCube57_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube570" position={[0.456, -1.878, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube570_lambert1_0" geometry={nodes.pCube570_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
@@ -1515,7 +1620,7 @@ export function Room(props) {
                     <mesh name="pCube571_ChipM_0" geometry={nodes.pCube571_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube572" position={[-3, -2.081, -7.935]} scale={[0.383, 0.065, 0.024]}>
-                    <mesh name="pCube572_lambert1_0" geometry={nodes.pCube572_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube572_lambert1_0" geometry={nodes.pCube572_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube573" position={[-3.18, -2.269, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.383, 0.065, 0.024]}>
                     <mesh name="pCube573_lambert1_0" geometry={nodes.pCube573_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1523,8 +1628,8 @@ export function Room(props) {
                   <group name="pCube574" position={[-2.998, -2.261, -7.933]} scale={[0.402, 0.402, 0.04]}>
                     <mesh name="pCube574_ChipM_0" geometry={nodes.pCube574_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
-                  <group name="pCube575" position={[-3, -2.444, -7.935]} rotation={[0, 0, -Math.PI]} scale={[0.383, 0.065, 0.024]}>
-                    <mesh name="pCube575_lambert1_0" geometry={nodes.pCube575_lambert1_0.geometry} material={materials['lambert1.001']} />
+                  <group name="pCube575" position={[-3, -2.444, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.383, 0.065, 0.024]}>
+                    <mesh name="pCube575_lambert1_0" geometry={nodes.pCube575_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube576" position={[-2.815, -2.269, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.383, 0.065, 0.024]}>
                     <mesh name="pCube576_lambert1_0" geometry={nodes.pCube576_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1533,7 +1638,7 @@ export function Room(props) {
                     <mesh name="pCube577_lambert1_0" geometry={nodes.pCube577_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube578" position={[2.968, -4.09, -7.926]} rotation={[0, 0, -Math.PI / 2]} scale={[0.017, 0.083, 0.039]}>
-                    <mesh name="pCube578_lambert1_0" geometry={nodes.pCube578_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube578_lambert1_0" geometry={nodes.pCube578_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube579" position={[2.884, -4.05, -7.926]} rotation={[0, 0, Math.PI / 2]} scale={[0.017, 0.083, 0.039]}>
                     <mesh name="pCube579_lambert1_0" geometry={nodes.pCube579_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1554,10 +1659,10 @@ export function Room(props) {
                     <mesh name="pCube583_lambert1_0" geometry={nodes.pCube583_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube584" position={[-1.375, -3.531, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube584_lambert1_0" geometry={nodes.pCube584_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube584_lambert1_0" geometry={nodes.pCube584_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube585" position={[-1.375, -3.494, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube585_lambert1_0" geometry={nodes.pCube585_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube585_lambert1_0" geometry={nodes.pCube585_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube586" position={[2.884, -4.129, -7.926]} rotation={[0, 0, Math.PI / 2]} scale={[0.017, 0.083, 0.039]}>
                     <mesh name="pCube586_lambert1_0" geometry={nodes.pCube586_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1566,7 +1671,7 @@ export function Room(props) {
                     <mesh name="pCube587_ChipM_0" geometry={nodes.pCube587_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube588" position={[-1.375, -3.571, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube588_lambert1_0" geometry={nodes.pCube588_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube588_lambert1_0" geometry={nodes.pCube588_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube589" position={[-1.44, -3.531, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube589_lambert1_0" geometry={nodes.pCube589_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
@@ -1578,7 +1683,7 @@ export function Room(props) {
                     <mesh name="pCube590_lambert1_0" geometry={nodes.pCube590_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube591" position={[-1.375, -3.458, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube591_lambert1_0" geometry={nodes.pCube591_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube591_lambert1_0" geometry={nodes.pCube591_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.002, 0, -0.001]} />
                   </group>
                   <group name="pCube592" position={[-1.44, -3.458, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube592_lambert1_0" geometry={nodes.pCube592_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
@@ -1590,13 +1695,13 @@ export function Room(props) {
                     <mesh name="pCube594_ChipM_0" geometry={nodes.pCube594_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube595" position={[-3.275, -3.977, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube595_lambert1_0" geometry={nodes.pCube595_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube595_lambert1_0" geometry={nodes.pCube595_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube596" position={[-3.275, -3.938, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube596_lambert1_0" geometry={nodes.pCube596_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube596_lambert1_0" geometry={nodes.pCube596_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube597" position={[-3.341, -3.864, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube597_lambert1_0" geometry={nodes.pCube597_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube597_lambert1_0" geometry={nodes.pCube597_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube598" position={[-3.341, -3.9, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube598_lambert1_0" geometry={nodes.pCube598_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1611,13 +1716,13 @@ export function Room(props) {
                     <mesh name="pCube60_Pins2M_0" geometry={nodes.pCube60_Pins2M_0.geometry} material={materials.Pins2M} />
                   </group>
                   <group name="pCube600" position={[-3.275, -3.9, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube600_lambert1_0" geometry={nodes.pCube600_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube600_lambert1_0" geometry={nodes.pCube600_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube601" position={[-3.275, -3.864, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube601_lambert1_0" geometry={nodes.pCube601_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube601_lambert1_0" geometry={nodes.pCube601_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube602" position={[-3.341, -3.974, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube602_lambert1_0" geometry={nodes.pCube602_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube602_lambert1_0" geometry={nodes.pCube602_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube603" position={[-3.307, -3.929, -7.942]} scale={[0.102, 0.152, 0.047]}>
                     <mesh name="pCube603_ChipM_0" geometry={nodes.pCube603_ChipM_0.geometry} material={materials.ChipM} />
@@ -1629,7 +1734,7 @@ export function Room(props) {
                     <mesh name="pCube605_lambert1_0" geometry={nodes.pCube605_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube606" position={[-3.294, -4.395, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube606_lambert1_0" geometry={nodes.pCube606_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube606_lambert1_0" geometry={nodes.pCube606_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube607" position={[-3.229, -4.508, -7.935]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube607_lambert1_0" geometry={nodes.pCube607_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
@@ -1638,7 +1743,7 @@ export function Room(props) {
                     <mesh name="pCube608_lambert1_0" geometry={nodes.pCube608_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube609" position={[-3.294, -4.505, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube609_lambert1_0" geometry={nodes.pCube609_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube609_lambert1_0" geometry={nodes.pCube609_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube61" position={[-0.634, -4.551, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube61_Pins2M_0" geometry={nodes.pCube61_Pins2M_0.geometry} material={materials.Pins2M} />
@@ -1647,10 +1752,10 @@ export function Room(props) {
                     <mesh name="pCube610_ChipM_0" geometry={nodes.pCube610_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube611" position={[-3.294, -4.431, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube611_lambert1_0" geometry={nodes.pCube611_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube611_lambert1_0" geometry={nodes.pCube611_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube612" position={[-3.294, -4.467, -7.935]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube612_lambert1_0" geometry={nodes.pCube612_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube612_lambert1_0" geometry={nodes.pCube612_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube613" position={[-0.692, -4.484, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube613_Pins2M_0" geometry={nodes.pCube613_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
@@ -1731,7 +1836,7 @@ export function Room(props) {
                     <mesh name="pCube636_Pins1M_0" geometry={nodes.pCube636_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube637" position={[2.989, -4.518, -7.917]} scale={[0.064, 0.15, 0.067]}>
-                    <mesh name="pCube637_BasePLasticM_0" geometry={nodes.pCube637_BasePLasticM_0.geometry} material={materials.BasePLasticM} position={[0.001, 0, 0]} />
+                    <mesh name="pCube637_BasePLasticM_0" geometry={nodes.pCube637_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube638" position={[2.988, -4.475, -7.808]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube638_Pins1M_0" geometry={nodes.pCube638_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
@@ -1739,7 +1844,7 @@ export function Room(props) {
                   <group name="pCube639" position={[3.065, -4.475, -7.808]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube639_Pins1M_0" geometry={nodes.pCube639_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
-                  <group name="pCube64" position={[-1.401, -3.202, -7.884]} rotation={[0, 0, -Math.PI]} scale={[0.162, 0.18, 0.141]}>
+                  <group name="pCube64" position={[-1.401, -3.202, -7.884]} rotation={[0, 0, Math.PI]} scale={[0.162, 0.18, 0.141]}>
                     <mesh name="pCube64_lambert1_0" geometry={nodes.pCube64_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube640" position={[3.065, -4.567, -7.808]} scale={[0.021, 0.021, 0.188]}>
@@ -1772,8 +1877,8 @@ export function Room(props) {
                   <group name="pCube649" position={[3.293, -4.475, -7.808]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube649_Pins1M_0" geometry={nodes.pCube649_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
-                  <group name="pCube65" position={[-1.306, -3.199, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
-                    <mesh name="pCube65_lambert1_0" geometry={nodes.pCube65_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
+                  <group name="pCube65" position={[-1.306, -3.199, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                    <mesh name="pCube65_lambert1_0" geometry={nodes.pCube65_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube650" position={[3.293, -4.567, -7.808]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube650_Pins1M_0" geometry={nodes.pCube650_Pins1M_0.geometry} material={materials.Pins1M} />
@@ -1812,10 +1917,10 @@ export function Room(props) {
                     <mesh name="pCube660_Pins1M_0" geometry={nodes.pCube660_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube661" position={[0.126, -0.043, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube661_lambert1_0" geometry={nodes.pCube661_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube661_lambert1_0" geometry={nodes.pCube661_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube662" position={[0.162, -0.043, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube662_lambert1_0" geometry={nodes.pCube662_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube662_lambert1_0" geometry={nodes.pCube662_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube663" position={[0.198, -0.043, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube663_lambert1_0" geometry={nodes.pCube663_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
@@ -1824,7 +1929,7 @@ export function Room(props) {
                     <mesh name="pCube664_lambert1_0" geometry={nodes.pCube664_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube665" position={[0.126, 0.06, -7.94]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube665_lambert1_0" geometry={nodes.pCube665_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube665_lambert1_0" geometry={nodes.pCube665_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube666" position={[0.236, -0.043, -7.94]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube666_lambert1_0" geometry={nodes.pCube666_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1838,11 +1943,11 @@ export function Room(props) {
                   <group name="pCube669" position={[1.893, -4.515, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube669_Pins1M_0" geometry={nodes.pCube669_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
-                  <group name="pCube67" position={[-1.486, -3.272, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                  <group name="pCube67" position={[-1.486, -3.272, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
                     <mesh name="pCube67_lambert1_0" geometry={nodes.pCube67_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube670" position={[1.818, -4.515, -7.852]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube670_Pins1M_0" geometry={nodes.pCube670_Pins1M_0.geometry} material={materials.Pins1M} position={[0.002, 0, 0]} />
+                    <mesh name="pCube670_Pins1M_0" geometry={nodes.pCube670_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube671" position={[1.745, -4.515, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube671_Pins1M_0" geometry={nodes.pCube671_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
@@ -1863,7 +1968,7 @@ export function Room(props) {
                     <mesh name="pCube676_lambert1_0" geometry={nodes.pCube676_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube677" position={[1.818, -4.582, -7.852]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube677_Pins1M_0" geometry={nodes.pCube677_Pins1M_0.geometry} material={materials.Pins1M} position={[0.002, 0, 0]} />
+                    <mesh name="pCube677_Pins1M_0" geometry={nodes.pCube677_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube678" position={[1.893, -4.582, -7.852]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube678_Pins1M_0" geometry={nodes.pCube678_Pins1M_0.geometry} material={materials.Pins1M} />
@@ -1871,7 +1976,7 @@ export function Room(props) {
                   <group name="pCube679">
                     <mesh name="pCube679_BasePLasticM_0" geometry={nodes.pCube679_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
-                  <group name="pCube68" position={[-1.486, -3.138, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                  <group name="pCube68" position={[-1.486, -3.138, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
                     <mesh name="pCube68_lambert1_0" geometry={nodes.pCube68_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube680" position={[1.308, 3.83, -7.935]} scale={[0.016, 0.065, 0.024]}>
@@ -1881,13 +1986,13 @@ export function Room(props) {
                     <mesh name="pCube681_lambert1_0" geometry={nodes.pCube681_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube682" position={[1.344, 3.765, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube682_lambert1_0" geometry={nodes.pCube682_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube682_lambert1_0" geometry={nodes.pCube682_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube683" position={[1.381, 3.83, -7.935]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube683_lambert1_0" geometry={nodes.pCube683_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube684" position={[1.344, 3.83, -7.935]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube684_lambert1_0" geometry={nodes.pCube684_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube684_lambert1_0" geometry={nodes.pCube684_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube685" position={[1.38, 3.765, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube685_lambert1_0" geometry={nodes.pCube685_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1905,13 +2010,13 @@ export function Room(props) {
                     <mesh name="pCube689_lambert1_0" geometry={nodes.pCube689_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube690" position={[3.02, 3.064, -7.94]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube690_lambert1_0" geometry={nodes.pCube690_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube690_lambert1_0" geometry={nodes.pCube690_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube691" position={[3.02, 3.024, -7.94]} rotation={[0, 0, Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube691_lambert1_0" geometry={nodes.pCube691_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube692" position={[3.123, 2.951, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube692_lambert1_0" geometry={nodes.pCube692_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube692_lambert1_0" geometry={nodes.pCube692_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube693" position={[3.123, 2.987, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube693_lambert1_0" geometry={nodes.pCube693_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -1923,15 +2028,15 @@ export function Room(props) {
                     <mesh name="pCube695_lambert1_0" geometry={nodes.pCube695_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube696" position={[3.123, 3.204, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube696_lambert1_0" geometry={nodes.pCube696_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube696_lambert1_0" geometry={nodes.pCube696_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube697" position={[3.123, 3.241, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
-                    <mesh name="pCube697_lambert1_0" geometry={nodes.pCube697_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube697_lambert1_0" geometry={nodes.pCube697_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube698" position={[3.123, 3.061, -7.94]} rotation={[0, 0, -Math.PI / 2]} scale={[0.016, 0.069, 0.016]}>
                     <mesh name="pCube698_lambert1_0" geometry={nodes.pCube698_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
-                  <group name="pCube699" position={[3.07, 3.016, -7.95]} rotation={[0, 0, -Math.PI]} scale={[0.16, 0.152, 0.047]}>
+                  <group name="pCube699" position={[3.07, 3.016, -7.95]} rotation={[0, 0, Math.PI]} scale={[0.16, 0.152, 0.047]}>
                     <mesh name="pCube699_ChipM_0" geometry={nodes.pCube699_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube70" position={[0.459, 0.359, -7.876]} scale={[0.195, 0.195, 0.159]}>
@@ -1947,10 +2052,10 @@ export function Room(props) {
                     <mesh name="pCube706_BasePLasticM_0" geometry={nodes.pCube706_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube707" position={[1.509, 4.029, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube707_Pins1M_0" geometry={nodes.pCube707_Pins1M_0.geometry} material={materials.Pins1M} />
+                    <mesh name="pCube707_Pins1M_0" geometry={nodes.pCube707_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube708" position={[1.725, 4.029, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube708_Pins1M_0" geometry={nodes.pCube708_Pins1M_0.geometry} material={materials.Pins1M} />
+                    <mesh name="pCube708_Pins1M_0" geometry={nodes.pCube708_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube709" position={[1.613, 3.754, -7.903]} scale={[0.288, 0.162, 0.087]}>
                     <mesh name="pCube709_BasePLasticM_0" geometry={nodes.pCube709_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
@@ -1962,10 +2067,10 @@ export function Room(props) {
                     <mesh name="pCube710_Pins1M_0" geometry={nodes.pCube710_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube711" position={[1.579, 4.029, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube711_Pins1M_0" geometry={nodes.pCube711_Pins1M_0.geometry} material={materials.Pins1M} />
+                    <mesh name="pCube711_Pins1M_0" geometry={nodes.pCube711_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube712" position={[1.657, 4.029, -7.781]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube712_Pins1M_0" geometry={nodes.pCube712_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube712_Pins1M_0" geometry={nodes.pCube712_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube713" position={[1.725, 3.754, -7.782]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube713_Pins1M_0" geometry={nodes.pCube713_Pins1M_0.geometry} material={materials.Pins1M} />
@@ -1980,36 +2085,36 @@ export function Room(props) {
                     <mesh name="pCube716_Pins1M_0" geometry={nodes.pCube716_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube717" position={[-1.941, 0.385, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube717_Pins1M_0" geometry={nodes.pCube717_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube717_Pins1M_0" geometry={nodes.pCube717_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
                   </group>
-                  <group name="pCube718" position={[-1.872, 0.385, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube718_Pins1M_0" geometry={nodes.pCube718_Pins1M_0.geometry} material={materials.Pins1M} />
+                  <group name="pCube718" position={[-1.872, 0.385, -7.781]} scale={[0.021, 0.021, 0.188]}>
+                    <mesh name="pCube718_Pins1M_0" geometry={nodes.pCube718_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
                   </group>
-                  <group name="pCube719" position={[-1.794, 0.385, -7.782]} scale={[0.021, 0.021, 0.188]}>
+                  <group name="pCube719" position={[-1.794, 0.385, -7.781]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube719_Pins1M_0" geometry={nodes.pCube719_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube72" position={[0.943, 0.086, -7.854]} scale={[0.147, 0.144, 0.189]}>
                     <mesh name="pCube72_Chip2M_0" geometry={nodes.pCube72_Chip2M_0.geometry} material={materials.Chip2M} />
                   </group>
                   <group name="pCube720" position={[-1.725, 0.385, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube720_Pins1M_0" geometry={nodes.pCube720_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube720_Pins1M_0" geometry={nodes.pCube720_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube721" position={[-1.837, 0.012, -7.903]} scale={[0.288, 0.162, 0.087]}>
                     <mesh name="pCube721_BasePLasticM_0" geometry={nodes.pCube721_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube722" position={[-1.725, 0.012, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube722_Pins1M_0" geometry={nodes.pCube722_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube722_Pins1M_0" geometry={nodes.pCube722_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube723" position={[2.712, -4.52, -7.903]} scale={[0.288, 0.162, 0.087]}>
                     <mesh name="pCube723_BasePLasticM_0" geometry={nodes.pCube723_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube724" position={[-1.941, 0.012, -7.782]} scale={[0.021, 0.021, 0.188]}>
-                    <mesh name="pCube724_Pins1M_0" geometry={nodes.pCube724_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube724_Pins1M_0" geometry={nodes.pCube724_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
-                  <group name="pCube725" position={[-1.872, 0.012, -7.782]} scale={[0.021, 0.021, 0.188]}>
+                  <group name="pCube725" position={[-1.872, 0.012, -7.781]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube725_Pins1M_0" geometry={nodes.pCube725_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
-                  <group name="pCube726" position={[-1.794, 0.012, -7.782]} scale={[0.021, 0.021, 0.188]}>
+                  <group name="pCube726" position={[-1.794, 0.012, -7.781]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube726_Pins1M_0" geometry={nodes.pCube726_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube727" position={[2.824, -4.52, -7.781]} scale={[0.021, 0.021, 0.188]}>
@@ -2024,20 +2129,20 @@ export function Room(props) {
                   <group name="pCube730" position={[2.677, -4.52, -7.781]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube730_Pins1M_0" geometry={nodes.pCube730_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
-                  <group name="pCube731" position={[2.755, -4.52, -7.782]} scale={[0.021, 0.021, 0.188]}>
+                  <group name="pCube731" position={[2.755, -4.52, -7.781]} scale={[0.021, 0.021, 0.188]}>
                     <mesh name="pCube731_Pins1M_0" geometry={nodes.pCube731_Pins1M_0.geometry} material={materials.Pins1M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube732" position={[2.914, -3.964, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube732_Pins1M_0" geometry={nodes.pCube732_Pins1M_0.geometry} material={materials.Pins1M} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube733" position={[2.858, -3.928, -7.944]} scale={[0.047, 0.11, 0.046]}>
-                    <mesh name="pCube733_BasePLasticM_0" geometry={nodes.pCube733_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
+                    <mesh name="pCube733_BasePLasticM_0" geometry={nodes.pCube733_BasePLasticM_0.geometry} material={materials.BasePLasticM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube734" position={[2.97, -3.964, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube734_Pins1M_0" geometry={nodes.pCube734_Pins1M_0.geometry} material={materials.Pins1M} />
                   </group>
                   <group name="pCube735" position={[2.915, -3.928, -7.944]} scale={[0.047, 0.11, 0.046]}>
-                    <mesh name="pCube735_BasePLasticM_0" geometry={nodes.pCube735_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
+                    <mesh name="pCube735_BasePLasticM_0" geometry={nodes.pCube735_BasePLasticM_0.geometry} material={materials.BasePLasticM} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube736" position={[2.914, -3.896, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube736_Pins1M_0" geometry={nodes.pCube736_Pins1M_0.geometry} material={materials.Pins1M} position={[0.002, 0, 0]} />
@@ -2049,7 +2154,7 @@ export function Room(props) {
                     <mesh name="pCube738_Pins1M_0" geometry={nodes.pCube738_Pins1M_0.geometry} material={materials.Pins1M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube739" position={[2.801, -3.928, -7.944]} scale={[0.047, 0.11, 0.046]}>
-                    <mesh name="pCube739_BasePLasticM_0" geometry={nodes.pCube739_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
+                    <mesh name="pCube739_BasePLasticM_0" geometry={nodes.pCube739_BasePLasticM_0.geometry} material={materials.BasePLasticM} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube740" position={[2.801, -3.896, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube740_Pins1M_0" geometry={nodes.pCube740_Pins1M_0.geometry} material={materials.Pins1M} position={[-0.002, 0, 0]} />
@@ -2061,22 +2166,22 @@ export function Room(props) {
                     <mesh name="pCube742_BasePLasticM_0" geometry={nodes.pCube742_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube743" position={[2.746, -3.896, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube743_Pins1M_0" geometry={nodes.pCube743_Pins1M_0.geometry} material={materials.Pins1M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube743_Pins1M_0" geometry={nodes.pCube743_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube744" position={[2.746, -3.964, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube744_Pins1M_0" geometry={nodes.pCube744_Pins1M_0.geometry} material={materials.Pins1M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube744_Pins1M_0" geometry={nodes.pCube744_Pins1M_0.geometry} material={materials.Pins1M} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube745" position={[3.085, 4.384, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube745_WhiteBasePlasticM_0" geometry={nodes.pCube745_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube746" position={[3.087, 4.387, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube746_Pins2M_0" geometry={nodes.pCube746_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.002, 0.001, 0]} />
+                    <mesh name="pCube746_Pins2M_0" geometry={nodes.pCube746_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube747" position={[3.243, 4.384, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube747_WhiteBasePlasticM_0" geometry={nodes.pCube747_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube748" position={[3.244, 4.387, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube748_Pins2M_0" geometry={nodes.pCube748_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0.001, 0]} />
+                    <mesh name="pCube748_Pins2M_0" geometry={nodes.pCube748_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube749" position={[3.164, 4.384, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube749_WhiteBasePlasticM_0" geometry={nodes.pCube749_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
@@ -2085,25 +2190,25 @@ export function Room(props) {
                     <mesh name="pCube75_lambert1_0" geometry={nodes.pCube75_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube750" position={[3.165, 4.387, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube750_Pins2M_0" geometry={nodes.pCube750_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.002, 0.001, 0]} />
+                    <mesh name="pCube750_Pins2M_0" geometry={nodes.pCube750_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.002, 0, 0]} />
                   </group>
                   <group name="pCube751" position={[-1.103, -4.552, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube751_WhiteBasePlasticM_0" geometry={nodes.pCube751_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube752" position={[-1.102, -4.549, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube752_Pins2M_0" geometry={nodes.pCube752_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0, 0]} />
+                    <mesh name="pCube752_Pins2M_0" geometry={nodes.pCube752_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube753" position={[-0.946, -4.552, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube753_WhiteBasePlasticM_0" geometry={nodes.pCube753_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube754" position={[-0.945, -4.549, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube754_Pins2M_0" geometry={nodes.pCube754_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube754_Pins2M_0" geometry={nodes.pCube754_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube755" position={[-1.025, -4.552, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube755_WhiteBasePlasticM_0" geometry={nodes.pCube755_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
                   <group name="pCube756" position={[-1.023, -4.549, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube756_Pins2M_0" geometry={nodes.pCube756_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube756_Pins2M_0" geometry={nodes.pCube756_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube757" position={[-0.125, -4.54, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube757_Pins2M_0" geometry={nodes.pCube757_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0.001, 0]} />
@@ -2114,11 +2219,11 @@ export function Room(props) {
                   <group name="pCube759" position={[-0.867, -4.552, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube759_WhiteBasePlasticM_0" geometry={nodes.pCube759_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
                   </group>
-                  <group name="pCube76" position={[0.914, 0.712, 0]} rotation={[0, 0, -Math.PI]}>
+                  <group name="pCube76" position={[0.914, 0.712, 0]} rotation={[0, 0, Math.PI]}>
                     <mesh name="pCube76_lambert1_0" geometry={nodes.pCube76_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube760" position={[-0.866, -4.549, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube760_Pins2M_0" geometry={nodes.pCube760_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube760_Pins2M_0" geometry={nodes.pCube760_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube761" position={[-0.127, -4.543, -7.931]} scale={[0.084, 0.084, 0.063]}>
                     <mesh name="pCube761_WhiteBasePlasticM_0" geometry={nodes.pCube761_WhiteBasePlasticM_0.geometry} material={materials.WhiteBasePlasticM} />
@@ -2139,19 +2244,19 @@ export function Room(props) {
                     <mesh name="pCube766_lambert1_0" geometry={nodes.pCube766_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube767" position={[3.236, 1.933, -7.935]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube767_lambert1_0" geometry={nodes.pCube767_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube767_lambert1_0" geometry={nodes.pCube767_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube768" position={[3.198, 1.933, -7.935]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube768_lambert1_0" geometry={nodes.pCube768_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube769" position={[3.163, 1.933, -7.935]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube769_lambert1_0" geometry={nodes.pCube769_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube769_lambert1_0" geometry={nodes.pCube769_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
                   </group>
-                  <group name="pCube77" position={[1.44, 0.734, 0]} rotation={[0, 0, -Math.PI]}>
+                  <group name="pCube77" position={[1.44, 0.734, 0]} rotation={[0, 0, Math.PI]}>
                     <mesh name="pCube77_lambert1_0" geometry={nodes.pCube77_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube770" position={[3.163, 1.867, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube770_lambert1_0" geometry={nodes.pCube770_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube770_lambert1_0" geometry={nodes.pCube770_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube771" position={[3.228, 1.901, -7.942]} rotation={[0, 0, Math.PI / 2]} scale={[0.102, 0.152, 0.047]}>
                     <mesh name="pCube771_ChipM_0" geometry={nodes.pCube771_ChipM_0.geometry} material={materials.ChipM} />
@@ -2160,7 +2265,7 @@ export function Room(props) {
                     <mesh name="pCube772_lambert1_0" geometry={nodes.pCube772_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube773" position={[3.199, 1.867, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
-                    <mesh name="pCube773_lambert1_0" geometry={nodes.pCube773_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
+                    <mesh name="pCube773_lambert1_0" geometry={nodes.pCube773_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube774" position={[3.235, 1.867, -7.935]} rotation={[0, 0, Math.PI]} scale={[0.016, 0.065, 0.024]}>
                     <mesh name="pCube774_lambert1_0" geometry={nodes.pCube774_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -2172,10 +2277,10 @@ export function Room(props) {
                     <mesh name="pCube776_lambert1_0" geometry={nodes.pCube776_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, -0.001]} />
                   </group>
                   <group name="pCube777" position={[-3.345, -2.852, -7.916]} rotation={[0.171, 0, 0]} scale={[0.019, 0.063, 0.01]}>
-                    <mesh name="pCube777_lambert1_0" geometry={nodes.pCube777_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0.001]} />
+                    <mesh name="pCube777_lambert1_0" geometry={nodes.pCube777_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0.002]} />
                   </group>
                   <group name="pCube778" position={[-3.345, -2.829, -7.939]} scale={[0.047, 0.059, 0.013]}>
-                    <mesh name="pCube778_lambert1_0" geometry={nodes.pCube778_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
+                    <mesh name="pCube778_lambert1_0" geometry={nodes.pCube778_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.002]} />
                   </group>
                   <group name="pCube779" position={[-3.345, -2.926, -7.926]} scale={[0.179, 0.103, 0.047]}>
                     <mesh name="pCube779_ChipM_0" geometry={nodes.pCube779_ChipM_0.geometry} material={materials.ChipM} />
@@ -2184,13 +2289,13 @@ export function Room(props) {
                     <mesh name="pCube78_lambert1_0" geometry={nodes.pCube78_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube780" position={[-3.349, -3.005, -7.916]} rotation={[-0.171, 0, Math.PI]} scale={[0.092, 0.063, 0.01]}>
-                    <mesh name="pCube780_lambert1_0" geometry={nodes.pCube780_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
+                    <mesh name="pCube780_lambert1_0" geometry={nodes.pCube780_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.002]} />
                   </group>
                   <group name="pCube781" position={[-3.348, -3.017, -7.939]} scale={[0.119, 0.065, 0.013]}>
-                    <mesh name="pCube781_lambert1_0" geometry={nodes.pCube781_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube781_lambert1_0" geometry={nodes.pCube781_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube782" position={[-3.416, -2.852, -7.916]} rotation={[0.171, 0, 0]} scale={[0.019, 0.063, 0.01]}>
-                    <mesh name="pCube782_lambert1_0" geometry={nodes.pCube782_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube782_lambert1_0" geometry={nodes.pCube782_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCube783" position={[-3.416, -2.829, -7.939]} scale={[0.047, 0.059, 0.013]}>
                     <mesh name="pCube783_lambert1_0" geometry={nodes.pCube783_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0, 0]} />
@@ -2216,23 +2321,23 @@ export function Room(props) {
                   <group name="pCube79" position={[0.622, 0.133, 0]} rotation={[0, 0, -Math.PI / 2]} scale={[0.364, 0.856, 1]}>
                     <mesh name="pCube79_lambert1_0" geometry={nodes.pCube79_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
-                  <group name="pCube790" position={[-0.988, -1.155, -7.743]} rotation={[0, 0, Math.PI]} scale={[2.707, 0.037, 0.411]}>
+                  <group name="pCube790" position={[-0.988, -1.155, -7.743]} rotation={[0, 0, -Math.PI]} scale={[2.707, 0.037, 0.411]}>
                     <mesh name="pCube790_Mertal1M_0" geometry={nodes.pCube790_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
                   <group name="pCube791" position={[3.395, 4.042, -7.926]} rotation={[0, 0, -Math.PI / 2]} scale={[0.026, 0.144, 0.059]}>
-                    <mesh name="pCube791_lambert1_0" geometry={nodes.pCube791_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
+                    <mesh name="pCube791_lambert1_0" geometry={nodes.pCube791_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube792" position={[3.395, 3.908, -7.926]} rotation={[0, 0, -Math.PI / 2]} scale={[0.026, 0.144, 0.059]}>
                     <mesh name="pCube792_lambert1_0" geometry={nodes.pCube792_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
-                  <group name="pCube793" position={[3.453, 3.977, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                  <group name="pCube793" position={[3.453, 3.977, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
                     <mesh name="pCube793_lambert1_0" geometry={nodes.pCube793_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
-                  <group name="pCube794" position={[3.359, 3.974, -7.884]} rotation={[0, 0, -Math.PI]} scale={[0.162, 0.18, 0.141]}>
+                  <group name="pCube794" position={[3.359, 3.974, -7.884]} rotation={[0, 0, Math.PI]} scale={[0.162, 0.18, 0.141]}>
                     <mesh name="pCube794_ChipM_0" geometry={nodes.pCube794_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
-                  <group name="pCube795" position={[3.273, 3.905, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
-                    <mesh name="pCube795_lambert1_0" geometry={nodes.pCube795_lambert1_0.geometry} material={materials['lambert1.001']} />
+                  <group name="pCube795" position={[3.273, 3.905, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                    <mesh name="pCube795_lambert1_0" geometry={nodes.pCube795_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube796" position={[2.483, -4.323, -7.926]} rotation={[0, 0, Math.PI / 2]} scale={[0.026, 0.144, 0.059]}>
                     <mesh name="pCube796_lambert1_0" geometry={nodes.pCube796_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -2241,7 +2346,7 @@ export function Room(props) {
                     <mesh name="pCube797_lambert1_0" geometry={nodes.pCube797_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube798" position={[2.425, -4.259, -7.928]} scale={[0.036, 0.024, 0.052]}>
-                    <mesh name="pCube798_lambert1_0" geometry={nodes.pCube798_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube798_lambert1_0" geometry={nodes.pCube798_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, -0.001, 0]} />
                   </group>
                   <group name="pCube799" position={[3.333, 3.971, -7.954]} rotation={[0, 0, -Math.PI]} scale={[0.182, 0.191, 0.052]}>
                     <mesh name="pCube799_lambert1_0" geometry={nodes.pCube799_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -2249,7 +2354,7 @@ export function Room(props) {
                   <group name="pCube80" position={[1.231, 0.04, 0]} rotation={[0, 0, Math.PI / 2]} scale={[0.364, 0.856, 1]}>
                     <mesh name="pCube80_lambert1_0" geometry={nodes.pCube80_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
-                  <group name="pCube800" position={[3.273, 4.038, -7.928]} rotation={[0, 0, -Math.PI]} scale={[0.036, 0.024, 0.052]}>
+                  <group name="pCube800" position={[3.273, 4.038, -7.928]} rotation={[0, 0, Math.PI]} scale={[0.036, 0.024, 0.052]}>
                     <mesh name="pCube800_lambert1_0" geometry={nodes.pCube800_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCube801" position={[2.545, -4.252, -7.954]} scale={[0.182, 0.191, 0.052]}>
@@ -2265,7 +2370,7 @@ export function Room(props) {
                     <mesh name="pCube804_ChipM_0" geometry={nodes.pCube804_ChipM_0.geometry} material={materials.ChipM} />
                   </group>
                   <group name="pCube805" position={[2.605, -4.186, -7.928]} scale={[0.036, 0.024, 0.052]}>
-                    <mesh name="pCube805_lambert1_0" geometry={nodes.pCube805_lambert1_0.geometry} material={materials['lambert1.001']} />
+                    <mesh name="pCube805_lambert1_0" geometry={nodes.pCube805_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube806" position={[-0.338, -4.484, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube806_Pins2M_0" geometry={nodes.pCube806_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
@@ -2292,10 +2397,10 @@ export function Room(props) {
                     <mesh name="pCube812_Pins2M_0" geometry={nodes.pCube812_Pins2M_0.geometry} material={materials.Pins2M} />
                   </group>
                   <group name="pCube813" position={[-0.517, -4.484, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube813_Pins2M_0" geometry={nodes.pCube813_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.002, 0, 0]} />
+                    <mesh name="pCube813_Pins2M_0" geometry={nodes.pCube813_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube814" position={[-0.517, -4.551, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube814_Pins2M_0" geometry={nodes.pCube814_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.002, 0, 0]} />
+                    <mesh name="pCube814_Pins2M_0" geometry={nodes.pCube814_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube815" position={[-0.577, -4.516, -7.944]} scale={[0.047, 0.11, 0.046]}>
                     <mesh name="pCube815_BasePLasticM_0" geometry={nodes.pCube815_BasePLasticM_0.geometry} material={materials.BasePLasticM} position={[0.001, 0, 0]} />
@@ -2322,16 +2427,16 @@ export function Room(props) {
                     <mesh name="pCube821_BasePLasticM_0" geometry={nodes.pCube821_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
                   </group>
                   <group name="pCube822" position={[1.294, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube822_Pins2M_0" geometry={nodes.pCube822_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube822_Pins2M_0" geometry={nodes.pCube822_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube823" position={[1.236, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube823_Pins2M_0" geometry={nodes.pCube823_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube823_Pins2M_0" geometry={nodes.pCube823_Pins2M_0.geometry} material={materials.Pins2M} />
                   </group>
                   <group name="pCube824" position={[1.355, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube824_Pins2M_0" geometry={nodes.pCube824_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube825" position={[1.355, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube825_Pins2M_0" geometry={nodes.pCube825_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube825_Pins2M_0" geometry={nodes.pCube825_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube826" position={[1.294, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube826_Pins2M_0" geometry={nodes.pCube826_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
@@ -2340,10 +2445,10 @@ export function Room(props) {
                     <mesh name="pCube827_Pins2M_0" geometry={nodes.pCube827_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube828" position={[1.115, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube828_Pins2M_0" geometry={nodes.pCube828_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0, 0]} />
+                    <mesh name="pCube828_Pins2M_0" geometry={nodes.pCube828_Pins2M_0.geometry} material={materials.Pins2M} position={[0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube829" position={[1.236, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube829_Pins2M_0" geometry={nodes.pCube829_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube829_Pins2M_0" geometry={nodes.pCube829_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube83" position={[1.002, 0.083, 0]} rotation={[0, 0, Math.PI / 2]} scale={[0.364, 0.856, 1]}>
                     <mesh name="pCube83_lambert1_0" geometry={nodes.pCube83_lambert1_0.geometry} material={materials['lambert1.001']} />
@@ -2352,37 +2457,37 @@ export function Room(props) {
                     <mesh name="pCube830_Pins2M_0" geometry={nodes.pCube830_Pins2M_0.geometry} material={materials.Pins2M} />
                   </group>
                   <group name="pCube831" position={[1.175, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube831_Pins2M_0" geometry={nodes.pCube831_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0, 0]} />
+                    <mesh name="pCube831_Pins2M_0" geometry={nodes.pCube831_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube832" position={[1.055, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube832_Pins2M_0" geometry={nodes.pCube832_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube833" position={[1.055, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube833_Pins2M_0" geometry={nodes.pCube833_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube833_Pins2M_0" geometry={nodes.pCube833_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube834" position={[0.996, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube834_Pins2M_0" geometry={nodes.pCube834_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube835" position={[0.996, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube835_Pins2M_0" geometry={nodes.pCube835_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube835_Pins2M_0" geometry={nodes.pCube835_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube836" position={[0.935, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube836_Pins2M_0" geometry={nodes.pCube836_Pins2M_0.geometry} material={materials.Pins2M} />
+                    <mesh name="pCube836_Pins2M_0" geometry={nodes.pCube836_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0, 0]} />
                   </group>
                   <group name="pCube837" position={[0.935, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube837_Pins2M_0" geometry={nodes.pCube837_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0, 0]} />
+                    <mesh name="pCube837_Pins2M_0" geometry={nodes.pCube837_Pins2M_0.geometry} material={materials.Pins2M} position={[0, 0.001, 0]} />
                   </group>
                   <group name="pCube838" position={[0.875, -4.565, -7.869]} scale={[0.012, 0.012, 0.129]}>
                     <mesh name="pCube838_Pins2M_0" geometry={nodes.pCube838_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube839" position={[0.875, -4.504, -7.869]} scale={[0.012, 0.012, 0.129]}>
-                    <mesh name="pCube839_Pins2M_0" geometry={nodes.pCube839_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube839_Pins2M_0" geometry={nodes.pCube839_Pins2M_0.geometry} material={materials.Pins2M} position={[-0.001, 0.001, 0]} />
                   </group>
                   <group name="pCube84" position={[1.106, 0.206, -7.937]} scale={[0.13, 0.106, 0.017]}>
-                    <mesh name="pCube84_ChipM_0" geometry={nodes.pCube84_ChipM_0.geometry} material={materials.ChipM} />
+                    <mesh name="pCube84_ChipM_0" geometry={nodes.pCube84_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube85" position={[0.009, 0.264, -7.937]} rotation={[0, 0, Math.PI / 2]} scale={[0.13, 0.106, 0.017]}>
-                    <mesh name="pCube85_ChipM_0" geometry={nodes.pCube85_ChipM_0.geometry} material={materials.ChipM} />
+                    <mesh name="pCube85_ChipM_0" geometry={nodes.pCube85_ChipM_0.geometry} material={materials.ChipM} position={[0, 0, -0.001]} />
                   </group>
                   <group name="pCube86" position={[8.162, 0.957, -11.578]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={[1.476, 0.822, 0.578]}>
                     <mesh name="pCube86_BasePLasticM_0" geometry={nodes.pCube86_BasePLasticM_0.geometry} material={materials.BasePLasticM} />
@@ -2547,16 +2652,16 @@ export function Room(props) {
                     <mesh name="pCylinder45_lambert1_0" geometry={nodes.pCylinder45_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCylinder46" position={[-0.88, -3.464, -7.915]} rotation={[0, 0, Math.PI / 2]} scale={[0.009, 0.001, 0.009]}>
-                    <mesh name="pCylinder46_lambert1_0" geometry={nodes.pCylinder46_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, 0.005, -0.001]} />
+                    <mesh name="pCylinder46_lambert1_0" geometry={nodes.pCylinder46_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.001, 0.005, -0.001]} />
                   </group>
                   <group name="pCylinder47" position={[-1.04, -3.45, -7.915]} rotation={[0, 0, Math.PI / 2]} scale={[0.039, 0.013, 0.039]}>
-                    <mesh name="pCylinder47_lambert1_0" geometry={nodes.pCylinder47_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0.001, 0]} />
+                    <mesh name="pCylinder47_lambert1_0" geometry={nodes.pCylinder47_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0.002, 0]} />
                   </group>
                   <group name="pCylinder48" position={[-0.839, -3.408, -7.943]} rotation={[Math.PI / 2, 0, 0]} scale={[0.017, 0.01, 0.017]}>
                     <mesh name="pCylinder48_lambert1_0" geometry={nodes.pCylinder48_lambert1_0.geometry} material={materials['lambert1.001']} position={[0.002, -0.001, 0]} />
                   </group>
                   <group name="pCylinder49" position={[-0.841, -3.489, -7.943]} rotation={[Math.PI / 2, 0, 0]} scale={[0.022, 0.01, 0.022]}>
-                    <mesh name="pCylinder49_lambert1_0" geometry={nodes.pCylinder49_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, -0.001, 0.001]} />
+                    <mesh name="pCylinder49_lambert1_0" geometry={nodes.pCylinder49_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0, 0.001]} />
                   </group>
                   <group name="pCylinder5" position={[-2.737, -4.557, -7.857]} rotation={[Math.PI / 2, 0, 0]} scale={[0.095, 0.071, 0.095]}>
                     <mesh name="pCylinder5_CapacitorsM_0" geometry={nodes.pCylinder5_CapacitorsM_0.geometry} material={materials.CapacitorsM} />
@@ -2565,7 +2670,7 @@ export function Room(props) {
                     <mesh name="pCylinder50_lambert1_0" geometry={nodes.pCylinder50_lambert1_0.geometry} material={materials['lambert1.001']} />
                   </group>
                   <group name="pCylinder51" position={[-0.88, -3.582, -7.918]} rotation={[0, 0, Math.PI / 2]} scale={[0.009, 0.001, 0.009]}>
-                    <mesh name="pCylinder51_lambert1_0" geometry={nodes.pCylinder51_lambert1_0.geometry} material={materials['lambert1.001']} position={[0, 0.023, 0]} />
+                    <mesh name="pCylinder51_lambert1_0" geometry={nodes.pCylinder51_lambert1_0.geometry} material={materials['lambert1.001']} position={[-0.001, 0.018, -0.001]} />
                   </group>
                   <group name="pCylinder52" position={[2.427, -0.529, -7.839]} rotation={[Math.PI / 2, 0, 0]} scale={[0.042, 0.075, 0.042]}>
                     <mesh name="pCylinder52_CylinderPinM_0" geometry={nodes.pCylinder52_CylinderPinM_0.geometry} material={materials.CylinderPinM} position={[-0.001, 0, 0]} />
@@ -2603,7 +2708,7 @@ export function Room(props) {
                   <group name="pCylinder64" position={[-0.805, -0.393, -7.899]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
                     <mesh name="pCylinder64_Mertal1M_0" geometry={nodes.pCylinder64_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
-                  <group name="pCylinder65" position={[-1.398, -0.393, -7.899]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
+                  <group name="pCylinder65" position={[-1.398, -0.393, -7.898]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
                     <mesh name="pCylinder65_Mertal1M_0" geometry={nodes.pCylinder65_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
                   <group name="pCylinder66" position={[3.485, 2.832, -7.899]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
@@ -2630,10 +2735,10 @@ export function Room(props) {
                   <group name="pCylinder8" position={[-2.941, -4.146, -7.857]} rotation={[Math.PI / 2, 0, 0]} scale={[0.095, 0.071, 0.095]}>
                     <mesh name="pCylinder8_CapacitorsM_0" geometry={nodes.pCylinder8_CapacitorsM_0.geometry} material={materials.CapacitorsM} />
                   </group>
-                  <group name="pCylinder85" position={[1.157, -3.952, -7.899]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
+                  <group name="pCylinder85" position={[1.157, -3.952, -7.898]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
                     <mesh name="pCylinder85_Mertal1M_0" geometry={nodes.pCylinder85_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
-                  <group name="pCylinder86" position={[3.003, -3.654, -7.899]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
+                  <group name="pCylinder86" position={[3.003, -3.654, -7.898]} rotation={[Math.PI / 2, 0, 0]} scale={[0.084, 0.028, 0.084]}>
                     <mesh name="pCylinder86_Mertal1M_0" geometry={nodes.pCylinder86_Mertal1M_0.geometry} material={materials.Mertal1M} />
                   </group>
                   <group name="pCylinder9" position={[-2.941, -3.929, -7.857]} rotation={[Math.PI / 2, 0, 0]} scale={[0.095, 0.071, 0.095]}>
@@ -2678,7 +2783,7 @@ export function Room(props) {
                     <group name="pCube964003" position={[1.243, -0.055, -0.468]} rotation={[2.189, -0.376, 2.984]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube964_PSUFanM_0" geometry={nodes.pCube964_PSUFanM_0.geometry} material={materials.PSUFanM} />
                     </group>
-                    <group name="pCube965003" position={[1.15, -0.055, 0.67]} rotation={[2.263, 0.175, -2.615]} scale={[1, 1, 0.267]}>
+                    <group name="pCube965003" position={[1.149, -0.055, 0.67]} rotation={[2.263, 0.175, -2.615]} scale={[1, 1, 0.267]}>
                       <mesh name="pCube965_PSUFanM_0" geometry={nodes.pCube965_PSUFanM_0.geometry} material={materials.PSUFanM} />
                     </group>
                     <group name="pCube966003" position={[0.161, -0.055, 1.344]} rotation={[1.885, 0.648, -1.746]} scale={[1, 1, 0.267]}>
@@ -2786,13 +2891,13 @@ export function Room(props) {
                   <group name="pCube902003" position={[-0.689, 0, 0]}>
                     <mesh name="pCube902_Ram3M_0003" geometry={nodes.pCube902_Ram3M_0003.geometry} material={materials.Ram3M} />
                   </group>
-                  <group name="pCube910003" position={[3.88, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube910003" position={[3.88, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube910_Ram4M_0003" geometry={nodes.pCube910_Ram4M_0003.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube911003" position={[-0.434, 0, 0]}>
                     <mesh name="pCube911_RGBM_0003" geometry={nodes.pCube911_RGBM_0003.geometry} material={materials.RGBM} />
                   </group>
-                  <group name="pCube912003" position={[3.83, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube912003" position={[3.83, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube912_Ram4M_0003" geometry={nodes.pCube912_Ram4M_0003.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube919003" position={[0.007, 0, 0]}>
@@ -2806,13 +2911,13 @@ export function Room(props) {
                   <group name="pCube902002" position={[-0.689, 0, 0]}>
                     <mesh name="pCube902_Ram3M_0002" geometry={nodes.pCube902_Ram3M_0002.geometry} material={materials.Ram3M} />
                   </group>
-                  <group name="pCube910002" position={[3.88, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube910002" position={[3.88, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube910_Ram4M_0002" geometry={nodes.pCube910_Ram4M_0002.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube911002" position={[-0.434, 0, 0]}>
                     <mesh name="pCube911_RGBM_0002" geometry={nodes.pCube911_RGBM_0002.geometry} material={materials.RGBM} />
                   </group>
-                  <group name="pCube912002" position={[3.83, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube912002" position={[3.83, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube912_Ram4M_0002" geometry={nodes.pCube912_Ram4M_0002.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube919002" position={[0.007, 0, 0]}>
@@ -2826,13 +2931,13 @@ export function Room(props) {
                   <group name="pCube902001" position={[-0.689, 0, 0]}>
                     <mesh name="pCube902_Ram3M_0001" geometry={nodes.pCube902_Ram3M_0001.geometry} material={materials.Ram3M} />
                   </group>
-                  <group name="pCube910001" position={[3.88, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube910001" position={[3.88, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube910_Ram4M_0001" geometry={nodes.pCube910_Ram4M_0001.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube911001" position={[-0.434, 0, 0]}>
                     <mesh name="pCube911_RGBM_0001" geometry={nodes.pCube911_RGBM_0001.geometry} material={materials.RGBM} />
                   </group>
-                  <group name="pCube912001" position={[3.83, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube912001" position={[3.83, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube912_Ram4M_0001" geometry={nodes.pCube912_Ram4M_0001.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube919001" position={[0.007, 0, 0]}>
@@ -2846,13 +2951,13 @@ export function Room(props) {
                   <group name="pCube902" position={[-0.689, 0, 0]}>
                     <mesh name="pCube902_Ram3M_0" geometry={nodes.pCube902_Ram3M_0.geometry} material={materials.Ram3M} />
                   </group>
-                  <group name="pCube910" position={[3.88, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube910" position={[3.88, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube910_Ram4M_0" geometry={nodes.pCube910_Ram4M_0.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube911" position={[-0.434, 0, 0]}>
                     <mesh name="pCube911_RGBM_0" geometry={nodes.pCube911_RGBM_0.geometry} material={materials.RGBM} />
                   </group>
-                  <group name="pCube912" position={[3.83, 3.775, -0.044]} rotation={[0, 0, -Math.PI]} scale={[0.58, 1, 1]}>
+                  <group name="pCube912" position={[3.83, 3.775, -0.044]} rotation={[0, 0, Math.PI]} scale={[0.58, 1, 1]}>
                     <mesh name="pCube912_Ram4M_0" geometry={nodes.pCube912_Ram4M_0.geometry} material={materials.Ram4M} />
                   </group>
                   <group name="pCube919" position={[0.007, 0, 0]}>
@@ -2958,7 +3063,7 @@ export function Room(props) {
                     <mesh name="pCube1006_RTXHSM_0" geometry={nodes.pCube1006_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1007" position={[-3.098, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1007_RTXHSM_0" geometry={nodes.pCube1007_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1007_RTXHSM_0" geometry={nodes.pCube1007_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1008" position={[-3.154, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1008_RTXHSM_0" geometry={nodes.pCube1008_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
@@ -2973,7 +3078,7 @@ export function Room(props) {
                     <mesh name="pCube1011_RTXHSM_0" geometry={nodes.pCube1011_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1012" position={[-2.716, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1012_RTXHSM_0" geometry={nodes.pCube1012_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1012_RTXHSM_0" geometry={nodes.pCube1012_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1013" position={[-2.764, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1013_RTXHSM_0" geometry={nodes.pCube1013_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -2982,13 +3087,13 @@ export function Room(props) {
                     <mesh name="pCube1014_RTXHSM_0" geometry={nodes.pCube1014_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1015" position={[-2.872, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1015_RTXHSM_0" geometry={nodes.pCube1015_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1015_RTXHSM_0" geometry={nodes.pCube1015_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube1016" position={[-2.929, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1016_RTXHSM_0" geometry={nodes.pCube1016_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube1016_RTXHSM_0" geometry={nodes.pCube1016_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1017" position={[-2.976, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1017_RTXHSM_0" geometry={nodes.pCube1017_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1017_RTXHSM_0" geometry={nodes.pCube1017_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1018" position={[-1.74, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1018_RTXHSM_0" geometry={nodes.pCube1018_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
@@ -3003,7 +3108,7 @@ export function Room(props) {
                     <mesh name="pCube1021_RTXHSM_0" geometry={nodes.pCube1021_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1022" position={[-1.953, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1022_RTXHSM_0" geometry={nodes.pCube1022_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
+                    <mesh name="pCube1022_RTXHSM_0" geometry={nodes.pCube1022_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube1023" position={[-2.014, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1023_RTXHSM_0" geometry={nodes.pCube1023_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
@@ -3012,7 +3117,7 @@ export function Room(props) {
                     <mesh name="pCube1024_RTXHSM_0" geometry={nodes.pCube1024_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube1025" position={[-2.118, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1025_RTXHSM_0" geometry={nodes.pCube1025_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1025_RTXHSM_0" geometry={nodes.pCube1025_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1026" position={[-2.178, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1026_RTXHSM_0" geometry={nodes.pCube1026_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
@@ -3060,7 +3165,7 @@ export function Room(props) {
                     <mesh name="pCube1040_RTXHSM_0" geometry={nodes.pCube1040_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1041" position={[-0.722, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1041_RTXHSM_0" geometry={nodes.pCube1041_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
+                    <mesh name="pCube1041_RTXHSM_0" geometry={nodes.pCube1041_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1042" position={[-0.449, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1042_RTXHSM_0" geometry={nodes.pCube1042_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
@@ -3069,7 +3174,7 @@ export function Room(props) {
                     <mesh name="pCube1043_RTXHSM_0" geometry={nodes.pCube1043_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1044" position={[-0.34, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1044_RTXHSM_0" geometry={nodes.pCube1044_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1044_RTXHSM_0" geometry={nodes.pCube1044_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1045" position={[-0.284, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1045_RTXHSM_0" geometry={nodes.pCube1045_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -3117,7 +3222,7 @@ export function Room(props) {
                     <mesh name="pCube1059_RTXHSM_0" geometry={nodes.pCube1059_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube1060" position={[-1.142, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1060_RTXHSM_0" geometry={nodes.pCube1060_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1060_RTXHSM_0" geometry={nodes.pCube1060_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1061" position={[-1.52, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1061_RTXHSM_0" geometry={nodes.pCube1061_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -3138,7 +3243,7 @@ export function Room(props) {
                     <mesh name="pCube1066_RTXHSM_0" geometry={nodes.pCube1066_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1067" position={[1.898, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1067_RTXHSM_0" geometry={nodes.pCube1067_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
+                    <mesh name="pCube1067_RTXHSM_0" geometry={nodes.pCube1067_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.003, 0, 0]} />
                   </group>
                   <group name="pCube1068" position={[1.993, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1068_RTXHSM_0" geometry={nodes.pCube1068_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -3150,7 +3255,7 @@ export function Room(props) {
                     <mesh name="pCube1070_RTXHSM_0" geometry={nodes.pCube1070_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1071" position={[1.733, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1071_RTXHSM_0" geometry={nodes.pCube1071_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
+                    <mesh name="pCube1071_RTXHSM_0" geometry={nodes.pCube1071_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube1072" position={[1.781, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1072_RTXHSM_0" geometry={nodes.pCube1072_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
@@ -3183,7 +3288,7 @@ export function Room(props) {
                     <mesh name="pCube1081_RTXHSM_0" geometry={nodes.pCube1081_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1082" position={[2.543, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1082_RTXHSM_0" geometry={nodes.pCube1082_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
+                    <mesh name="pCube1082_RTXHSM_0" geometry={nodes.pCube1082_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1083" position={[1.312, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1083_RTXHSM_0" geometry={nodes.pCube1083_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
@@ -3192,7 +3297,7 @@ export function Room(props) {
                     <mesh name="pCube1084_RTXHSM_0" geometry={nodes.pCube1084_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1085" position={[1.087, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1085_RTXHSM_0" geometry={nodes.pCube1085_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1085_RTXHSM_0" geometry={nodes.pCube1085_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1086" position={[1.135, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1086_RTXHSM_0" geometry={nodes.pCube1086_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
@@ -3261,13 +3366,13 @@ export function Room(props) {
                     <mesh name="pCube1107_RTXHSM_0" geometry={nodes.pCube1107_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1108" position={[0.264, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1108_RTXHSM_0" geometry={nodes.pCube1108_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1108_RTXHSM_0" geometry={nodes.pCube1108_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube1109" position={[0.216, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1109_RTXHSM_0" geometry={nodes.pCube1109_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube1110" position={[0.168, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1110_RTXHSM_0" geometry={nodes.pCube1110_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1110_RTXHSM_0" geometry={nodes.pCube1110_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1111" position={[0.107, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1111_RTXHSM_0" geometry={nodes.pCube1111_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
@@ -3276,7 +3381,7 @@ export function Room(props) {
                     <mesh name="pCube1112_RTXHSM_0" geometry={nodes.pCube1112_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
                   </group>
                   <group name="pCube1113" position={[2.751, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1113_RTXHSM_0" geometry={nodes.pCube1113_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1113_RTXHSM_0" geometry={nodes.pCube1113_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1114" position={[2.695, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1114_RTXHSM_0" geometry={nodes.pCube1114_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -3297,7 +3402,7 @@ export function Room(props) {
                     <mesh name="pCube1120_RTXHSM_0" geometry={nodes.pCube1120_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1121" position={[4.025, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1121_RTXHSM_0" geometry={nodes.pCube1121_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1121_RTXHSM_0" geometry={nodes.pCube1121_RTXHSM_0.geometry} material={materials.RTXHSM} position={[-0.001, 0, 0]} />
                   </group>
                   <group name="pCube1122" position={[2.919, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1122_RTXHSM_0" geometry={nodes.pCube1122_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
@@ -3333,7 +3438,7 @@ export function Room(props) {
                     <mesh name="pCube1132_RTXHSM_0" geometry={nodes.pCube1132_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1133" position={[3.262, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1133_RTXHSM_0" geometry={nodes.pCube1133_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.002, 0, 0]} />
+                    <mesh name="pCube1133_RTXHSM_0" geometry={nodes.pCube1133_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.003, 0, 0]} />
                   </group>
                   <group name="pCube1134" position={[3.886, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1134_RTXHSM_0" geometry={nodes.pCube1134_RTXHSM_0.geometry} material={materials.RTXHSM} />
@@ -3351,18 +3456,18 @@ export function Room(props) {
                     <mesh name="pCube1138_RTXHSM_0" geometry={nodes.pCube1138_RTXHSM_0.geometry} material={materials.RTXHSM} />
                   </group>
                   <group name="pCube1139" position={[3.6, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1139_RTXHSM_0" geometry={nodes.pCube1139_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1139_RTXHSM_0" geometry={nodes.pCube1139_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1140" position={[3.954, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
                     <mesh name="pCube1140_RTXHSM_0" geometry={nodes.pCube1140_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1141" position={[4.19, -2.184, 4.195]} scale={[0.017, 2.797, 0.391]}>
-                    <mesh name="pCube1141_RTXHSM_0" geometry={nodes.pCube1141_RTXHSM_0.geometry} material={materials.RTXHSM} />
+                    <mesh name="pCube1141_RTXHSM_0" geometry={nodes.pCube1141_RTXHSM_0.geometry} material={materials.RTXHSM} position={[0.001, 0, 0]} />
                   </group>
                   <group name="pCube1148">
                     <mesh name="pCube1148_GPUFanCoverM_0" geometry={nodes.pCube1148_GPUFanCoverM_0.geometry} material={materials.GPUFanCoverM} />
                   </group>
-                  <group name="pCube1149" position={[0.819, -4.46, 0]} rotation={[0, 0, -Math.PI]}>
+                  <group name="pCube1149" position={[0.819, -4.46, 0]} rotation={[0, 0, Math.PI]}>
                     <mesh name="pCube1149_GPUFanCoverM_0" geometry={nodes.pCube1149_GPUFanCoverM_0.geometry} material={materials.GPUFanCoverM} />
                   </group>
                   <group name="pCube1150" position={[-0.995, -3.233, 3.705]} scale={[4.06, 1, 0.569]}>
@@ -3591,28 +3696,49 @@ export function Room(props) {
                 <group name="Object_4001" />
               </group>
               <group name="Table" position={[0, 15.287, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-                <mesh name="Table_Table_0" geometry={nodes.Table_Table_0.geometry} material={materials.Table} rotation={[Math.PI, 0, Math.PI]} scale={[-1, -0.198, -1]} />
+                <mesh name="Table_Table_0" geometry={nodes.Table_Table_0.geometry} material={materials.Table} rotation={[-Math.PI, 0, -Math.PI]} scale={[-1, -0.198, -1]} />
               </group>
               <group name="TV" position={[0, 69.3, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
                 <mesh name="TV_TVFramework_0" geometry={nodes.TV_TVFramework_0.geometry} material={materials.TVFramework} />
-                <mesh name="TV_TVScreen_0" geometry={nodes.TV_TVScreen_0.geometry} material={materials.Screen} position={[0.001, 0.26, 0]} />
+                <mesh name="TV_TVScreen_0" geometry={nodes.TV_TVScreen_0.geometry} material={materials['Material.003']} position={[0.001, 0.26, 0]} />
               </group>
             </group>
           </group>
         </group>
-        <mesh
-          name="Text002"
-          geometry={nodes.Text002.geometry}
-          material={nodes.Text002.material}
-          position={[8.103, 12.296, 11.08]}
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={isHovered ? [-0.294 * 1.2, -0.455 * 1.2, -0.339 * 1.2] : [-0.294, -0.255, -0.339]}
-          onPointerOver={handlePointerOver}
-          onPointerOut={handlePointerOut}
-          onClick={handleClick}
-        >
-
-        </mesh>
+        <group name="Sketchfab_model" position={[-8.981, 6.049, 9.486]} rotation={[-Math.PI / 2, 0, 1.026]} scale={0.515}>
+          <group name="2cb675eff3214530bef1bb5d812ba1b9objcleanermaterialmergergle">
+            <group name="Object_2002" position={[-0.251, 0.414, 0]} scale={0.823}>
+              <mesh name="Object_0009" geometry={nodes.Object_0009.geometry} material={materials.initialShadingGroup} />
+              <mesh name="Object_0009_1" geometry={nodes.Object_0009_1.geometry} material={materials['Material.025']} />
+            </group>
+          </group>
+        </group>
+        <group 
+            name="Resume" 
+            position={[9.08, 12.023, 11.005]} 
+            rotation={[-1.567, -0.001, -0.001]} 
+            scale={isHovered ? [-1.036 * 1, -0.901 * 1, -1.198 * 1] : [-1.036, -0.901, -1.198]}
+            onPointerOver={handlePointerOver}
+            onPointerOut={handlePointerOut}
+            onClick={handleClickPop}
+          > 
+            <mesh 
+              name="Text002" 
+              geometry={nodes.Text002.geometry} 
+              material={isHovered ? hoveredMaterial : materials['Material.004']} // Use hoveredMaterial when hovered
+            />
+            <mesh 
+              name="Text002_1" 
+              geometry={nodes.Text002_1.geometry} 
+              material={isHovered ? hoveredMaterial1 : materials['Material.005']} // Use hoveredMaterial when hovered
+            />
+          </group>
+        <group name="Cert" position={[-7.82, 5.977, 9.404]} rotation={[-Math.PI / 2, 0, -0.558]} scale={-0.516}onPointerOver={handlePointerOver}
+            onPointerOut={handlePointerOut}
+            onClick={handleClick}>
+          <mesh name="Text003" geometry={nodes.Text003.geometry}  material={isHovered ? hoveredMaterial : materials['Material.021']} />
+          <mesh name="Text003_1" geometry={nodes.Text003_1.geometry}  material={isHovered ? hoveredMaterial2 : materials['Material.022']} />
+        </group>
       </group>
     </group>
   )

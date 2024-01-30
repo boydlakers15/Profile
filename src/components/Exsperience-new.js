@@ -23,6 +23,8 @@ import {
     const controls = useRef();
     const meshFitCameraHome = useRef();
     const meshFitCameraSkills = useRef();
+    const meshFitCameraProfile = useRef();
+    const meshFitCameraCert = useRef();
     const textMaterial = useRef();
     const [currentPage, setCurrentPage] = useAtom(currentPageAtom);
   
@@ -45,10 +47,16 @@ import {
   
     const fitCamera = async () => {
       if (currentPage === "skills") {
-        controls.current.smoothTime = 1.9;
+        controls.current.smoothTime = .9;
         controls.current.fitToBox(meshFitCameraSkills.current, true);
+      } else if (currentPage === "profile") { // Add this condition
+        controls.current.smoothTime = .9;
+        controls.current.fitToBox(meshFitCameraProfile.current, true);
+      }else if (currentPage === "cert") { // Add this condition
+        controls.current.smoothTime = .9;
+        controls.current.fitToBox(meshFitCameraCert.current, true);
       } else {
-        controls.current.smoothTime = 1.6;
+        controls.current.smoothTime = .6;
         controls.current.fitToBox(meshFitCameraHome.current, true);
       }
     };
@@ -66,7 +74,7 @@ import {
     return (
       <>
         <CameraControls ref={controls} />
-        <mesh ref={meshFitCameraHome} position={[30.5, 40.5, 40]} visible={false}>
+        <mesh ref={meshFitCameraHome} position={[30.5, 90.5, 240]} visible={false}>
           <boxGeometry args={[190.9, 110, 190]} />
           <meshBasicMaterial color="orange" transparent opacity={0.9} />
         </mesh>
@@ -91,12 +99,20 @@ import {
             </RenderTexture>
           </meshBasicMaterial>
       
-  
+        {/* Add the meshFitCameraResume component */}
+      <mesh ref={meshFitCameraProfile} position={[35.5, 70.5, 10]} visible={false}>
+        <boxGeometry args={[0, 0, 0]} />
+        <meshBasicMaterial color="blue" transparent opacity={0.1} />
+      </mesh>
+      <mesh ref={meshFitCameraCert} position={[70.5, 55.5, -15]} visible={false}>
+        <boxGeometry args={[5, 5, 5]} />
+        <meshBasicMaterial color="blue" transparent opacity={0.1} />
+      </mesh>
        
-        <group rotation-y={degToRad(-180)} position-x={0.7} position-y={-35} position-z={40.1}>
+        <group rotation-y={degToRad(-180)} position-x={0.7} position-y={0} position-z={40.1}>
           <Room scale={8} html />
-          <mesh ref={meshFitCameraSkills} position={[45, 120, 30]} visible={true}>
-            <boxGeometry args={[30, 40, 40]} />
+          <mesh ref={meshFitCameraSkills} position={[54, 110, 65]} visible={false}>
+            <boxGeometry args={[30, 30, 30]} />
             <meshBasicMaterial color="red" transparent opacity={0.5} />
           </mesh>
         </group>

@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import './UI.css';
+
 export const currentPageAtom = atom("intro");
 
 export const UI = () => {
@@ -11,15 +11,13 @@ export const UI = () => {
       duration-500
       ${currentPage === "home" ? "" : "opacity-0"}`}
       >
-        <div className="h-[60%]"></div>
-        
+        <div className="h-[66%]"></div>
         <button
-          onClick={() => setCurrentPage("home")}
+          onClick={() => setCurrentPage("store")}
           className="pointer-events-auto py-4 px-8 bg-orange-400 text-white font-black rounded-full hover:bg-orange-600 cursor-pointer transition-colors duration-500"
         >
-          
+          ENTER
         </button>
-
       </section>
     </div>
   );
