@@ -8,17 +8,14 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Billboard.css';
 
-
-
-
-export function Model(props) {
-  const { nodes, materials } = useGLTF("/models/Billboard.glb")
+export function Room(props) {
+  const { nodes, materials } = useGLTF('/models/Billboard.glb')
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const handleEnterButtonClick = () => {
     // Navigate to the profile page when the model is clicked
-    navigate('/Home');
+    navigate('/about');
   };
   const handlePointerOver = () => {
     setIsHovered(true);
@@ -38,8 +35,7 @@ export function Model(props) {
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
-        <group name="Billboard_2" position={[-7.24, 0, -6.443]} rotation={[0, 0.594, 0]} scale={0.062}>
-         
+      <group name="Billboard_2" position={[-7.24, 0, -6.443]} rotation={[0, 0.507, 0]} scale={0.062}>
           <mesh name="Billboard_2_1002" geometry={nodes.Billboard_2_1002.geometry} material={materials['lambert3SG.002']} />
           <mesh name="Billboard_2_1002_1" geometry={nodes.Billboard_2_1002_1.geometry} material={materials['Material.006']} />
           <mesh name="Billboard_2_1002_2" geometry={nodes.Billboard_2_1002_2.geometry} material={materials['Material.001']} />

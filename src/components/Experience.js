@@ -11,7 +11,7 @@ import { useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import { Color, Raycaster, Vector2 } from "three";
 import { degToRad, lerp } from "three/src/math/MathUtils";
-import { Model } from "./Billboard";
+import { Room } from "./Billboard.js";
 import { currentPageAtom } from "./UI";
 
 
@@ -75,7 +75,7 @@ export const Experience = () => {
             <color attach="background" args={["#fff"]} />
             <Environment preset="sunset" />
             
-              <Model
+              <Room
                 scale={1.2}
                 rotation-y={-degToRad(17.5)}
                 position-x={1.23} // Adjust the X position to move it to the right
@@ -99,7 +99,7 @@ export const Experience = () => {
 
      
       <group rotation-y={degToRad(-90)} position-x={4.7} position-y={-.4} position-z={2.1}>
-        <Model scale={0.07} html />
+        <Room scale={0.07} html />
         <mesh ref={meshFitCameraStore} position={[0, 2.5, -1]} visible={false}>
           <boxGeometry args={[2, 2, 4]} />
           <meshBasicMaterial color="red" transparent opacity={0.5} />
