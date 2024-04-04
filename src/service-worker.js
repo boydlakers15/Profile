@@ -1,4 +1,11 @@
 /* eslint-disable no-restricted-globals */
+
+import { precacheAndRoute } from 'workbox-precaching';
+
+// Add this line to generate the __WB_MANIFEST variable
+precacheAndRoute(self.__WB_MANIFEST);
+
+
 const CACHE_NAME = 'my-cache-v1';
 const urlsToCache = [
   '/',
