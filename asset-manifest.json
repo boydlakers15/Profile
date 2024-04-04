@@ -1,24 +1,27 @@
 {
   "files": {
-    "main.css": "/Profile/Home/static/css/main.f45965ea.css",
-    "main.js": "/Profile/Home/static/js/main.fa9f14d6.js",
-    "static/js/988.f750796e.chunk.js": "/Profile/Home/static/js/988.f750796e.chunk.js",
-    "static/media/pexels.jpg": "/Profile/Home/static/media/pexels.d8a0aa8fbc4bb3c49562.jpg",
-    "static/media/jared.boyd.10.png": "/Profile/Home/static/media/jared.boyd.10.f53bcef61448b9d89e25.png",
-    "static/media/video.001.mp4": "/Profile/Home/static/media/video.001.cae028e5a784a19fd0ff.mp4",
-    "static/media/j.png": "/Profile/Home/static/media/j.c83154f955e87cb9f645.png",
-    "static/media/LINKEDIN.png": "/Profile/Home/static/media/LINKEDIN.a83971e2d23d2aee7b60.png",
-    "static/media/logo.png": "/Profile/Home/static/media/logo.a64c5849d89f474520be.png",
-    "static/media/facebook.png": "/Profile/Home/static/media/facebook.c5d29daee695cca2f712.png",
-    "static/media/Jared-Boyd.pdf": "/Profile/Home/static/media/Jared-Boyd.116a346ae30bbe40826d.pdf",
-    "static/media/Github.png": "/Profile/Home/static/media/Github.12746b9cf64fd89dc3ed.png",
-    "index.html": "/Profile/Home/index.html",
-    "main.f45965ea.css.map": "/Profile/Home/static/css/main.f45965ea.css.map",
-    "main.fa9f14d6.js.map": "/Profile/Home/static/js/main.fa9f14d6.js.map",
-    "988.f750796e.chunk.js.map": "/Profile/Home/static/js/988.f750796e.chunk.js.map"
+    "main.css": "/static/css/main.f45965ea.css",
+    "main.js": "/static/js/main.71e9a27c.js",
+    "static/js/873.046ccdd3.chunk.js": "/static/js/873.046ccdd3.chunk.js",
+    "static/js/988.b06e878c.chunk.js": "/static/js/988.b06e878c.chunk.js",
+    "static/media/pexels.jpg": "/static/media/pexels.d8a0aa8fbc4bb3c49562.jpg",
+    "static/media/jared.boyd.10.png": "/static/media/jared.boyd.10.f53bcef61448b9d89e25.png",
+    "static/media/video.001.mp4": "/static/media/video.001.cae028e5a784a19fd0ff.mp4",
+    "static/media/j.png": "/static/media/j.c83154f955e87cb9f645.png",
+    "static/media/LINKEDIN.png": "/static/media/LINKEDIN.a83971e2d23d2aee7b60.png",
+    "static/media/logo.png": "/static/media/logo.a64c5849d89f474520be.png",
+    "static/media/facebook.png": "/static/media/facebook.c5d29daee695cca2f712.png",
+    "static/media/Jared-Boyd.pdf": "/static/media/Jared-Boyd.116a346ae30bbe40826d.pdf",
+    "static/media/Github.png": "/static/media/Github.12746b9cf64fd89dc3ed.png",
+    "service-worker.js": "/service-worker.js",
+    "index.html": "/index.html",
+    "main.f45965ea.css.map": "/static/css/main.f45965ea.css.map",
+    "main.71e9a27c.js.map": "/static/js/main.71e9a27c.js.map",
+    "873.046ccdd3.chunk.js.map": "/static/js/873.046ccdd3.chunk.js.map",
+    "988.b06e878c.chunk.js.map": "/static/js/988.b06e878c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f45965ea.css",
-    "static/js/main.fa9f14d6.js"
+    "static/js/main.71e9a27c.js"
   ]
 }
