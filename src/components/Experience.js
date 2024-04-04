@@ -11,7 +11,7 @@ import { useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 import { Color, Raycaster, Vector2 } from "three";
 import { degToRad, lerp } from "three/src/math/MathUtils";
-import Room from './Billboard.js';
+import {Room} from './Billboard.js';
 import { currentPageAtom } from "./UI";
 
 
