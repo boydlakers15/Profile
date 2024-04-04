@@ -1,6 +1,6 @@
 // App.js
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Profile from './components/Profile';
@@ -10,8 +10,9 @@ import About from './components/About';
 import FooterPage from './components/FooterPage';
 import { Experience } from './components/Experience';
 import { UI } from './components/UI';
-
-
+// import ProjectText from './components/ProjectsText'
+// import { Canvas } from "@react-three/fiber";
+// import { Environment, OrbitControls } from '@react-three/drei';
 const App = () => {
   return (
     <>
@@ -29,6 +30,15 @@ const App = () => {
             <Route exact path="/nav" element={<Navbar />} />
         </Routes>
       </Router>
+      {/* <Canvas>
+        <Suspense fallback={null}>
+          <OrbitControls />
+        <ambientLight >
+          <ProjectText />
+        </ambientLight>
+        </Suspense>
+        <Environment />
+       </Canvas> */}
     </>
   );
 };

@@ -19,11 +19,14 @@ import PDFFile from "./IMG/Jared-Boyd.pdf";
 import { degToRad , lerp } from "three/src/math/MathUtils";
 import { currentPageAtom } from "./SkillsUI";
 import { useAtom } from "jotai";
-import { useFrame } from "@react-three/fiber";
+import { useThree  } from "@react-three/fiber";
 import { Color } from "three";
 import InteractiveCircleResume from "./CircleResume.js";
+import Model from "./ProjectsText.js";
+import GLBViewer from "./ProjectsText.js";
 import {Computer} from './Computer.js';
-
+import { Text } from '@react-three/drei';
+// import { ContactShadows, PhysicalMaterial
 const bloomColor = new Color("#fff");
 bloomColor.multiplyScalar(1.5);
 
@@ -395,6 +398,39 @@ function ScreenComputer({  }) {
     );
   };
 
+  const Popup = ({ position }) => {
+    return (
+      <mesh position={position}>
+        {/* Your popup content */}
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial  transparent opacity={0.8} />
+        <Text position={[-0.251, 0.414, 9]} rotation={[-Math.PI / 2, rotation[1], rotation[2]]} fontSize={1.2} color="black" textAlign="center">
+          Click me
+        </Text>
+      </mesh>
+    );
+  };
+  
+  const GroupWithPopup = ({ position, children }) => {
+    const { scene } = useThree();
+    const [popupPosition, setPopupPosition] = useState(null);
+  
+    const handleHover = () => {
+      setPopupPosition(position);
+    };
+  
+    const handleHoverLeave = () => {
+      setPopupPosition(null);
+    };
+  
+    return (
+      <group position={position} onPointerOver={handleHover} onPointerOut={handleHoverLeave}>
+        {children}
+        {popupPosition && <Popup position={popupPosition} />}
+      </group>
+    );
+  };
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -473,6 +509,9 @@ function ScreenComputer({  }) {
               <group name="WhiteWalls" position={[0, -4.453, 0]} rotation={[Math.PI / 2, 0, 0]}>
                 <mesh name="Object_313" geometry={nodes.Object_313.geometry} material={materials.Cert} position={[-0.009, 0.017, -0.001]} />
                 <mesh name="Object_313001" geometry={nodes.Object_313001.geometry} material={materials.Cert} position={[-48.057, 5.754, 0.017]} rotation={[0, 0, -1.573]} />
+                <ambientLight color="#ffffff" intensity={1} />
+                <Model position={[-35.657, 10.754, -24.017]} rotation={[0, 0, -1.573]}/>
+                <GLBViewer />
               </group>
               <group name="Window_Left" position={[11.463, 11.163, -1.78]} scale={[0.833, 1, 1]}>
                 <mesh name="Object_311" geometry={nodes.Object_311.geometry} material={materials.material_0} />
@@ -559,7 +598,7 @@ function ScreenComputer({  }) {
         </group>
         <group name="Picture" position={[9.939, 7.048, 11.033]} rotation={[-Math.PI / 2, 0, 1.575]} scale={[7.299, 3.495, 4.65]}>
           <group name="emapale_enmarcateobjcleanermaterialmergergles">
-           
+          
             <mesh name="Object_2" geometry={nodes.Object_2.geometry} material={materials['Material.032']} />
             <mesh name="Object_5" geometry={nodes.Object_5.geometry} material={materials['Material.035']} />
           </group>
@@ -581,16 +620,21 @@ function ScreenComputer({  }) {
             </group>
           </group>
         </group>
-        <group name="Sketchfab_model" position={[-8.981, 6.049, 9.486]} rotation={[-Math.PI / 2, 0, 1.026]} scale={0.515}>
-          <group name="2cb675eff3214530bef1bb5d812ba1b9objcleanermaterialmergergle">
         
+        <group name="Sketchfab_model" position={[-8.981, 6.049, 9.486]} rotation={[-Math.PI / 2, 0, 1.026]} scale={0.515}>
+       
+          <group name="2cb675eff3214530bef1bb5d812ba1b9objcleanermaterialmergergle">
+            <GroupWithPopup position={[-0.251, 0.414, 0]}>
               <InteractiveCircleResume />
+            </GroupWithPopup>
             <group name="Object_2002" position={[-0.251, 0.414, 0]} scale={0.823}>
               <mesh name="Object_0009" geometry={nodes.Object_0009.geometry} material={materials.initialShadingGroup} />
               <mesh name="Object_0009_1" geometry={nodes.Object_0009_1.geometry} material={materials['Material.025']} />
             </group>
           </group>
+         
         </group>
+        
         <group name="Sketchfab_model001" position={[-12.102, 5.793, 1.398]} rotation={[-Math.PI / 2, 0, -1.58]} scale={0.266}>
           <group name="4ce49cd2dd754c0ebd3c2fc714c4cc1eobjcleanermaterialmergergle" />
         </group>

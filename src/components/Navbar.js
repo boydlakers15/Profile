@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="vertical-menu">
-        <li className='home'><Link  to={'/Profile'}>Home</Link></li>
+        <li className='home'><Link  to={'/'}>Home</Link></li>
         <li ><Link className='profile' to={'/First'}>Profile</Link></li>
         <li ><Link className='about' to={'/about'}>About Me</Link></li>
         <li ><Link className='skills' to="/skills">Skills</Link></li>

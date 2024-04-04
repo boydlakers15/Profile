@@ -1,0 +1,3228 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.27",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression",
+        "KHR_materials_clearcoat"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "extras" : {
+                "kitops" : {},
+                "collision_materials" : [
+                    {
+                        "index" : 0,
+                        "name" : "DEFAULT"
+                    },
+                    {
+                        "index" : 1,
+                        "name" : "CONCRETE"
+                    },
+                    {
+                        "index" : 2,
+                        "name" : "CONCRETE_POTHOLE"
+                    },
+                    {
+                        "index" : 3,
+                        "name" : "CONCRETE_DUSTY"
+                    },
+                    {
+                        "index" : 4,
+                        "name" : "TARMAC"
+                    },
+                    {
+                        "index" : 5,
+                        "name" : "TARMAC_PAINTED"
+                    },
+                    {
+                        "index" : 6,
+                        "name" : "TARMAC_POTHOLE"
+                    },
+                    {
+                        "index" : 7,
+                        "name" : "RUMBLE_STRIP"
+                    },
+                    {
+                        "index" : 8,
+                        "name" : "BREEZE_BLOCK"
+                    },
+                    {
+                        "index" : 9,
+                        "name" : "ROCK"
+                    },
+                    {
+                        "index" : 10,
+                        "name" : "ROCK_MOSSY"
+                    },
+                    {
+                        "index" : 11,
+                        "name" : "STONE"
+                    },
+                    {
+                        "index" : 12,
+                        "name" : "COBBLESTONE"
+                    },
+                    {
+                        "index" : 13,
+                        "name" : "BRICK"
+                    },
+                    {
+                        "index" : 14,
+                        "name" : "MARBLE"
+                    },
+                    {
+                        "index" : 15,
+                        "name" : "PAVING_SLAB"
+                    },
+                    {
+                        "index" : 16,
+                        "name" : "SANDSTONE_SOLID"
+                    },
+                    {
+                        "index" : 17,
+                        "name" : "SANDSTONE_BRITTLE"
+                    },
+                    {
+                        "index" : 18,
+                        "name" : "SAND_LOOSE"
+                    },
+                    {
+                        "index" : 19,
+                        "name" : "SAND_COMPACT"
+                    },
+                    {
+                        "index" : 20,
+                        "name" : "SAND_WET"
+                    },
+                    {
+                        "index" : 21,
+                        "name" : "SAND_TRACK"
+                    },
+                    {
+                        "index" : 22,
+                        "name" : "SAND_UNDERWATER"
+                    },
+                    {
+                        "index" : 23,
+                        "name" : "SAND_DRY_DEEP"
+                    },
+                    {
+                        "index" : 24,
+                        "name" : "SAND_WET_DEEP"
+                    },
+                    {
+                        "index" : 25,
+                        "name" : "ICE"
+                    },
+                    {
+                        "index" : 26,
+                        "name" : "ICE_TARMAC"
+                    },
+                    {
+                        "index" : 27,
+                        "name" : "SNOW_LOOSE"
+                    },
+                    {
+                        "index" : 28,
+                        "name" : "SNOW_COMPACT"
+                    },
+                    {
+                        "index" : 29,
+                        "name" : "SNOW_DEEP"
+                    },
+                    {
+                        "index" : 30,
+                        "name" : "SNOW_TARMAC"
+                    },
+                    {
+                        "index" : 31,
+                        "name" : "GRAVEL_SMALL"
+                    },
+                    {
+                        "index" : 32,
+                        "name" : "GRAVEL_LARGE"
+                    },
+                    {
+                        "index" : 33,
+                        "name" : "GRAVEL_DEEP"
+                    },
+                    {
+                        "index" : 34,
+                        "name" : "GRAVEL_TRAIN_TRACK"
+                    },
+                    {
+                        "index" : 35,
+                        "name" : "DIRT_TRACK"
+                    },
+                    {
+                        "index" : 36,
+                        "name" : "MUD_HARD"
+                    },
+                    {
+                        "index" : 37,
+                        "name" : "MUD_POTHOLE"
+                    },
+                    {
+                        "index" : 38,
+                        "name" : "MUD_SOFT"
+                    },
+                    {
+                        "index" : 39,
+                        "name" : "MUD_UNDERWATER"
+                    },
+                    {
+                        "index" : 40,
+                        "name" : "MUD_DEEP"
+                    },
+                    {
+                        "index" : 41,
+                        "name" : "MARSH"
+                    },
+                    {
+                        "index" : 42,
+                        "name" : "MARSH_DEEP"
+                    },
+                    {
+                        "index" : 43,
+                        "name" : "SOIL"
+                    },
+                    {
+                        "index" : 44,
+                        "name" : "CLAY_HARD"
+                    },
+                    {
+                        "index" : 45,
+                        "name" : "CLAY_SOFT"
+                    },
+                    {
+                        "index" : 46,
+                        "name" : "GRASS_LONG"
+                    },
+                    {
+                        "index" : 47,
+                        "name" : "GRASS"
+                    },
+                    {
+                        "index" : 48,
+                        "name" : "GRASS_SHORT"
+                    },
+                    {
+                        "index" : 49,
+                        "name" : "HAY"
+                    },
+                    {
+                        "index" : 50,
+                        "name" : "BUSHES"
+                    },
+                    {
+                        "index" : 51,
+                        "name" : "TWIGS"
+                    },
+                    {
+                        "index" : 52,
+                        "name" : "LEAVES"
+                    },
+                    {
+                        "index" : 53,
+                        "name" : "WOODCHIPS"
+                    },
+                    {
+                        "index" : 54,
+                        "name" : "TREE_BARK"
+                    },
+                    {
+                        "index" : 55,
+                        "name" : "METAL_SOLID_SMALL"
+                    },
+                    {
+                        "index" : 56,
+                        "name" : "METAL_SOLID_MEDIUM"
+                    },
+                    {
+                        "index" : 57,
+                        "name" : "METAL_SOLID_LARGE"
+                    },
+                    {
+                        "index" : 58,
+                        "name" : "METAL_HOLLOW_SMALL"
+                    },
+                    {
+                        "index" : 59,
+                        "name" : "METAL_HOLLOW_MEDIUM"
+                    },
+                    {
+                        "index" : 60,
+                        "name" : "METAL_HOLLOW_LARGE"
+                    },
+                    {
+                        "index" : 61,
+                        "name" : "METAL_CHAINLINK_SMALL"
+                    },
+                    {
+                        "index" : 62,
+                        "name" : "METAL_CHAINLINK_LARGE"
+                    },
+                    {
+                        "index" : 63,
+                        "name" : "METAL_CORRUGATED_IRON"
+                    },
+                    {
+                        "index" : 64,
+                        "name" : "METAL_GRILLE"
+                    },
+                    {
+                        "index" : 65,
+                        "name" : "METAL_RAILING"
+                    },
+                    {
+                        "index" : 66,
+                        "name" : "METAL_DUCT"
+                    },
+                    {
+                        "index" : 67,
+                        "name" : "METAL_GARAGE_DOOR"
+                    },
+                    {
+                        "index" : 68,
+                        "name" : "METAL_MANHOLE"
+                    },
+                    {
+                        "index" : 69,
+                        "name" : "WOOD_SOLID_SMALL"
+                    },
+                    {
+                        "index" : 70,
+                        "name" : "WOOD_SOLID_MEDIUM"
+                    },
+                    {
+                        "index" : 71,
+                        "name" : "WOOD_SOLID_LARGE"
+                    },
+                    {
+                        "index" : 72,
+                        "name" : "WOOD_SOLID_POLISHED"
+                    },
+                    {
+                        "index" : 73,
+                        "name" : "WOOD_FLOOR_DUSTY"
+                    },
+                    {
+                        "index" : 74,
+                        "name" : "WOOD_HOLLOW_SMALL"
+                    },
+                    {
+                        "index" : 75,
+                        "name" : "WOOD_HOLLOW_MEDIUM"
+                    },
+                    {
+                        "index" : 76,
+                        "name" : "WOOD_HOLLOW_LARGE"
+                    },
+                    {
+                        "index" : 77,
+                        "name" : "WOOD_CHIPBOARD"
+                    },
+                    {
+                        "index" : 78,
+                        "name" : "WOOD_OLD_CREAKY"
+                    },
+                    {
+                        "index" : 79,
+                        "name" : "WOOD_HIGH_DENSITY"
+                    },
+                    {
+                        "index" : 80,
+                        "name" : "WOOD_LATTICE"
+                    },
+                    {
+                        "index" : 81,
+                        "name" : "CERAMIC"
+                    },
+                    {
+                        "index" : 82,
+                        "name" : "ROOF_TILE"
+                    },
+                    {
+                        "index" : 83,
+                        "name" : "ROOF_FELT"
+                    },
+                    {
+                        "index" : 84,
+                        "name" : "FIBREGLASS"
+                    },
+                    {
+                        "index" : 85,
+                        "name" : "TARPAULIN"
+                    },
+                    {
+                        "index" : 86,
+                        "name" : "PLASTIC"
+                    },
+                    {
+                        "index" : 87,
+                        "name" : "PLASTIC_HOLLOW"
+                    },
+                    {
+                        "index" : 88,
+                        "name" : "PLASTIC_HIGH_DENSITY"
+                    },
+                    {
+                        "index" : 89,
+                        "name" : "PLASTIC_CLEAR"
+                    },
+                    {
+                        "index" : 90,
+                        "name" : "PLASTIC_HOLLOW_CLEAR"
+                    },
+                    {
+                        "index" : 91,
+                        "name" : "PLASTIC_HIGH_DENSITY_CLEAR"
+                    },
+                    {
+                        "index" : 92,
+                        "name" : "FIBREGLASS_HOLLOW"
+                    },
+                    {
+                        "index" : 93,
+                        "name" : "RUBBER"
+                    },
+                    {
+                        "index" : 94,
+                        "name" : "RUBBER_HOLLOW"
+                    },
+                    {
+                        "index" : 95,
+                        "name" : "LINOLEUM"
+                    },
+                    {
+                        "index" : 96,
+                        "name" : "LAMINATE"
+                    },
+                    {
+                        "index" : 97,
+                        "name" : "CARPET_SOLID"
+                    },
+                    {
+                        "index" : 98,
+                        "name" : "CARPET_SOLID_DUSTY"
+                    },
+                    {
+                        "index" : 99,
+                        "name" : "CARPET_FLOORBOARD"
+                    },
+                    {
+                        "index" : 100,
+                        "name" : "CLOTH"
+                    },
+                    {
+                        "index" : 101,
+                        "name" : "PLASTER_SOLID"
+                    },
+                    {
+                        "index" : 102,
+                        "name" : "PLASTER_BRITTLE"
+                    },
+                    {
+                        "index" : 103,
+                        "name" : "CARDBOARD_SHEET"
+                    },
+                    {
+                        "index" : 104,
+                        "name" : "CARDBOARD_BOX"
+                    },
+                    {
+                        "index" : 105,
+                        "name" : "PAPER"
+                    },
+                    {
+                        "index" : 106,
+                        "name" : "FOAM"
+                    },
+                    {
+                        "index" : 107,
+                        "name" : "FEATHER_PILLOW"
+                    },
+                    {
+                        "index" : 108,
+                        "name" : "POLYSTYRENE"
+                    },
+                    {
+                        "index" : 109,
+                        "name" : "LEATHER"
+                    },
+                    {
+                        "index" : 110,
+                        "name" : "TVSCREEN"
+                    },
+                    {
+                        "index" : 111,
+                        "name" : "SLATTED_BLINDS"
+                    },
+                    {
+                        "index" : 112,
+                        "name" : "GLASS_SHOOT_THROUGH"
+                    },
+                    {
+                        "index" : 113,
+                        "name" : "GLASS_BULLETPROOF"
+                    },
+                    {
+                        "index" : 114,
+                        "name" : "GLASS_OPAQUE"
+                    },
+                    {
+                        "index" : 115,
+                        "name" : "PERSPEX"
+                    },
+                    {
+                        "index" : 116,
+                        "name" : "CAR_METAL"
+                    },
+                    {
+                        "index" : 117,
+                        "name" : "CAR_PLASTIC"
+                    },
+                    {
+                        "index" : 118,
+                        "name" : "CAR_SOFTTOP"
+                    },
+                    {
+                        "index" : 119,
+                        "name" : "CAR_SOFTTOP_CLEAR"
+                    },
+                    {
+                        "index" : 120,
+                        "name" : "CAR_GLASS_WEAK"
+                    },
+                    {
+                        "index" : 121,
+                        "name" : "CAR_GLASS_MEDIUM"
+                    },
+                    {
+                        "index" : 122,
+                        "name" : "CAR_GLASS_STRONG"
+                    },
+                    {
+                        "index" : 123,
+                        "name" : "CAR_GLASS_BULLETPROOF"
+                    },
+                    {
+                        "index" : 124,
+                        "name" : "CAR_GLASS_OPAQUE"
+                    },
+                    {
+                        "index" : 125,
+                        "name" : "WATER"
+                    },
+                    {
+                        "index" : 126,
+                        "name" : "BLOOD"
+                    },
+                    {
+                        "index" : 127,
+                        "name" : "OIL"
+                    },
+                    {
+                        "index" : 128,
+                        "name" : "PETROL"
+                    },
+                    {
+                        "index" : 129,
+                        "name" : "FRESH_MEAT"
+                    },
+                    {
+                        "index" : 130,
+                        "name" : "DRIED_MEAT"
+                    },
+                    {
+                        "index" : 131,
+                        "name" : "EMISSIVE_GLASS"
+                    },
+                    {
+                        "index" : 132,
+                        "name" : "EMISSIVE_PLASTIC"
+                    },
+                    {
+                        "index" : 133,
+                        "name" : "VFX_METAL_ELECTRIFIED"
+                    },
+                    {
+                        "index" : 134,
+                        "name" : "VFX_METAL_WATER_TOWER"
+                    },
+                    {
+                        "index" : 135,
+                        "name" : "VFX_METAL_STEAM"
+                    },
+                    {
+                        "index" : 136,
+                        "name" : "VFX_METAL_FLAME"
+                    },
+                    {
+                        "index" : 137,
+                        "name" : "PHYS_NO_FRICTION"
+                    },
+                    {
+                        "index" : 138,
+                        "name" : "PHYS_GOLF_BALL"
+                    },
+                    {
+                        "index" : 139,
+                        "name" : "PHYS_TENNIS_BALL"
+                    },
+                    {
+                        "index" : 140,
+                        "name" : "PHYS_CASTER"
+                    },
+                    {
+                        "index" : 141,
+                        "name" : "PHYS_CASTER_RUSTY"
+                    },
+                    {
+                        "index" : 142,
+                        "name" : "PHYS_CAR_VOID"
+                    },
+                    {
+                        "index" : 143,
+                        "name" : "PHYS_PED_CAPSULE"
+                    },
+                    {
+                        "index" : 144,
+                        "name" : "PHYS_ELECTRIC_FENCE"
+                    },
+                    {
+                        "index" : 145,
+                        "name" : "PHYS_ELECTRIC_METAL"
+                    },
+                    {
+                        "index" : 146,
+                        "name" : "PHYS_BARBED_WIRE"
+                    },
+                    {
+                        "index" : 147,
+                        "name" : "PHYS_POOLTABLE_SURFACE"
+                    },
+                    {
+                        "index" : 148,
+                        "name" : "PHYS_POOLTABLE_CUSHION"
+                    },
+                    {
+                        "index" : 149,
+                        "name" : "PHYS_POOLTABLE_BALL"
+                    },
+                    {
+                        "index" : 150,
+                        "name" : "BUTTOCKS"
+                    },
+                    {
+                        "index" : 151,
+                        "name" : "THIGH_LEFT"
+                    },
+                    {
+                        "index" : 152,
+                        "name" : "SHIN_LEFT"
+                    },
+                    {
+                        "index" : 153,
+                        "name" : "FOOT_LEFT"
+                    },
+                    {
+                        "index" : 154,
+                        "name" : "THIGH_RIGHT"
+                    },
+                    {
+                        "index" : 155,
+                        "name" : "SHIN_RIGHT"
+                    },
+                    {
+                        "index" : 156,
+                        "name" : "FOOT_RIGHT"
+                    },
+                    {
+                        "index" : 157,
+                        "name" : "SPINE0"
+                    },
+                    {
+                        "index" : 158,
+                        "name" : "SPINE1"
+                    },
+                    {
+                        "index" : 159,
+                        "name" : "SPINE2"
+                    },
+                    {
+                        "index" : 160,
+                        "name" : "SPINE3"
+                    },
+                    {
+                        "index" : 161,
+                        "name" : "CLAVICLE_LEFT"
+                    },
+                    {
+                        "index" : 162,
+                        "name" : "UPPER_ARM_LEFT"
+                    },
+                    {
+                        "index" : 163,
+                        "name" : "LOWER_ARM_LEFT"
+                    },
+                    {
+                        "index" : 164,
+                        "name" : "HAND_LEFT"
+                    },
+                    {
+                        "index" : 165,
+                        "name" : "CLAVICLE_RIGHT"
+                    },
+                    {
+                        "index" : 166,
+                        "name" : "UPPER_ARM_RIGHT"
+                    },
+                    {
+                        "index" : 167,
+                        "name" : "LOWER_ARM_RIGHT"
+                    },
+                    {
+                        "index" : 168,
+                        "name" : "HAND_RIGHT"
+                    },
+                    {
+                        "index" : 169,
+                        "name" : "NECK"
+                    },
+                    {
+                        "index" : 170,
+                        "name" : "HEAD"
+                    },
+                    {
+                        "index" : 171,
+                        "name" : "ANIMAL_DEFAULT"
+                    },
+                    {
+                        "index" : 172,
+                        "name" : "CAR_ENGINE"
+                    },
+                    {
+                        "index" : 173,
+                        "name" : "PUDDLE"
+                    },
+                    {
+                        "index" : 174,
+                        "name" : "CONCRETE_PAVEMENT"
+                    },
+                    {
+                        "index" : 175,
+                        "name" : "BRICK_PAVEMENT"
+                    },
+                    {
+                        "index" : 176,
+                        "name" : "PHYS_DYNAMIC_COVER_BOUND"
+                    },
+                    {
+                        "index" : 177,
+                        "name" : "VFX_WOOD_BEER_BARREL"
+                    },
+                    {
+                        "index" : 178,
+                        "name" : "WOOD_HIGH_FRICTION"
+                    },
+                    {
+                        "index" : 179,
+                        "name" : "ROCK_NOINST"
+                    },
+                    {
+                        "index" : 180,
+                        "name" : "BUSHES_NOINST"
+                    },
+                    {
+                        "index" : 181,
+                        "name" : "METAL_SOLID_ROAD_SURFACE"
+                    },
+                    {
+                        "index" : 182,
+                        "name" : "STUNT_RAMP_SURFACE"
+                    },
+                    {
+                        "index" : 183,
+                        "name" : "TEMP_01"
+                    },
+                    {
+                        "index" : 184,
+                        "name" : "TEMP_02"
+                    }
+                ],
+                "flag_presets" : [
+                    {
+                        "name" : "General (Default)",
+                        "index" : 0
+                    },
+                    {
+                        "name" : "General 2",
+                        "index" : 1
+                    },
+                    {
+                        "name" : "Water surface",
+                        "index" : 2
+                    },
+                    {
+                        "name" : "Leaves - Bush",
+                        "index" : 3
+                    },
+                    {
+                        "name" : "Stair plane",
+                        "index" : 4
+                    },
+                    {
+                        "name" : "Stair mesh",
+                        "index" : 5
+                    },
+                    {
+                        "name" : "Deep surface",
+                        "index" : 6
+                    }
+                ],
+                "shader_materials" : [
+                    {
+                        "index" : 0,
+                        "name" : "DEFAULT"
+                    },
+                    {
+                        "index" : 1,
+                        "name" : "VEHICLE_MESH"
+                    },
+                    {
+                        "index" : 2,
+                        "name" : "NORMAL_SPEC"
+                    },
+                    {
+                        "index" : 3,
+                        "name" : "TREES_LOD"
+                    },
+                    {
+                        "index" : 4,
+                        "name" : "TREES_LOD2"
+                    },
+                    {
+                        "index" : 5,
+                        "name" : "SPEC"
+                    },
+                    {
+                        "index" : 6,
+                        "name" : "DECAL"
+                    },
+                    {
+                        "index" : 7,
+                        "name" : "PED_DEFAULT"
+                    },
+                    {
+                        "index" : 8,
+                        "name" : "NORMAL"
+                    },
+                    {
+                        "index" : 9,
+                        "name" : "VEHICLE_TIRE"
+                    },
+                    {
+                        "index" : 10,
+                        "name" : "VEHICLE_PAINT4"
+                    },
+                    {
+                        "index" : 11,
+                        "name" : "NORMAL_SPEC_DETAIL"
+                    },
+                    {
+                        "index" : 12,
+                        "name" : "PED"
+                    },
+                    {
+                        "index" : 13,
+                        "name" : "VEHICLE_PAINT1"
+                    },
+                    {
+                        "index" : 14,
+                        "name" : "NORMAL_SPEC_DECAL"
+                    },
+                    {
+                        "index" : 15,
+                        "name" : "VEHICLE_MESH2_ENVEFF"
+                    },
+                    {
+                        "index" : 16,
+                        "name" : "NORMAL_DECAL"
+                    },
+                    {
+                        "index" : 17,
+                        "name" : "DEFAULT_SPEC"
+                    },
+                    {
+                        "index" : 18,
+                        "name" : "EMISSIVE"
+                    },
+                    {
+                        "index" : 19,
+                        "name" : "VEHICLE_INTERIOR2"
+                    },
+                    {
+                        "index" : 20,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX_BLEND_PXM_SPM"
+                    },
+                    {
+                        "index" : 21,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX_BLEND_LOD"
+                    },
+                    {
+                        "index" : 22,
+                        "name" : "VEHICLE_DETAIL2"
+                    },
+                    {
+                        "index" : 23,
+                        "name" : "VEHICLE_SHUTS"
+                    },
+                    {
+                        "index" : 24,
+                        "name" : "VEHICLE_PAINT3"
+                    },
+                    {
+                        "index" : 25,
+                        "name" : "VEHICLE_BADGES"
+                    },
+                    {
+                        "index" : 26,
+                        "name" : "DEFAULT_TNT"
+                    },
+                    {
+                        "index" : 27,
+                        "name" : "VEHICLE_LIGHTSEMISSIVE"
+                    },
+                    {
+                        "index" : 28,
+                        "name" : "CABLE"
+                    },
+                    {
+                        "index" : 29,
+                        "name" : "VEHICLE_VEHGLASS"
+                    },
+                    {
+                        "index" : 30,
+                        "name" : "PED_HAIR_SPIKED"
+                    },
+                    {
+                        "index" : 31,
+                        "name" : "NORMAL_SPEC_TNT"
+                    },
+                    {
+                        "index" : 32,
+                        "name" : "NORMAL_DECAL_PXM"
+                    },
+                    {
+                        "index" : 33,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX_BLEND"
+                    },
+                    {
+                        "index" : 34,
+                        "name" : "DEFAULT_TERRAIN_WET"
+                    },
+                    {
+                        "index" : 35,
+                        "name" : "VEHICLE_VEHGLASS_INNER"
+                    },
+                    {
+                        "index" : 36,
+                        "name" : "VEHICLE_LICENSEPLATE"
+                    },
+                    {
+                        "index" : 37,
+                        "name" : "GLASS_ENV"
+                    },
+                    {
+                        "index" : 38,
+                        "name" : "NORMAL_SPEC_DECAL_PXM"
+                    },
+                    {
+                        "index" : 39,
+                        "name" : "TERRAIN_CB_W_4LYR_LOD"
+                    },
+                    {
+                        "index" : 40,
+                        "name" : "NORMAL_DETAIL"
+                    },
+                    {
+                        "index" : 41,
+                        "name" : "VEHICLE_DASH_EMISSIVE"
+                    },
+                    {
+                        "index" : 42,
+                        "name" : "VEHICLE_EMISSIVE_OPAQUE"
+                    },
+                    {
+                        "index" : 43,
+                        "name" : "DECAL_TNT"
+                    },
+                    {
+                        "index" : 44,
+                        "name" : "EMISSIVENIGHT"
+                    },
+                    {
+                        "index" : 45,
+                        "name" : "VEHICLE_DASH_EMISSIVE_OPAQUE"
+                    },
+                    {
+                        "index" : 46,
+                        "name" : "VEHICLE_DECAL"
+                    },
+                    {
+                        "index" : 47,
+                        "name" : "EMISSIVE_ADDITIVE_UV_ALPHA"
+                    },
+                    {
+                        "index" : 48,
+                        "name" : "CLOTH_NORMAL_SPEC"
+                    },
+                    {
+                        "index" : 49,
+                        "name" : "NORMAL_SPEC_REFLECT"
+                    },
+                    {
+                        "index" : 50,
+                        "name" : "NORMAL_SPEC_PXM"
+                    },
+                    {
+                        "index" : 51,
+                        "name" : "CLOTH_DEFAULT"
+                    },
+                    {
+                        "index" : 52,
+                        "name" : "PED_ALPHA"
+                    },
+                    {
+                        "index" : 53,
+                        "name" : "TREES_NORMAL_SPEC"
+                    },
+                    {
+                        "index" : 54,
+                        "name" : "SPEC_TNT"
+                    },
+                    {
+                        "index" : 55,
+                        "name" : "EMISSIVE_SPECLUM"
+                    },
+                    {
+                        "index" : 56,
+                        "name" : "VEHICLE_PAINT2"
+                    },
+                    {
+                        "index" : 57,
+                        "name" : "NORMAL_SPEC_DETAIL_TNT"
+                    },
+                    {
+                        "index" : 58,
+                        "name" : "DEFAULT_DETAIL"
+                    },
+                    {
+                        "index" : 59,
+                        "name" : "VEHICLE_PAINT8"
+                    },
+                    {
+                        "index" : 60,
+                        "name" : "TERRAIN_CB_W_4LYR_PXM"
+                    },
+                    {
+                        "index" : 61,
+                        "name" : "DECAL_NORMAL_ONLY"
+                    },
+                    {
+                        "index" : 62,
+                        "name" : "CUTOUT_FENCE"
+                    },
+                    {
+                        "index" : 63,
+                        "name" : "TERRAIN_CB_W_4LYR_PXM_SPM"
+                    },
+                    {
+                        "index" : 64,
+                        "name" : "GRASS_FUR_MASK"
+                    },
+                    {
+                        "index" : 65,
+                        "name" : "NORMAL_TNT"
+                    },
+                    {
+                        "index" : 66,
+                        "name" : "TERRAIN_CB_W_4LYR_SPEC_PXM"
+                    },
+                    {
+                        "index" : 67,
+                        "name" : "PTFX_MODEL"
+                    },
+                    {
+                        "index" : 68,
+                        "name" : "GRASS_FUR"
+                    },
+                    {
+                        "index" : 69,
+                        "name" : "VEHICLE_INTERIOR"
+                    },
+                    {
+                        "index" : 70,
+                        "name" : "SPEC_DECAL"
+                    },
+                    {
+                        "index" : 71,
+                        "name" : "VEHICLE_PAINT6_ENVEFF"
+                    },
+                    {
+                        "index" : 72,
+                        "name" : "PED_HAIR_CUTOUT_ALPHA"
+                    },
+                    {
+                        "index" : 73,
+                        "name" : "DECAL_DIRT"
+                    },
+                    {
+                        "index" : 74,
+                        "name" : "DECAL_EMISSIVE_ONLY"
+                    },
+                    {
+                        "index" : 75,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX_BLEND_PXM"
+                    },
+                    {
+                        "index" : 76,
+                        "name" : "WEAPON_NORMAL_SPEC_DETAIL_PALETTE"
+                    },
+                    {
+                        "index" : 77,
+                        "name" : "CLOTH_SPEC_ALPHA"
+                    },
+                    {
+                        "index" : 78,
+                        "name" : "EMISSIVESTRONG"
+                    },
+                    {
+                        "index" : 79,
+                        "name" : "VEHICLE_TRACK2"
+                    },
+                    {
+                        "index" : 80,
+                        "name" : "PED_WRINKLE"
+                    },
+                    {
+                        "index" : 81,
+                        "name" : "VEHICLE_DETAIL"
+                    },
+                    {
+                        "index" : 82,
+                        "name" : "SPEC_REFLECT"
+                    },
+                    {
+                        "index" : 83,
+                        "name" : "VEHICLE_CUTOUT"
+                    },
+                    {
+                        "index" : 84,
+                        "name" : "VEHICLE_PAINT4_ENVEFF"
+                    },
+                    {
+                        "index" : 85,
+                        "name" : "DECAL_GLUE"
+                    },
+                    {
+                        "index" : 86,
+                        "name" : "NORMAL_SPEC_DECAL_TNT"
+                    },
+                    {
+                        "index" : 87,
+                        "name" : "EMISSIVE_TNT"
+                    },
+                    {
+                        "index" : 88,
+                        "name" : "VEHICLE_PAINT9"
+                    },
+                    {
+                        "index" : 89,
+                        "name" : "PED_NOPEDDAMAGEDECALS"
+                    },
+                    {
+                        "index" : 90,
+                        "name" : "TERRAIN_CB_W_4LYR"
+                    },
+                    {
+                        "index" : 91,
+                        "name" : "GLASS_PV_ENV"
+                    },
+                    {
+                        "index" : 92,
+                        "name" : "NORMAL_DECAL_TNT"
+                    },
+                    {
+                        "index" : 93,
+                        "name" : "CPV_ONLY"
+                    },
+                    {
+                        "index" : 94,
+                        "name" : "PED_DECAL"
+                    },
+                    {
+                        "index" : 95,
+                        "name" : "EMISSIVE_CLIP"
+                    },
+                    {
+                        "index" : 96,
+                        "name" : "DEFAULT_UM"
+                    },
+                    {
+                        "index" : 97,
+                        "name" : "MINIMAP"
+                    },
+                    {
+                        "index" : 98,
+                        "name" : "GLASS_NORMAL_SPEC_REFLECT"
+                    },
+                    {
+                        "index" : 99,
+                        "name" : "DISTANCE_MAP"
+                    },
+                    {
+                        "index" : 100,
+                        "name" : "VEHICLE_BLURREDROTOR"
+                    },
+                    {
+                        "index" : 101,
+                        "name" : "GLASS"
+                    },
+                    {
+                        "index" : 102,
+                        "name" : "CUTOUT_FENCE_NORMAL"
+                    },
+                    {
+                        "index" : 103,
+                        "name" : "PED_EMISSIVE"
+                    },
+                    {
+                        "index" : 104,
+                        "name" : "NORMAL_TERRAIN_WET"
+                    },
+                    {
+                        "index" : 105,
+                        "name" : "NORMAL_SPEC_DECAL_DETAIL"
+                    },
+                    {
+                        "index" : 106,
+                        "name" : "VEHICLE_CLOTH"
+                    },
+                    {
+                        "index" : 107,
+                        "name" : "NORMAL_UM_TNT"
+                    },
+                    {
+                        "index" : 108,
+                        "name" : "VEHICLE_BASIC"
+                    },
+                    {
+                        "index" : 109,
+                        "name" : "TREES"
+                    },
+                    {
+                        "index" : 110,
+                        "name" : "EMISSIVE_ADDITIVE_ALPHA"
+                    },
+                    {
+                        "index" : 111,
+                        "name" : "GLASS_BREAKABLE"
+                    },
+                    {
+                        "index" : 112,
+                        "name" : "TREES_NORMAL_DIFFSPEC"
+                    },
+                    {
+                        "index" : 113,
+                        "name" : "VEHICLE_TRACK"
+                    },
+                    {
+                        "index" : 114,
+                        "name" : "PED_ENVEFF"
+                    },
+                    {
+                        "index" : 115,
+                        "name" : "WATER_TERRAINFOAM"
+                    },
+                    {
+                        "index" : 116,
+                        "name" : "VEHICLE_GENERIC"
+                    },
+                    {
+                        "index" : 117,
+                        "name" : "VEHICLE_TRACK_AMMO"
+                    },
+                    {
+                        "index" : 118,
+                        "name" : "PED_DEFAULT_MP"
+                    },
+                    {
+                        "index" : 119,
+                        "name" : "GRASS"
+                    },
+                    {
+                        "index" : 120,
+                        "name" : "VEHICLE_TRACK_EMISSIVE"
+                    },
+                    {
+                        "index" : 121,
+                        "name" : "GLASS_SPEC"
+                    },
+                    {
+                        "index" : 122,
+                        "name" : "VEHICLE_PAINT5_ENVEFF"
+                    },
+                    {
+                        "index" : 123,
+                        "name" : "PED_WRINKLE_ENVEFF"
+                    },
+                    {
+                        "index" : 124,
+                        "name" : "WEAPON_NORMAL_SPEC_DETAIL_TNT"
+                    },
+                    {
+                        "index" : 125,
+                        "name" : "GLASS_PV"
+                    },
+                    {
+                        "index" : 126,
+                        "name" : "TERRAIN_CB_W_4LYR_SPEC_INT_PXM"
+                    },
+                    {
+                        "index" : 127,
+                        "name" : "GLASS_EMISSIVE"
+                    },
+                    {
+                        "index" : 128,
+                        "name" : "WEAPON_NORMAL_SPEC_ALPHA"
+                    },
+                    {
+                        "index" : 129,
+                        "name" : "NORMAL_PXM"
+                    },
+                    {
+                        "index" : 130,
+                        "name" : "WATER_FOUNTAIN"
+                    },
+                    {
+                        "index" : 131,
+                        "name" : "REFLECT"
+                    },
+                    {
+                        "index" : 132,
+                        "name" : "NORMAL_REFLECT"
+                    },
+                    {
+                        "index" : 133,
+                        "name" : "TERRAIN_CB_W_4LYR_SPEC_INT"
+                    },
+                    {
+                        "index" : 134,
+                        "name" : "PED_WRINKLE_CS"
+                    },
+                    {
+                        "index" : 135,
+                        "name" : "GRASS_BATCH"
+                    },
+                    {
+                        "index" : 136,
+                        "name" : "EMISSIVENIGHT_GEOMNIGHTONLY"
+                    },
+                    {
+                        "index" : 137,
+                        "name" : "PED_DECAL_DECORATION"
+                    },
+                    {
+                        "index" : 138,
+                        "name" : "VEHICLE_PAINT6"
+                    },
+                    {
+                        "index" : 139,
+                        "name" : "WATER_RIVERLOD"
+                    },
+                    {
+                        "index" : 140,
+                        "name" : "NORMAL_UM"
+                    },
+                    {
+                        "index" : 141,
+                        "name" : "VEHICLE_DECAL2"
+                    },
+                    {
+                        "index" : 142,
+                        "name" : "WEAPON_EMISSIVESTRONG_ALPHA"
+                    },
+                    {
+                        "index" : 143,
+                        "name" : "WATER_SHALLOW"
+                    },
+                    {
+                        "index" : 144,
+                        "name" : "VEHICLE_PAINT1_ENVEFF"
+                    },
+                    {
+                        "index" : 145,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX"
+                    },
+                    {
+                        "index" : 146,
+                        "name" : "TREES_SHADOW_PROXY"
+                    },
+                    {
+                        "index" : 147,
+                        "name" : "VEHICLE_MESH_ENVEFF"
+                    },
+                    {
+                        "index" : 148,
+                        "name" : "PED_DEFAULT_ENVEFF"
+                    },
+                    {
+                        "index" : 149,
+                        "name" : "WATER_RIVERFOAM"
+                    },
+                    {
+                        "index" : 150,
+                        "name" : "ALBEDO_ALPHA"
+                    },
+                    {
+                        "index" : 151,
+                        "name" : "DECAL_SHADOW_ONLY"
+                    },
+                    {
+                        "index" : 152,
+                        "name" : "RADAR"
+                    },
+                    {
+                        "index" : 153,
+                        "name" : "TREES_TNT"
+                    },
+                    {
+                        "index" : 154,
+                        "name" : "WEAPON_NORMAL_SPEC_PALETTE"
+                    },
+                    {
+                        "index" : 155,
+                        "name" : "TREES_NORMAL"
+                    },
+                    {
+                        "index" : 156,
+                        "name" : "DECAL_SPEC_ONLY"
+                    },
+                    {
+                        "index" : 157,
+                        "name" : "MIRROR_DEFAULT"
+                    },
+                    {
+                        "index" : 158,
+                        "name" : "PED_PALETTE"
+                    },
+                    {
+                        "index" : 159,
+                        "name" : "NORMAL_SPEC_DECAL_NOPUDDLE"
+                    },
+                    {
+                        "index" : 160,
+                        "name" : "NORMAL_SPEC_EMISSIVE"
+                    },
+                    {
+                        "index" : 161,
+                        "name" : "NORMAL_SPEC_UM"
+                    },
+                    {
+                        "index" : 162,
+                        "name" : "DECAL_EMISSIVENIGHT_ONLY"
+                    },
+                    {
+                        "index" : 163,
+                        "name" : "PED_DEFAULT_PALETTE"
+                    },
+                    {
+                        "index" : 164,
+                        "name" : "WATER_RIVER"
+                    },
+                    {
+                        "index" : 165,
+                        "name" : "WEAPON_NORMAL_SPEC_TNT"
+                    },
+                    {
+                        "index" : 166,
+                        "name" : "CUTOUT_HARD"
+                    },
+                    {
+                        "index" : 167,
+                        "name" : "NORMAL_SPEC_PXM_TNT"
+                    },
+                    {
+                        "index" : 168,
+                        "name" : "TERRAIN_CB_W_4LYR_CM_TNT"
+                    },
+                    {
+                        "index" : 169,
+                        "name" : "VEHICLE_EMISSIVE_ALPHA"
+                    },
+                    {
+                        "index" : 170,
+                        "name" : "MIRROR_DECAL"
+                    },
+                    {
+                        "index" : 171,
+                        "name" : "VEHICLE_TRACK2_EMISSIVE"
+                    },
+                    {
+                        "index" : 172,
+                        "name" : "PED_CLOTH"
+                    },
+                    {
+                        "index" : 173,
+                        "name" : "NORMAL_CUBEMAP_REFLECT"
+                    },
+                    {
+                        "index" : 174,
+                        "name" : "NORMAL_SPEC_CUBEMAP_REFLECT"
+                    },
+                    {
+                        "index" : 175,
+                        "name" : "GLASS_REFLECT"
+                    },
+                    {
+                        "index" : 176,
+                        "name" : "SPEC_TWIDDLE_TNT"
+                    },
+                    {
+                        "index" : 177,
+                        "name" : "NORMAL_DIFFSPEC_DETAIL"
+                    },
+                    {
+                        "index" : 178,
+                        "name" : "WEAPON_NORMAL_SPEC_CUTOUT_PALETTE"
+                    },
+                    {
+                        "index" : 179,
+                        "name" : "TERRAIN_CB_W_4LYR_SPEC"
+                    },
+                    {
+                        "index" : 180,
+                        "name" : "PED_FUR"
+                    },
+                    {
+                        "index" : 181,
+                        "name" : "CLOUDS_FAST"
+                    },
+                    {
+                        "index" : 182,
+                        "name" : "NORMAL_DIFFSPEC_DETAIL_DPM"
+                    },
+                    {
+                        "index" : 183,
+                        "name" : "VEHICLE_PAINT3_ENVEFF"
+                    },
+                    {
+                        "index" : 184,
+                        "name" : "TREES_NORMAL_SPEC_TNT"
+                    },
+                    {
+                        "index" : 185,
+                        "name" : "CLOUDS_ANIMSOFT"
+                    },
+                    {
+                        "index" : 186,
+                        "name" : "DECAL_AMB_ONLY"
+                    },
+                    {
+                        "index" : 187,
+                        "name" : "NORMAL_DIFFSPEC_DETAIL_DPM_TNT"
+                    },
+                    {
+                        "index" : 188,
+                        "name" : "WATER_RIVEROCEAN"
+                    },
+                    {
+                        "index" : 189,
+                        "name" : "TERRAIN_CB_W_4LYR_CM_PXM"
+                    },
+                    {
+                        "index" : 190,
+                        "name" : "VEHICLE_PAINT2_ENVEFF"
+                    },
+                    {
+                        "index" : 191,
+                        "name" : "VEHICLE_BLURREDROTOR_EMISSIVE"
+                    },
+                    {
+                        "index" : 192,
+                        "name" : "TERRAIN_CB_W_4LYR_CM_PXM_TNT"
+                    },
+                    {
+                        "index" : 193,
+                        "name" : "WATER_RIVERSHALLOW"
+                    },
+                    {
+                        "index" : 194,
+                        "name" : "VEHICLE_PAINT7_ENVEFF"
+                    },
+                    {
+                        "index" : 195,
+                        "name" : "TERRAIN_CB_W_4LYR_2TEX_PXM"
+                    },
+                    {
+                        "index" : 196,
+                        "name" : "PED_WRINKLE_CLOTH"
+                    },
+                    {
+                        "index" : 197,
+                        "name" : "NORMAL_SPEC_REFLECT_DECAL"
+                    },
+                    {
+                        "index" : 198,
+                        "name" : "PARALLAX_SPECMAP"
+                    },
+                    {
+                        "index" : 199,
+                        "name" : "NORMAL_SPEC_DETAIL_DPM_TNT"
+                    },
+                    {
+                        "index" : 200,
+                        "name" : "PED_WRINKLE_CLOTH_ENVEFF"
+                    },
+                    {
+                        "index" : 201,
+                        "name" : "WATER_POOLENV"
+                    },
+                    {
+                        "index" : 202,
+                        "name" : "NORMAL_SPEC_REFLECT_EMISSIVENIGHT"
+                    },
+                    {
+                        "index" : 203,
+                        "name" : "TREES_LOD_TNT"
+                    },
+                    {
+                        "index" : 204,
+                        "name" : "DECAL_DIFF_ONLY_UM"
+                    },
+                    {
+                        "index" : 205,
+                        "name" : "VEHICLE_PAINT7"
+                    },
+                    {
+                        "index" : 206,
+                        "name" : "VEHICLE_PAINT4_EMISSIVE"
+                    },
+                    {
+                        "index" : 207,
+                        "name" : "NORMAL_PXM_TNT"
+                    },
+                    {
+                        "index" : 208,
+                        "name" : "BLEND_2LYR"
+                    },
+                    {
+                        "index" : 209,
+                        "name" : "TREES_NORMAL_DIFFSPEC_TNT"
+                    },
+                    {
+                        "index" : 210,
+                        "name" : "PED_DEFAULT_CLOTH"
+                    },
+                    {
+                        "index" : 211,
+                        "name" : "MIRROR_CRACK"
+                    },
+                    {
+                        "index" : 212,
+                        "name" : "GLASS_DISPLACEMENT"
+                    },
+                    {
+                        "index" : 213,
+                        "name" : "NORMAL_SPEC_DETAIL_DPM_VERTDECAL_TNT"
+                    },
+                    {
+                        "index" : 214,
+                        "name" : "CLOTH_NORMAL_SPEC_TNT"
+                    },
+                    {
+                        "index" : 215,
+                        "name" : "NORMAL_DIFFSPEC"
+                    },
+                    {
+                        "index" : 216,
+                        "name" : "GLASS_EMISSIVENIGHT"
+                    },
+                    {
+                        "index" : 217,
+                        "name" : "NORMAL_DECAL_PXM_TNT"
+                    },
+                    {
+                        "index" : 218,
+                        "name" : "NORMAL_SPEC_DPM"
+                    },
+                    {
+                        "index" : 219,
+                        "name" : "WEAPON_EMISSIVE_TNT"
+                    },
+                    {
+                        "index" : 220,
+                        "name" : "CLOUDS_ANIM"
+                    },
+                    {
+                        "index" : 221,
+                        "name" : "VEHICLE_PAINT3_LVR"
+                    },
+                    {
+                        "index" : 222,
+                        "name" : "NORMAL_SPEC_DETAIL_DPM"
+                    },
+                    {
+                        "index" : 223,
+                        "name" : "NORMAL_SPEC_BATCH"
+                    },
+                    {
+                        "index" : 224,
+                        "name" : "PED_DECAL_EXP"
+                    },
+                    {
+                        "index" : 225,
+                        "name" : "CLOUDS_ALTITUDE"
+                    },
+                    {
+                        "index" : 226,
+                        "name" : "SPEC_REFLECT_DECAL"
+                    },
+                    {
+                        "index" : 227,
+                        "name" : "TERRAIN_CB_W_4LYR_CM"
+                    },
+                    {
+                        "index" : 228,
+                        "name" : "PARALLAX"
+                    },
+                    {
+                        "index" : 229,
+                        "name" : "NORMAL_DIFFSPEC_DETAIL_TNT"
+                    },
+                    {
+                        "index" : 230,
+                        "name" : "NORMAL_DETAIL_DPM"
+                    },
+                    {
+                        "index" : 231,
+                        "name" : "VEHICLE_CLOTH2"
+                    },
+                    {
+                        "index" : 232,
+                        "name" : "NORMAL_DIFFSPEC_TNT"
+                    },
+                    {
+                        "index" : 233,
+                        "name" : "REFLECT_DECAL"
+                    },
+                    {
+                        "index" : 234,
+                        "name" : "CLOUDS_SOFT"
+                    },
+                    {
+                        "index" : 235,
+                        "name" : "PED_DECAL_NODIFF"
+                    },
+                    {
+                        "index" : 236,
+                        "name" : "TERRAIN_CB_4LYR_2TEX"
+                    },
+                    {
+                        "index" : 237,
+                        "name" : "NORMAL_SPEC_WRINKLE"
+                    },
+                    {
+                        "index" : 238,
+                        "name" : "SKY_SYSTEM"
+                    },
+                    {
+                        "index" : 239,
+                        "name" : "CLOUDS_FOG"
+                    },
+                    {
+                        "index" : 240,
+                        "name" : "TERRAIN_CB_4LYR"
+                    },
+                    {
+                        "index" : 241,
+                        "name" : "NORMAL_REFLECT_DECAL"
+                    },
+                    {
+                        "index" : 242,
+                        "name" : "PED_CLOTH_ENVEFF"
+                    }
+                ],
+                "assets used" : {
+                    "faefca1c-46ea-4faa-84d7-8eb718b7e8ee" : {
+                        "thumbnail" : "thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.512x512_q85_crop-%2C.png",
+                        "thumbnail_small" : "thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.256x256_q85_crop-%2C.png",
+                        "downloaded" : 100,
+                        "texture_size_meters" : 1.0,
+                        "pk" : 43333,
+                        "url" : "https://www.blenderkit.com/api/v1/assets/ff9b8066-d6c8-4642-8978-da97af4b7f0b/",
+                        "id" : "ff9b8066-d6c8-4642-8978-da97af4b7f0b",
+                        "assetBaseId" : "faefca1c-46ea-4faa-84d7-8eb718b7e8ee",
+                        "versionNumber" : 1,
+                        "author" : {
+                            "id" : "205846",
+                            "firstName" : "Paco",
+                            "lastName" : "Salas",
+                            "gravatarHash" : "74ee2eb74c2e385593a4d91a26a785e4",
+                            "avatar128" : "/avatar-redirect/3e71b0bb-d5ea-4ce9-ac04-7d822fd3c245/128/",
+                            "avatar256" : "/avatar-redirect/3e71b0bb-d5ea-4ce9-ac04-7d822fd3c245/256/",
+                            "avatar512" : "/avatar-redirect/3e71b0bb-d5ea-4ce9-ac04-7d822fd3c245/512/",
+                            "aboutMe" : "I'm a Blender Materials Creator & Pixel/Voxel Art enthusiast, constantly learning & enhancing my skills. Passionate about sharing knowledge (Yokoten - \u6a2a \u5c55). Let's collaborate & create something amazing together!\r\n\r\nGamer Tag: Dr. Hacker \"BE HACK 2000\"",
+                            "aboutMeUrl" : "https://sketchfab.com/codigopixel/collections",
+                            "fullName" : "Paco Salas",
+                            "socialNetworks" : []
+                        },
+                        "name" : "Car Paint Basic Flakes V2",
+                        "displayName" : "Car Paint Basic Flakes V2",
+                        "description" : "Enjoyed the material? Drop a rating, it's greatly appreciated. Thanks! \r\n\r\n100% Procedural Shader enabled by a single-node for versatile configurations.",
+                        "descriptionHtml" : "<p>Enjoyed the material? Drop a rating, it's greatly appreciated. Thanks! </p>\n<p>100% Procedural Shader enabled by a single-node for versatile configurations.</p>",
+                        "assetType" : "material",
+                        "category" : "metal",
+                        "adult" : 0,
+                        "isFree" : 1,
+                        "tags" : [
+                            "flakes",
+                            "procedural",
+                            "node",
+                            "blender",
+                            "color",
+                            "configurable",
+                            "cycles",
+                            "decoration",
+                            "decorative",
+                            "design",
+                            "free",
+                            "material",
+                            "pattern",
+                            "nodes",
+                            "style",
+                            "stylized",
+                            "surface",
+                            "texture",
+                            "textureart",
+                            "real",
+                            "realistic",
+                            "adornment",
+                            "ornamentation",
+                            "aluminum",
+                            "amber",
+                            "anthracite",
+                            "arsenic",
+                            "batten",
+                            "bismuth",
+                            "blende",
+                            "burnt",
+                            "blends",
+                            "block",
+                            "brass",
+                            "brassy",
+                            "bronzes",
+                            "cement",
+                            "cesium",
+                            "chrome",
+                            "coal",
+                            "cobalt",
+                            "copper",
+                            "coppers",
+                            "crack",
+                            "crushed",
+                            "diamond",
+                            "earth",
+                            "foil",
+                            "electric",
+                            "gallium",
+                            "gemstones",
+                            "geological",
+                            "germanium",
+                            "gold",
+                            "golden",
+                            "granite",
+                            "graphite",
+                            "gravel",
+                            "hard",
+                            "hardware",
+                            "ingot",
+                            "iridosmine",
+                            "iron",
+                            "lithium",
+                            "galvanized",
+                            "magnesium",
+                            "manganese",
+                            "marble",
+                            "mercury",
+                            "metal",
+                            "metallic",
+                            "metallurgy",
+                            "mineral",
+                            "nickel",
+                            "oxide",
+                            "oxidation",
+                            "titanium",
+                            "osmiridium",
+                            "palladium",
+                            "plate",
+                            "platinum",
+                            "potash",
+                            "quartz",
+                            "rare",
+                            "ring",
+                            "sand",
+                            "silica",
+                            "silver",
+                            "silvery",
+                            "spike",
+                            "stainless",
+                            "stannic",
+                            "steel",
+                            "stone",
+                            "sulfur",
+                            "tiny",
+                            "tungsten",
+                            "zinc",
+                            "car",
+                            "carpaint",
+                            "paint",
+                            "spray",
+                            "special",
+                            "alloy",
+                            "Procedural",
+                            "Metal",
+                            "two",
+                            "glossy",
+                            "mettallic",
+                            "Car",
+                            "vehicle",
+                            "truck",
+                            "iridescent",
+                            "Paint",
+                            "sliver",
+                            "wafer",
+                            "shaving",
+                            "paring",
+                            "peeling",
+                            "chip",
+                            "shard",
+                            "scale",
+                            "crumb",
+                            "grain",
+                            "speck",
+                            "spillikin",
+                            "fragment",
+                            "scrap",
+                            "shred",
+                            "bit",
+                            "particle",
+                            "solid",
+                            "shiny",
+                            "polished",
+                            "emulsion",
+                            "pigment",
+                            "stain",
+                            "tint",
+                            "colour",
+                            "cover",
+                            "coat",
+                            "decorate",
+                            "whitewash",
+                            "daub",
+                            "distemper",
+                            "motor",
+                            "wheels",
+                            "auto",
+                            "automobile",
+                            "jalopy",
+                            "machine",
+                            "automobilist colouring",
+                            "dye",
+                            "make-up",
+                            "cosmetics",
+                            "greasepaint",
+                            "maquillage",
+                            "depict",
+                            "draw",
+                            "portray",
+                            "figure",
+                            "picture",
+                            "represent",
+                            "sketch",
+                            "delineate",
+                            "home",
+                            "automobilist",
+                            "colouring",
+                            "decor",
+                            "kart",
+                            "artificial",
+                            "bogus",
+                            "elastic",
+                            "fake",
+                            "formable",
+                            "moldable",
+                            "molded",
+                            "plastic",
+                            "polypropylene",
+                            "polyurethane",
+                            "print",
+                            "shapeable",
+                            "synthetic",
+                            "Bakelite",
+                            "Formica",
+                            "melamine",
+                            "Perspex",
+                            "Plexiglas",
+                            "polystyrene",
+                            "PVC",
+                            "malleable",
+                            "shapable",
+                            "waxy",
+                            "affected",
+                            "wax",
+                            "assumed",
+                            "thermoplastic",
+                            "polymer",
+                            "bakelite",
+                            "formica",
+                            "acrylic",
+                            "bioplastic",
+                            "vinyl",
+                            "fluorocarbon",
+                            "mylar",
+                            "polypropene",
+                            "thermosetting",
+                            "compositions",
+                            "ABS",
+                            "pliant",
+                            "impressionable",
+                            "manageable",
+                            "limber",
+                            "flexible",
+                            "polyethylene",
+                            "polyvinyl",
+                            "chloride",
+                            "acetate",
+                            "glycerine",
+                            "naphthalene",
+                            "silicon",
+                            "silicone",
+                            "nacreous",
+                            "opalescent",
+                            "opaline",
+                            "chatoyant",
+                            "decor  car",
+                            "basic",
+                            "Iridescence",
+                            "shimmering",
+                            "shimmery",
+                            "glittering",
+                            "sparkling",
+                            "coruscating",
+                            "dazzling",
+                            "shining",
+                            "gleaming",
+                            "glowing",
+                            "lustrous",
+                            "scintillating",
+                            "dancing",
+                            "multicoloured",
+                            "kaleidoscopic",
+                            "rainbow-like",
+                            "rainbow-coloured",
+                            "many-hued",
+                            "prismatic",
+                            "colourful",
+                            "psychedelic",
+                            "variegated",
+                            "glistering",
+                            "light",
+                            "opalescence",
+                            "phosphorescence",
+                            "radiance",
+                            "pearly",
+                            "irised",
+                            "colored",
+                            "auato",
+                            "mineral.",
+                            "flake",
+                            "shot",
+                            "polychromatic",
+                            "rainbow-hued",
+                            "pain",
+                            "body",
+                            "simple  auto",
+                            "van",
+                            "simple",
+                            "mapping",
+                            "gradient",
+                            "noise",
+                            "musgrave",
+                            "voronoi",
+                            "wave",
+                            "checker",
+                            "brick",
+                            "clouds",
+                            "magic",
+                            "geometry",
+                            "vector",
+                            "colorramp",
+                            "mixrgb",
+                            "math",
+                            "curve",
+                            "fresnel",
+                            "input",
+                            "output",
+                            "bump",
+                            "normal",
+                            "displacement",
+                            "alpha",
+                            "shader",
+                            "eevee",
+                            "render",
+                            "simulated",
+                            "customizable",
+                            "generative",
+                            "imaginative",
+                            "intricate",
+                            "scalable",
+                            "sleek",
+                            "reflective",
+                            "mirrorlike",
+                            "silken",
+                            "bright",
+                            "radiant",
+                            "sheeny",
+                            "luminous",
+                            "burnished",
+                            "glassy",
+                            "satiny",
+                            "brilliant",
+                            "slick",
+                            "varnished",
+                            "gleamy",
+                            "glinting",
+                            "luminant",
+                            "resplendent",
+                            "glistening",
+                            "luminescent",
+                            "sleeky",
+                            "buffed",
+                            "glasslike",
+                            "wet-look",
+                            "waxen",
+                            "sleeked",
+                            "lustrate",
+                            "svelte",
+                            "enamel-like",
+                            "patent",
+                            "spiffy",
+                            "twinkling",
+                            "incandescent",
+                            "vitreous",
+                            "fulgent",
+                            "effulgent",
+                            "lucid",
+                            "crystal",
+                            "lambent",
+                            "lacquered",
+                            "clear",
+                            "blinding",
+                            "pearlescent",
+                            "lacquer",
+                            "slicked",
+                            "sleeking",
+                            "glimmering",
+                            "twinkly",
+                            "lucent",
+                            "alabaster",
+                            "pristine",
+                            "slickness",
+                            "shellacked",
+                            "smooth",
+                            "silky",
+                            "fine",
+                            "spotless",
+                            "gleam",
+                            "glaze",
+                            "smoothness",
+                            "sumptuous",
+                            "slicked-up",
+                            "shined",
+                            "wax-like",
+                            "crystalline",
+                            "light-reflecting",
+                            "slicked-back",
+                            "lit",
+                            "luxurious",
+                            "swank",
+                            "sparkly",
+                            "varnish",
+                            "high-gloss",
+                            "glitzy",
+                            "waxed",
+                            "rich",
+                            "plush",
+                            "vibrant",
+                            "clean",
+                            "unblemished",
+                            "immaculate",
+                            "elegant",
+                            "glossy-finish",
+                            "radiate",
+                            "satin",
+                            "flashy",
+                            "glazed",
+                            "mirror-finish",
+                            "flash",
+                            "mirror",
+                            "opulent",
+                            "glamorous",
+                            "resplendently",
+                            "chic",
+                            "flamboyant",
+                            "extravagant",
+                            "scintillate",
+                            "lavish",
+                            "sleekness",
+                            "iridescence",
+                            "glossy-haired",
+                            "beaming",
+                            "polishedsurface",
+                            "glossiness",
+                            "refinement",
+                            "luminosity",
+                            "shimmer",
+                            "zincite",
+                            "brassware",
+                            "chromium-plated",
+                            "silverware",
+                            "bronze",
+                            "lead",
+                            "tin",
+                            "chromium",
+                            "cadmium",
+                            "vanadium",
+                            "indium",
+                            "rhodium",
+                            "ruthenium",
+                            "scandium",
+                            "hafnium",
+                            "niobium",
+                            "zirconium",
+                            "lanthanum",
+                            "cerium",
+                            "praseodymium",
+                            "neodymium",
+                            "samarium",
+                            "europium",
+                            "gadolinium",
+                            "terbium",
+                            "dysprosium",
+                            "holmium",
+                            "erbium",
+                            "thulium",
+                            "ytterbium",
+                            "lutetium",
+                            "actinium",
+                            "thorium",
+                            "protactinium",
+                            "uranium",
+                            "neptunium",
+                            "plutonium",
+                            "americium",
+                            "curium",
+                            "berkelium",
+                            "californium",
+                            "einsteinium",
+                            "fermium",
+                            "mendelevium",
+                            "nobelium",
+                            "lawrencium",
+                            "radium",
+                            "francium",
+                            "sodium",
+                            "potassium",
+                            "rubidium",
+                            "beryllium",
+                            "calcium",
+                            "strontium",
+                            "barium",
+                            "yttrium",
+                            "promethium",
+                            "thallium",
+                            "polonium",
+                            "astatine",
+                            "rutherfordium",
+                            "dubnium",
+                            "seaborgium",
+                            "bohrium",
+                            "hassium",
+                            "meitnerium",
+                            "darmstadtium",
+                            "roentgenium",
+                            "copernicium",
+                            "nihonium",
+                            "flerovium",
+                            "moscovium",
+                            "livermorium",
+                            "tennessine",
+                            "osmium",
+                            "iridium",
+                            "antimony",
+                            "carbon",
+                            "boron",
+                            "phosphorus",
+                            "selenium",
+                            "tellurium",
+                            "nitrogen",
+                            "oxygen",
+                            "fluorine",
+                            "chlorine",
+                            "bromine",
+                            "iodine",
+                            "helium",
+                            "neon",
+                            "argon",
+                            "krypton",
+                            "xenon",
+                            "radon",
+                            "hydrogen",
+                            "deuterium",
+                            "tritium",
+                            "anodized",
+                            "armor",
+                            "bauxite",
+                            "blackened",
+                            "brushed",
+                            "cast",
+                            "corrosion",
+                            "corroded",
+                            "corrosion-resistant",
+                            "crucible",
+                            "damascus",
+                            "darkened",
+                            "depleted",
+                            "dimpled",
+                            "distressed",
+                            "duralumin",
+                            "electroplated",
+                            "etched",
+                            "fade",
+                            "flaky",
+                            "gunmetal",
+                            "hammered",
+                            "heat-treated",
+                            "hematite",
+                            "high-carbon",
+                            "high-strength",
+                            "high-temperature",
+                            "honeycomb",
+                            "hot-rolled",
+                            "inlaid",
+                            "jagged",
+                            "jeweled",
+                            "knurled",
+                            "latticed",
+                            "leathered",
+                            "lightweight",
+                            "lignum",
+                            "vitae",
+                            "lime",
+                            "machined",
+                            "matte",
+                            "matted",
+                            "mithril",
+                            "molybdenum",
+                            "monel",
+                            "non-ferrous",
+                            "oil-rubbed",
+                            "oxidized",
+                            "patina",
+                            "patterned",
+                            "pearl",
+                            "pewter",
+                            "pigmented",
+                            "pinched",
+                            "porous",
+                            "powder-coated",
+                            "rainbow",
+                            "raw",
+                            "red",
+                            "refined",
+                            "reinforced",
+                            "rippled",
+                            "rolled",
+                            "rose",
+                            "rust",
+                            "rusted",
+                            "rusty",
+                            "sanded",
+                            "scratched",
+                            "seamless",
+                            "sepia",
+                            "slate",
+                            "smelted",
+                            "soldered",
+                            "speckled",
+                            "spotty",
+                            "wool",
+                            "sterling",
+                            "stippled",
+                            "sublimated",
+                            "tarnished",
+                            "tantalum",
+                            "textured",
+                            "tumbled",
+                            "turquoise",
+                            "unpolished",
+                            "untreated",
+                            "verdigris",
+                            "vintage",
+                            "weathered",
+                            "white",
+                            "wire",
+                            "mesh",
+                            "wrought",
+                            "yellow",
+                            "zirconia",
+                            "pebbled",
+                            "grooved",
+                            "blasted",
+                            "embossed",
+                            "granulated",
+                            "chiseled",
+                            "swirled",
+                            "filigree",
+                            "milgrain",
+                            "carved",
+                            "rustproof",
+                            "tarnish-resistant",
+                            "heat-resistant",
+                            "abrasive-resistant",
+                            "forged",
+                            "pressed",
+                            "twisted",
+                            "mottled",
+                            "antiqued",
+                            "pitted",
+                            "grainy",
+                            "electropolished",
+                            "sandblasted",
+                            "engraved",
+                            "laminated",
+                            "riveted",
+                            "spun",
+                            "stamped",
+                            "torched",
+                            "veneered",
+                            "sheared"
+                        ],
+                        "license" : "royalty_free",
+                        "sourceAppName" : "blender",
+                        "sourceAppVersion" : "3.3.0",
+                        "addonVersion" : "3.3.1",
+                        "created" : "2022-12-08T19:43:05.127373+01:00",
+                        "lastUserInteraction" : "2022-12-08T19:43:20.790433+01:00",
+                        "verificationStatus" : "validated",
+                        "isPrivate" : 0,
+                        "files" : [
+                            {
+                                "fileType" : "blend",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/161136/",
+                                "uuid" : null,
+                                "fileThumbnail" : null,
+                                "fileThumbnailLarge" : null,
+                                "created" : "2022-12-08T19:43:19.239938+01:00",
+                                "modified" : "2024-03-02T17:42:14.587156+01:00",
+                                "mimeType" : null,
+                                "resolution" : null,
+                                "url" : "https://public.blenderkit.com/public-assets/assets/ff9b8066d6c846428978da97af4b7f0b/files/blend_d7eecfdf-147c-4002-9beb-c0db1e52be08.blend",
+                                "file_name" : "blend_d7eecfdf-147c-4002-9beb-c0db1e52be08.blend"
+                            },
+                            {
+                                "fileType" : "thumbnail",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/161135/",
+                                "uuid" : null,
+                                "fileThumbnail" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.96x96_q85_crop-%2C.png",
+                                "fileThumbnailLarge" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.1024x1024_q85_crop-%2C.png",
+                                "created" : "2022-12-08T19:43:14.523419+01:00",
+                                "modified" : "2024-03-02T17:42:14.613655+01:00",
+                                "mimeType" : null,
+                                "resolution" : null
+                            }
+                        ],
+                        "filesSize" : 1549,
+                        "thumbnailSmallUrl" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.256x256_q85_crop-%2C.png",
+                        "thumbnailMiddleUrl" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.512x512_q85_crop-%2C.png",
+                        "thumbnailLargeUrl" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.1024x1024_q85_crop-%2C.png",
+                        "thumbnailXlargeUrl" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.2048x2048_q85_crop-%2C.png",
+                        "thumbnailSmallUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.256x256_q85.png",
+                        "thumbnailMiddleUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.512x512_q85.png",
+                        "thumbnailLargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.1024x1024_q85.png",
+                        "thumbnailXlargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.2048x2048_q85.png",
+                        "thumbnailSmallUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.256x256_q85_crop-%2C.png.webp?webp_generated=1709397737",
+                        "thumbnailMiddleUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.512x512_q85_crop-%2C.png.webp?webp_generated=1709397737",
+                        "thumbnailLargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.1024x1024_q85_crop-%2C.png.webp?webp_generated=1709397737",
+                        "thumbnailXlargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.2048x2048_q85_crop-%2C.png.webp?webp_generated=1709397737",
+                        "thumbnailSmallUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.256x256_q85.png.webp?webp_generated=1709397737",
+                        "thumbnailMiddleUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.512x512_q85.png.webp?webp_generated=1709397737",
+                        "thumbnailLargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.1024x1024_q85.png.webp?webp_generated=1709397737",
+                        "thumbnailXlargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/ff9b8066d6c846428978da97af4b7f0b/files/thumbnail_1d0d6546-8ba1-49cf-a7c0-1df0352b22f1.png.2048x2048_q85.png.webp?webp_generated=1709397737",
+                        "showMarketingLabels" : 1,
+                        "webpGeneratedTimestamp" : 1709397737,
+                        "score" : 303.3333333333333,
+                        "ratingsMedian" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 3.5,
+                            "quality" : 10.0,
+                            "virtualPrice" : null
+                        },
+                        "ratingsAverage" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 3.5,
+                            "quality" : 8.666666666666666,
+                            "virtualPrice" : null
+                        },
+                        "ratingsCount" : {
+                            "bookmarks" : 63,
+                            "workingHours" : 2,
+                            "quality" : 3,
+                            "virtualPrice" : 0
+                        },
+                        "ratingsSum" : {
+                            "bookmarks" : 63.0,
+                            "workingHours" : 7.0,
+                            "quality" : 26.0,
+                            "virtualPrice" : null,
+                            "score" : 303.3333333333333
+                        },
+                        "lastBlendUpload" : "2022-12-08T18:43:19.239938+00:00",
+                        "lastGltfUpload" : null,
+                        "lastZipFileUpload" : null,
+                        "lastThumbnailUpload" : "2022-12-08T18:43:14.523419+00:00",
+                        "lastVideoUpload" : null,
+                        "lastResolutionUpload" : null,
+                        "dictParameters" : {
+                            "textureSizeMeters" : 1.0,
+                            "procedural" : 1,
+                            "materialStyle" : "realistic",
+                            "condition" : "new",
+                            "engine" : "cycles",
+                            "shaders" : [
+                                "reroute",
+                                "glossy",
+                                "mix shader",
+                                "diffuse",
+                                "anisotropic"
+                            ],
+                            "uv" : 0,
+                            "nodeCount" : 587,
+                            "textureCount" : 0,
+                            "megapixels" : 0,
+                            "imageCaptionInterrogator" : "there is a red object with a shiny surface on a black background, cinema 4d :9 detailed face: 8, shiny metallic glossy skin, small and thick red lips, magic bubble barrier, displacement map, game icon stylized, discord profile picture, glossy paint, cosmetics",
+                            "imageAltTextGen4v" : "High-quality procedural car paint shader with metallic flakes for Blender 3D, featuring customizable scale, color, and roughness."
+                        },
+                        "canDownload" : 1,
+                        "canDownloadError" : 1,
+                        "available_resolutions" : [],
+                        "max_resolution" : 0,
+                        "tooltip_data" : {
+                            "aname" : "Car Paint Basic Flakes V2",
+                            "author_text" : "by Paco Salas",
+                            "quality" : "9"
+                        },
+                        "resolution" : "resolution_2K"
+                    },
+                    "be179e49-17c4-4bdc-b27c-2ec7b4566a40" : {
+                        "thumbnail" : "thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.512x512_q85_crop-%2C.png",
+                        "thumbnail_small" : "thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.256x256_q85_crop-%2C.png",
+                        "downloaded" : 0,
+                        "texture_size_meters" : 1.0,
+                        "pk" : 57303,
+                        "url" : "https://www.blenderkit.com/api/v1/assets/a61986db-17dd-4eb1-acc4-b9f405ae4073/",
+                        "id" : "a61986db-17dd-4eb1-acc4-b9f405ae4073",
+                        "assetBaseId" : "be179e49-17c4-4bdc-b27c-2ec7b4566a40",
+                        "versionNumber" : 1,
+                        "author" : {
+                            "id" : "473547",
+                            "firstName" : "Cynicalitz",
+                            "lastName" : "G",
+                            "gravatarHash" : "c47d141b9efa2785df50f58a88e4fa72",
+                            "avatar128" : "/avatar-redirect/e329704b-483f-44f1-bf5b-1158933d1185/128/",
+                            "avatar256" : "/avatar-redirect/e329704b-483f-44f1-bf5b-1158933d1185/256/",
+                            "avatar512" : "/avatar-redirect/e329704b-483f-44f1-bf5b-1158933d1185/512/",
+                            "aboutMe" : "",
+                            "aboutMeUrl" : "https://www.ademn.eu",
+                            "fullName" : "Cynicalitz G",
+                            "socialNetworks" : [],
+                            "app_id" : 4032,
+                            "tooltip" : "Cynicalitz G\n\n",
+                            "gravatarImg" : "C:\\Users\\jboyd\\AppData\\Local\\Temp\\bktemp_jboyd\\bkit_g\\473547.jpg"
+                        },
+                        "name" : "Car Paint",
+                        "displayName" : "Car Paint",
+                        "description" : "Car paint suitable for any car. Shader is procedural so you are able to change any detail.",
+                        "descriptionHtml" : "<p>Car paint suitable for any car. Shader is procedural so you are able to change any detail.</p>",
+                        "assetType" : "material",
+                        "category" : "metal",
+                        "adult" : 0,
+                        "isFree" : 1,
+                        "tags" : [
+                            "car",
+                            "car paint",
+                            "Car",
+                            "Car Paint",
+                            "paint",
+                            "Paint"
+                        ],
+                        "license" : "royalty_free",
+                        "sourceAppName" : "blender",
+                        "sourceAppVersion" : "3.5.1",
+                        "addonVersion" : "3.7.0",
+                        "created" : "2023-06-20T18:02:35.932070+02:00",
+                        "lastUserInteraction" : "2023-06-20T18:02:42.142166+02:00",
+                        "verificationStatus" : "validated",
+                        "isPrivate" : 0,
+                        "files" : [
+                            {
+                                "fileType" : "blend",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/204565/",
+                                "uuid" : null,
+                                "fileThumbnail" : null,
+                                "fileThumbnailLarge" : null,
+                                "created" : "2023-06-20T18:02:41.582772+02:00",
+                                "modified" : "2023-06-20T18:02:42.671883+02:00",
+                                "mimeType" : null,
+                                "resolution" : null,
+                                "url" : "https://public.blenderkit.com/public-assets/assets/a61986db17dd4eb1acc4b9f405ae4073/files/blend_8759ae57-15d3-453d-98d0-0384ee942983.blend",
+                                "file_name" : "blend_8759ae57-15d3-453d-98d0-0384ee942983.blend"
+                            },
+                            {
+                                "fileType" : "thumbnail",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/204564/",
+                                "uuid" : null,
+                                "fileThumbnail" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.96x96_q85_crop-%2C.png",
+                                "fileThumbnailLarge" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.1024x1024_q85_crop-%2C.png",
+                                "created" : "2023-06-20T18:02:40.412092+02:00",
+                                "modified" : "2023-06-20T18:02:42.973071+02:00",
+                                "mimeType" : null,
+                                "resolution" : null
+                            }
+                        ],
+                        "filesSize" : 829,
+                        "thumbnailSmallUrl" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.256x256_q85_crop-%2C.png",
+                        "thumbnailMiddleUrl" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.512x512_q85_crop-%2C.png",
+                        "thumbnailLargeUrl" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.1024x1024_q85_crop-%2C.png",
+                        "thumbnailXlargeUrl" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.2048x2048_q85_crop-%2C.png",
+                        "thumbnailSmallUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.256x256_q85.png",
+                        "thumbnailMiddleUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.512x512_q85.png",
+                        "thumbnailLargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.1024x1024_q85.png",
+                        "thumbnailXlargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.2048x2048_q85.png",
+                        "thumbnailSmallUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.256x256_q85_crop-%2C.png.webp?webp_generated=1687289458",
+                        "thumbnailMiddleUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.512x512_q85_crop-%2C.png.webp?webp_generated=1687289458",
+                        "thumbnailLargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.1024x1024_q85_crop-%2C.png.webp?webp_generated=1687289458",
+                        "thumbnailXlargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.2048x2048_q85_crop-%2C.png.webp?webp_generated=1687289458",
+                        "thumbnailSmallUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.256x256_q85.png.webp?webp_generated=1687289458",
+                        "thumbnailMiddleUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.512x512_q85.png.webp?webp_generated=1687289458",
+                        "thumbnailLargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.1024x1024_q85.png.webp?webp_generated=1687289458",
+                        "thumbnailXlargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/a61986db17dd4eb1acc4b9f405ae4073/files/thumbnail_4021b05d-7863-4a7c-a53e-22412d8688bf.png.2048x2048_q85.png.webp?webp_generated=1687289458",
+                        "showMarketingLabels" : 1,
+                        "webpGeneratedTimestamp" : 1687289458,
+                        "score" : 270.0,
+                        "ratingsMedian" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 3.0,
+                            "quality" : 9.0,
+                            "virtualPrice" : null
+                        },
+                        "ratingsAverage" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 3.0,
+                            "quality" : 9.0,
+                            "virtualPrice" : null
+                        },
+                        "ratingsCount" : {
+                            "bookmarks" : 60,
+                            "workingHours" : 3,
+                            "quality" : 3,
+                            "virtualPrice" : 0
+                        },
+                        "ratingsSum" : {
+                            "bookmarks" : 60.0,
+                            "workingHours" : 8.200000002980232,
+                            "quality" : 27.0,
+                            "virtualPrice" : null,
+                            "score" : 270.0
+                        },
+                        "lastBlendUpload" : "2023-06-20T16:02:41.582772+00:00",
+                        "lastGltfUpload" : null,
+                        "lastZipFileUpload" : null,
+                        "lastThumbnailUpload" : "2023-06-20T16:02:40.412092+00:00",
+                        "lastVideoUpload" : null,
+                        "lastResolutionUpload" : null,
+                        "dictParameters" : {
+                            "textureSizeMeters" : 1.0,
+                            "procedural" : 1,
+                            "materialStyle" : "realistic",
+                            "purePbr" : 0,
+                            "engine" : "cycles",
+                            "shaders" : [
+                                "principled"
+                            ],
+                            "animated" : 0,
+                            "uv" : 0,
+                            "nodeCount" : 15,
+                            "textureCount" : 0,
+                            "megapixels" : 0,
+                            "imageCaptionInterrogator" : "a close up of a blue ball with a metal base, 3 d icon for mobile game, mac, dark themes, supercomputer, integrated synthetic android, well rendered.:1, streaming, danboru, imaginfx"
+                        },
+                        "canDownload" : 1,
+                        "canDownloadError" : 1,
+                        "available_resolutions" : [],
+                        "max_resolution" : 0,
+                        "tooltip_data" : {
+                            "aname" : "Car Paint",
+                            "author_text" : "by Cynicalitz G",
+                            "quality" : "9"
+                        },
+                        "resolution" : "blend"
+                    },
+                    "f8e1fdec-03d3-4393-8cc5-f9b6393047c3" : {
+                        "thumbnail" : "thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png",
+                        "thumbnail_small" : "thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png",
+                        "downloaded" : 0,
+                        "texture_size_meters" : 1.0,
+                        "pk" : 2983,
+                        "url" : "https://www.blenderkit.com/api/v1/assets/93e509ab-96eb-4aaf-95a5-14044c65394c/",
+                        "id" : "93e509ab-96eb-4aaf-95a5-14044c65394c",
+                        "assetBaseId" : "f8e1fdec-03d3-4393-8cc5-f9b6393047c3",
+                        "versionNumber" : 1,
+                        "author" : {
+                            "id" : "15744",
+                            "firstName" : "Bad",
+                            "lastName" : "Pixel",
+                            "gravatarHash" : "b66860e7050a666c1d830865046193a0",
+                            "avatar128" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/128/",
+                            "avatar256" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/256/",
+                            "avatar512" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/512/",
+                            "aboutMe" : "",
+                            "aboutMeUrl" : "https://vimeo.com/joss13/demo",
+                            "fullName" : "Bad Pixel",
+                            "socialNetworks" : [],
+                            "app_id" : 4032,
+                            "tooltip" : "Bad Pixel\n\n",
+                            "gravatarImg" : "C:\\Users\\jboyd\\AppData\\Local\\Temp\\bktemp_jboyd\\bkit_g\\15744.jpg"
+                        },
+                        "name" : "Blue Car Paint",
+                        "displayName" : "Blue Car Paint",
+                        "description" : "Simple car paint shader",
+                        "descriptionHtml" : "<p>Simple car paint shader</p>",
+                        "assetType" : "material",
+                        "category" : "tech",
+                        "adult" : 0,
+                        "isFree" : 1,
+                        "tags" : [
+                            "car",
+                            "paint",
+                            "blue",
+                            "metal"
+                        ],
+                        "license" : "royalty_free",
+                        "sourceAppName" : "blender",
+                        "sourceAppVersion" : "2.80.74",
+                        "addonVersion" : "1.0.26",
+                        "created" : "2019-08-30T08:28:12.888934+02:00",
+                        "lastUserInteraction" : null,
+                        "verificationStatus" : "validated",
+                        "isPrivate" : 0,
+                        "files" : [
+                            {
+                                "fileType" : "blend",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/7990/",
+                                "uuid" : null,
+                                "fileThumbnail" : null,
+                                "fileThumbnailLarge" : null,
+                                "created" : "2019-08-30T08:28:20.630758+02:00",
+                                "modified" : "2020-12-11T15:31:50.063092+01:00",
+                                "mimeType" : null,
+                                "resolution" : null,
+                                "url" : "https://public.blenderkit.com/public-assets/assets/93e509ab96eb4aaf95a514044c65394c/files/blend_45d2ecd1-2414-4f39-8db6-a804aeabf91d.blend",
+                                "file_name" : "blend_45d2ecd1-2414-4f39-8db6-a804aeabf91d.blend"
+                            },
+                            {
+                                "fileType" : "thumbnail",
+                                "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/7989/",
+                                "uuid" : null,
+                                "fileThumbnail" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.96x96_q85_crop-%2C.png",
+                                "fileThumbnailLarge" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png",
+                                "created" : "2019-08-30T08:28:19.159676+02:00",
+                                "modified" : "2020-12-11T15:31:50.087412+01:00",
+                                "mimeType" : null,
+                                "resolution" : null
+                            }
+                        ],
+                        "filesSize" : 974,
+                        "thumbnailSmallUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png",
+                        "thumbnailMiddleUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png",
+                        "thumbnailLargeUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png",
+                        "thumbnailXlargeUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85_crop-%2C.png",
+                        "thumbnailSmallUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85.png",
+                        "thumbnailMiddleUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85.png",
+                        "thumbnailLargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85.png",
+                        "thumbnailXlargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85.png",
+                        "thumbnailSmallUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                        "thumbnailMiddleUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                        "thumbnailLargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                        "thumbnailXlargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                        "thumbnailSmallUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85.png.webp?webp_generated=1608298571",
+                        "thumbnailMiddleUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85.png.webp?webp_generated=1608298571",
+                        "thumbnailLargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85.png.webp?webp_generated=1608298571",
+                        "thumbnailXlargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85.png.webp?webp_generated=1608298571",
+                        "showMarketingLabels" : 1,
+                        "webpGeneratedTimestamp" : 1608298571,
+                        "score" : 487.92857142857144,
+                        "ratingsMedian" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 4.95,
+                            "quality" : 10.0,
+                            "virtualPrice" : null
+                        },
+                        "ratingsAverage" : {
+                            "bookmarks" : 1.0,
+                            "workingHours" : 4.95,
+                            "quality" : 9.857142857142858,
+                            "virtualPrice" : null
+                        },
+                        "ratingsCount" : {
+                            "bookmarks" : 114,
+                            "workingHours" : 12,
+                            "quality" : 14,
+                            "virtualPrice" : 0
+                        },
+                        "ratingsSum" : {
+                            "bookmarks" : 114.0,
+                            "workingHours" : 47.00000000298023,
+                            "quality" : 138.0,
+                            "virtualPrice" : null,
+                            "score" : 487.92857142857144
+                        },
+                        "lastBlendUpload" : "2019-08-30T06:28:20.630758+00:00",
+                        "lastGltfUpload" : null,
+                        "lastZipFileUpload" : null,
+                        "lastThumbnailUpload" : "2019-08-30T06:28:19.159676+00:00",
+                        "lastVideoUpload" : null,
+                        "lastResolutionUpload" : null,
+                        "dictParameters" : {
+                            "textureSizeMeters" : 1.0,
+                            "materialStyle" : "realistic",
+                            "purePbr" : 1,
+                            "engine" : "cycles",
+                            "shaders" : [],
+                            "animated" : 0,
+                            "pbrType" : "metallic",
+                            "uv" : 1
+                        },
+                        "canDownload" : 1,
+                        "canDownloadError" : 1,
+                        "available_resolutions" : [],
+                        "max_resolution" : 0,
+                        "tooltip_data" : {
+                            "aname" : "Blue Car Paint",
+                            "author_text" : "by Bad Pixel",
+                            "quality" : "10"
+                        },
+                        "resolution" : "blend"
+                    }
+                },
+                "uuid" : "c5d43e33-7c59-474d-800c-7c7a64bca2ff"
+            },
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "extras" : {
+                "kitops" : {},
+                "jv_properties" : {}
+            },
+            "mesh" : 0,
+            "name" : "Projects",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071067094802856
+            ],
+            "scale" : [
+                2.484215021133423,
+                2.484215259552002,
+                2.484215259552002
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0.009999987259507459,
+                0.009999989047646762,
+                0.009999999776482582
+            ],
+            "extensions" : {
+                "KHR_materials_clearcoat" : {
+                    "clearcoatFactor" : 0.30000001192092896,
+                    "clearcoatRoughnessFactor" : 0.10000000149011612
+                }
+            },
+            "extras" : {
+                "blenderkit" : {
+                    "shaders" : "",
+                    "category" : 28,
+                    "name" : "Blue Car Paint",
+                    "name_changed" : 0,
+                    "name_old" : "Blue Car Paint",
+                    "tags" : "car, paint, blue, metal",
+                    "pbr" : 1,
+                    "uv" : 1,
+                    "thumbnail_resolution" : 2,
+                    "is_generating_thumbnail" : 0,
+                    "has_thumbnail" : 1,
+                    "thumbnail_generating_state" : "",
+                    "thumbnail" : "//Blue Car Paint.png",
+                    "texture_resolution_max" : 0,
+                    "texture_resolution_min" : 0,
+                    "upload_state" : "uploaded metadata",
+                    "report" : "",
+                    "asset_base_id" : "f8e1fdec-03d3-4393-8cc5-f9b6393047c3",
+                    "id" : "93e509ab-96eb-4aaf-95a5-14044c65394c",
+                    "uploading" : 0,
+                    "description" : "Simple car paint shader",
+                    "thumbnail_generator_type" : 0,
+                    "thumbnail_denoising" : 0
+                },
+                "asset_data" : {
+                    "thumbnail" : "thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png",
+                    "thumbnail_small" : "thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png",
+                    "downloaded" : 0,
+                    "texture_size_meters" : 1.0,
+                    "pk" : 2983,
+                    "url" : "https://www.blenderkit.com/api/v1/assets/93e509ab-96eb-4aaf-95a5-14044c65394c/",
+                    "id" : "93e509ab-96eb-4aaf-95a5-14044c65394c",
+                    "assetBaseId" : "f8e1fdec-03d3-4393-8cc5-f9b6393047c3",
+                    "versionNumber" : 1,
+                    "author" : {
+                        "id" : "15744",
+                        "firstName" : "Bad",
+                        "lastName" : "Pixel",
+                        "gravatarHash" : "b66860e7050a666c1d830865046193a0",
+                        "avatar128" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/128/",
+                        "avatar256" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/256/",
+                        "avatar512" : "/avatar-redirect/da94b4bb-4a61-4e1f-a735-3249beb652d5/512/",
+                        "aboutMe" : "",
+                        "aboutMeUrl" : "https://vimeo.com/joss13/demo",
+                        "fullName" : "Bad Pixel",
+                        "socialNetworks" : [],
+                        "app_id" : 4032,
+                        "tooltip" : "Bad Pixel\n\n",
+                        "gravatarImg" : "C:\\Users\\jboyd\\AppData\\Local\\Temp\\bktemp_jboyd\\bkit_g\\15744.jpg"
+                    },
+                    "name" : "Blue Car Paint",
+                    "displayName" : "Blue Car Paint",
+                    "description" : "Simple car paint shader",
+                    "descriptionHtml" : "<p>Simple car paint shader</p>",
+                    "assetType" : "material",
+                    "category" : "tech",
+                    "adult" : 0,
+                    "isFree" : 1,
+                    "tags" : [
+                        "car",
+                        "paint",
+                        "blue",
+                        "metal"
+                    ],
+                    "license" : "royalty_free",
+                    "sourceAppName" : "blender",
+                    "sourceAppVersion" : "2.80.74",
+                    "addonVersion" : "1.0.26",
+                    "created" : "2019-08-30T08:28:12.888934+02:00",
+                    "lastUserInteraction" : null,
+                    "verificationStatus" : "validated",
+                    "isPrivate" : 0,
+                    "files" : [
+                        {
+                            "fileType" : "blend",
+                            "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/7990/",
+                            "uuid" : null,
+                            "fileThumbnail" : null,
+                            "fileThumbnailLarge" : null,
+                            "created" : "2019-08-30T08:28:20.630758+02:00",
+                            "modified" : "2020-12-11T15:31:50.063092+01:00",
+                            "mimeType" : null,
+                            "resolution" : null,
+                            "url" : "https://public.blenderkit.com/public-assets/assets/93e509ab96eb4aaf95a514044c65394c/files/blend_45d2ecd1-2414-4f39-8db6-a804aeabf91d.blend",
+                            "file_name" : "blend_45d2ecd1-2414-4f39-8db6-a804aeabf91d.blend"
+                        },
+                        {
+                            "fileType" : "thumbnail",
+                            "downloadUrl" : "https://www.blenderkit.com/api/v1/downloads/7989/",
+                            "uuid" : null,
+                            "fileThumbnail" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.96x96_q85_crop-%2C.png",
+                            "fileThumbnailLarge" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png",
+                            "created" : "2019-08-30T08:28:19.159676+02:00",
+                            "modified" : "2020-12-11T15:31:50.087412+01:00",
+                            "mimeType" : null,
+                            "resolution" : null
+                        }
+                    ],
+                    "filesSize" : 974,
+                    "thumbnailSmallUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png",
+                    "thumbnailMiddleUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png",
+                    "thumbnailLargeUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png",
+                    "thumbnailXlargeUrl" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85_crop-%2C.png",
+                    "thumbnailSmallUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85.png",
+                    "thumbnailMiddleUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85.png",
+                    "thumbnailLargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85.png",
+                    "thumbnailXlargeUrlNonsquared" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85.png",
+                    "thumbnailSmallUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                    "thumbnailMiddleUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                    "thumbnailLargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                    "thumbnailXlargeUrlWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85_crop-%2C.png.webp?webp_generated=1608298571",
+                    "thumbnailSmallUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.256x256_q85.png.webp?webp_generated=1608298571",
+                    "thumbnailMiddleUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.512x512_q85.png.webp?webp_generated=1608298571",
+                    "thumbnailLargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.1024x1024_q85.png.webp?webp_generated=1608298571",
+                    "thumbnailXlargeUrlNonsquaredWebp" : "https://public.blenderkit.com/thumbnails/assets/93e509ab96eb4aaf95a514044c65394c/files/thumbnail_041d2d27-fe01-43d2-870b-c49be1f71cac.png.2048x2048_q85.png.webp?webp_generated=1608298571",
+                    "showMarketingLabels" : 1,
+                    "webpGeneratedTimestamp" : 1608298571,
+                    "score" : 487.92857142857144,
+                    "ratingsMedian" : {
+                        "bookmarks" : 1.0,
+                        "workingHours" : 4.95,
+                        "quality" : 10.0,
+                        "virtualPrice" : null
+                    },
+                    "ratingsAverage" : {
+                        "bookmarks" : 1.0,
+                        "workingHours" : 4.95,
+                        "quality" : 9.857142857142858,
+                        "virtualPrice" : null
+                    },
+                    "ratingsCount" : {
+                        "bookmarks" : 114,
+                        "workingHours" : 12,
+                        "quality" : 14,
+                        "virtualPrice" : 0
+                    },
+                    "ratingsSum" : {
+                        "bookmarks" : 114.0,
+                        "workingHours" : 47.00000000298023,
+                        "quality" : 138.0,
+                        "virtualPrice" : null,
+                        "score" : 487.92857142857144
+                    },
+                    "lastBlendUpload" : "2019-08-30T06:28:20.630758+00:00",
+                    "lastGltfUpload" : null,
+                    "lastZipFileUpload" : null,
+                    "lastThumbnailUpload" : "2019-08-30T06:28:19.159676+00:00",
+                    "lastVideoUpload" : null,
+                    "lastResolutionUpload" : null,
+                    "dictParameters" : {
+                        "textureSizeMeters" : 1.0,
+                        "materialStyle" : "realistic",
+                        "purePbr" : 1,
+                        "engine" : "cycles",
+                        "shaders" : [],
+                        "animated" : 0,
+                        "pbrType" : "metallic",
+                        "uv" : 1
+                    },
+                    "canDownload" : 1,
+                    "canDownloadError" : 1,
+                    "available_resolutions" : [],
+                    "max_resolution" : 0,
+                    "tooltip_data" : {
+                        "aname" : "Blue Car Paint",
+                        "author_text" : "by Bad Pixel",
+                        "quality" : "10"
+                    },
+                    "resolution" : "blend"
+                },
+                "bkit_ratings" : {}
+            },
+            "name" : "Blue Car Paint",
+            "pbrMetallicRoughness" : {
+                "roughnessFactor" : 0.20000000298023224
+            }
+        },
+        {
+            "doubleSided" : true,
+            "extensions" : {
+                "KHR_materials_clearcoat" : {
+                    "clearcoatFactor" : 0.30000001192092896,
+                    "clearcoatRoughnessFactor" : 0.10000000149011612
+                }
+            },
+            "extras" : {
+                "blenderkit" : {}
+            },
+            "name" : "Gray Car Paint",
+            "pbrMetallicRoughness" : {
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Text",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2,
+                        "TEXCOORD_1" : 3
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2,
+                                "TEXCOORD_1" : 3
+                            }
+                        }
+                    },
+                    "indices" : 4,
+                    "material" : 0,
+                    "mode" : 4
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 5,
+                        "NORMAL" : 6,
+                        "TEXCOORD_0" : 7,
+                        "TEXCOORD_1" : 8
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 1,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2,
+                                "TEXCOORD_1" : 3
+                            }
+                        }
+                    },
+                    "indices" : 9,
+                    "material" : 1,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 7536,
+            "max" : [
+                3.3558237552642822,
+                0.03999999910593033,
+                0.1502130776643753
+            ],
+            "min" : [
+                0.020951705053448677,
+                -0.03999999910593033,
+                -0.5525568127632141
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 7536,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 7536,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 7536,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 14742,
+            "type" : "SCALAR"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 3944,
+            "max" : [
+                3.3558237552642822,
+                0.03999999910593033,
+                0.1502130776643753
+            ],
+            "min" : [
+                0.020951705053448677,
+                0.03999999910593033,
+                -0.5525568127632141
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 3944,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 3944,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 3944,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 4806,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 44192,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 29544,
+            "byteOffset" : 44192
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 73736,
+            "uri" : "Projects.bin"
+        }
+    ]
+}

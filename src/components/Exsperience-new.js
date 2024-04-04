@@ -6,14 +6,14 @@ import {
     Text,
     useFont,
   } from "@react-three/drei";
-  import { useFrame } from "@react-three/fiber";
+  import { useFrame, Canvas } from "@react-three/fiber";
   import { useAtom } from "jotai";
   import { useEffect, useRef } from "react";
   import { Color } from "three";
   import { degToRad, lerp } from "three/src/math/MathUtils";
   import { Room } from "./Room.js";
   import { currentPageAtom } from "./SkillsUI.js";
-  
+
   import {UI} from './UI.js'
 
   const bloomColor = new Color("#fff");
@@ -138,7 +138,7 @@ import {
         
         
         <Environment preset="sunset" />
-
+     
       </>
       
     );
