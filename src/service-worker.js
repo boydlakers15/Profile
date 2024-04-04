@@ -1,5 +1,4 @@
-// service-worker.js
-
+/* eslint-disable no-restricted-globals */
 const CACHE_NAME = 'my-cache-v1';
 const urlsToCache = [
   '/',
@@ -42,8 +41,10 @@ self.addEventListener('activate', event => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
+          return null;
         })
       );
     })
   );
 });
+/* eslint-enable no-restricted-globals */
