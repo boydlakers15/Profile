@@ -3,6 +3,7 @@ import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { currentPageAtom } from "./SkillsUI";
 import { useAtom } from "jotai";
+import Number1Model from './assets/3d/Number1.glb';
 
 const ExperienceNew = ({ controls }) => {
   const meshFitCameraCert = useRef();
@@ -65,7 +66,7 @@ function InteractiveCircleResume({ onClick, rotation = [2, 1.6, 0] }) {
   };
 
   // Load GLB model
-  const gltf = useLoader(GLTFLoader, "/models/Number1.glb");
+  const gltf = useLoader(GLTFLoader, Number1Model);
 
   return (
     <group position={position} rotation={updatedRotation}>

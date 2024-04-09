@@ -26,6 +26,7 @@ import Model from "./ProjectsText.js";
 import GLBViewer from "./ProjectsText.js";
 import {Computer} from './Computer.js';
 import { Text } from '@react-three/drei';
+import RoomModel from './assets/3d/room.glb';
 // import { ContactShadows, PhysicalMaterial
 const bloomColor = new Color("#fff");
 bloomColor.multiplyScalar(1.5);
@@ -34,7 +35,7 @@ bloomColor.multiplyScalar(1.5);
 
 export function Room(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/room.glb')
+  const { nodes, materials, animations } = useGLTF(RoomModel)
   const { actions, names } = useAnimations(animations, group)
   const [isHovered, setIsHovered] = useState(false);
   const [isHoveredCert, setIsHoveredCert] = useState(false);
@@ -725,4 +726,3 @@ function ScreenComputer({  }) {
   )
 }
 
-useGLTF.preload('/models/room.glb')

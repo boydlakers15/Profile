@@ -22,7 +22,7 @@ const App = () => {
         <Routes>
         
             {/* Use the "element" prop instead of "component" */}
-            <Route exact path="Profile/" element={<LandingPage />} />
+            <Route exact path="/Profile" element={<LandingPage />} />
             <Route exact path="Profile/First" element={<Profile />} />
             <Route exact path="Profile/skills" element={<SkillsPage />} />
             <Route exact path="Profile/foot" element={<FooterPage />} />

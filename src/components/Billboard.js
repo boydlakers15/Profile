@@ -6,10 +6,11 @@ Command: npx gltfjsx@6.2.16 public/models/Billboard.glb -o src/components/Billbo
 import { useGLTF, PerspectiveCamera  } from "@react-three/drei";
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import BillboradModel from './assets/3d/Billboard.glb'
 import './Billboard.css';
 
-export function Room(props) {
-  const { nodes, materials } = useGLTF('/models/Billboard.glb')
+export function Model(props) {
+  const { nodes, materials } = useGLTF(BillboradModel)
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -64,4 +65,3 @@ export function Room(props) {
   )
 }
 
-useGLTF.preload('/models/Billboard.glb')

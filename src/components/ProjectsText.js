@@ -5,9 +5,10 @@ Command: npx gltfjsx@6.2.16 public/models/Projects.gltf -o src/components/Projec
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import ProjectsModel from './assets/3d/Projects.glb';
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF('/models/Projects.gltf')
+  const { nodes, materials } = useGLTF(ProjectsModel)
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
@@ -20,4 +21,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('/models/Projects.gltf')
+
